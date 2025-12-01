@@ -1,38 +1,43 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
-  <title>Hexo</title>
+  <title>yeye 想变强</title>
   
-  
+  <subtitle>技术&amp;生活blog</subtitle>
   <link href="http://example.com/atom.xml" rel="self"/>
   
   <link href="http://example.com/"/>
-  <updated>2025-12-01T03:32:38.765Z</updated>
+  <updated>2025-12-01T07:14:12.184Z</updated>
   <id>http://example.com/</id>
   
   <author>
-    <name>John Doe</name>
+    <name>yeyeyefirst</name>
     
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>Hello World</title>
+    <title>LeetCode_1</title>
     <link href="http://example.com/2025/12/01/hello-world/"/>
     <id>http://example.com/2025/12/01/hello-world/</id>
     <published>2025-12-01T03:32:38.765Z</published>
-    <updated>2025-12-01T03:32:38.765Z</updated>
+    <updated>2025-12-01T07:14:12.184Z</updated>
     
-    <content type="html"><![CDATA[<p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p><h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/writing.html">Writing</a></p><h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/server.html">Server</a></p><h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/generating.html">Generating</a></p><h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>]]></content>
+    <content type="html"><![CDATA[<p>  从这篇文章开始，我将会将我在算法练习中的所想和收获记录下来。</p><h1 id="1-两数之和"><a href="#1-两数之和" class="headerlink" title="1. 两数之和"></a>1. 两数之和</h1><p> 给定一个整数数组 nums 和一个整数目标值 target，请你在该数组中找出 和为目标值 target  的那 两个 整数，并返回它们的数组下标。<br> 你可以假设每种输入只会对应一个答案，并且你不能使用两次相同的元素。<br> 你可以按任意顺序返回答案。<br><img src="/images/post1/1.png" alt="题目输出案例"></p><h2 id="1-1-思路1"><a href="#1-1-思路1" class="headerlink" title="1.1 思路1"></a>1.1 思路1</h2><p>  思路1是最简单的思路，就是遍历数组，对于每个元素，都去数组中查找是否有目标值减去当前值的元素。<br>  时间复杂度为O(n^2)，空间复杂度为O(1)。<br>  <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span>:</span><br><span class="line">  <span class="keyword">def</span> <span class="title function_">twoSum</span>(<span class="params">self, nums: <span class="type">List</span>[<span class="built_in">int</span>], target: <span class="built_in">int</span></span>) -&gt; <span class="type">List</span>[<span class="built_in">int</span>]:</span><br><span class="line">      <span class="keyword">for</span> i <span class="keyword">in</span> nums:</span><br><span class="line">          j = target - i</span><br><span class="line">          start_index = nums.index(i)</span><br><span class="line">          next_index = start_index + <span class="number">1</span> </span><br><span class="line">          nums_new = nums[next_index:]<span class="comment">#对原数组进行切片，去掉当前元素之前的元素</span></span><br><span class="line">          <span class="keyword">if</span> j <span class="keyword">in</span> nums_new:</span><br><span class="line">              <span class="keyword">return</span> [start_index,next_index+nums_new.index(j)]</span><br></pre></td></tr></table></figure></p><h2 id="1-2-思路2-哈希表"><a href="#1-2-思路2-哈希表" class="headerlink" title="1.2 思路2(哈希表)"></a>1.2 思路2(哈希表)</h2><p>  思路2是利用哈希表来解决问题。我们遍历数组，对于每个元素，都去哈希表中查找是否有目标值减去当前值的元素。<br>  如果有，就返回当前元素的下标和哈希表中目标值减去当前值的元素的下标。<br>  如果没有，就将当前元素和下标加入哈希表中。<br>  时间复杂度为O(n)，空间复杂度为O(n)。<em><strong>用空间换时间</strong></em><br>  <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span>:</span><br><span class="line">  <span class="keyword">def</span> <span class="title function_">twoSum</span>(<span class="params">self, nums: <span class="type">List</span>[<span class="built_in">int</span>], target: <span class="built_in">int</span></span>) -&gt; <span class="type">List</span>[<span class="built_in">int</span>]:</span><br><span class="line">      <span class="built_in">dir</span>=&#123;&#125;</span><br><span class="line">      <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="built_in">len</span>(nums)): <span class="comment">#遍历数组</span></span><br><span class="line">          <span class="keyword">if</span> target-nums[i] <span class="keyword">not</span> <span class="keyword">in</span> <span class="built_in">dir</span>: <span class="comment">#如果目标值减去当前值不在字典中</span></span><br><span class="line">              <span class="built_in">dir</span>[nums[i]] = i</span><br><span class="line">          <span class="keyword">else</span> :</span><br><span class="line">              <span class="keyword">return</span> [<span class="built_in">dir</span>[target-nums[i]],i]</span><br></pre></td></tr></table></figure></p>]]></content>
     
     
       
       
-    <summary type="html">&lt;p&gt;Welcome to &lt;a href=&quot;https://hexo.io/&quot;&gt;Hexo&lt;/a&gt;! This is your very first post. Check &lt;a href=&quot;https://hexo.io/docs/&quot;&gt;documentation&lt;/a&gt; for</summary>
+    <summary type="html">&lt;p&gt;  从这篇文章开始，我将会将我在算法练习中的所想和收获记录下来。&lt;/p&gt;
+&lt;h1 id=&quot;1-两数之和&quot;&gt;&lt;a href=&quot;#1-两数之和&quot; class=&quot;headerlink&quot; title=&quot;1. 两数之和&quot;&gt;&lt;/a&gt;1. 两数之和&lt;/h1&gt;&lt;p&gt; 给定一个整数数组 nu</summary>
       
     
     
     
+    <category term="算法学习——哈希" scheme="http://example.com/categories/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0%E2%80%94%E2%80%94%E5%93%88%E5%B8%8C/"/>
+    
+    
+    <category term="leetcode" scheme="http://example.com/tags/leetcode/"/>
     
   </entry>
   
