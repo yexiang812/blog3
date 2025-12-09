@@ -7,12 +7,12 @@ article: http://ogp.me/ns/article#">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="keywords" content="Leetcode,机器学习,生活">
 
-<title>LeetCode_1 || yeye 想变强</title>
+<title>python_入门练习 || yeye 想变强</title>
 <link rel="icon" href="http://example.comimages/wang.icon" type="image/x-icon">
 <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
-<meta property="og:title" content="LeetCode_1">
+<meta property="og:title" content="python_入门练习">
 <meta property="og:type" content="website">
-<meta property="og:url" content="http://example.com/2025/12/01/hello-world/index.html">
+<meta property="og:url" content="http://example.com/2025/12/09/python-%E5%85%A5%E9%97%A8%E7%BB%83%E4%B9%A0/index.html">
 <meta property="og:image" content="">
 <meta property="og:site_name" content="yeye 想变强">
 <meta property="og:author" content="yeyeyefirst">
@@ -20,7 +20,7 @@ article: http://ogp.me/ns/article#">
   
   
   
-  <meta name="description" content="从这篇文章开始，我将会将我在算法练习中的所想和收获记录下来。1.两数之和给定一个整数数组nums和一个整数目标值target，请你在该数组中找出和为目标值target的那两个整数，并返回它们的数组下标。你可以假设每种输入只会对应一个答案，并且你不能使用两次相同的元素。你可以按任意顺序返回答案。1.1思路1思路">
+  <meta name="description" content="不得不说我的代码能力太弱了，只能先从简单的开始了。1.A+B问题I题目描述你的任务是计算a+b。输入描述输入包含一系列的a和b对，通过空格隔开。一对a和b占一行。输出描述如对于输入中的第二对a和b，在输出中它们的和应该也在第二行。输入示例1234输出示例37我的解法123456whileTrue:try:a,">
 
 
 <script src="/js/wang.js"></script>
@@ -198,27 +198,45 @@ article: http://ogp.me/ns/article#">
 </aside>
 <div class="post-container">
   <article class="post">
-    <h1 class="post-title">LeetCode_1</h1>
+    <h1 class="post-title">python_入门练习</h1>
 
     <div class="post-meta">
-      <span class="post-date">发布于 <time datetime="2025-12-01T03:32:38.765Z">2025-12-01</time></span>
-      
-        <span class="post-categories">
-          分类：<a class="category-link" href="/categories/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0%E2%80%94%E2%80%94%E5%93%88%E5%B8%8C/">算法学习——哈希</a>
-        </span>
+      <span class="post-date">发布于 <time datetime="2025-12-09T13:26:24.000Z">2025-12-09</time></span>
       
       
         <span class="post-updated">
-          最后更新于 <time datetime="2025-12-01T07:14:12.184Z">2025-12-01</time>
+          最后更新于 <time datetime="2025-12-09T15:07:00.025Z">2025-12-09</time>
         </span>
       
       <span style="margin-left:10px;">👁<span id="busuanzi_value_page_pv"></span></span>
     </div>
     <div class="post-content">
-      <p>  从这篇文章开始，我将会将我在算法练习中的所想和收获记录下来。</p>
-<h1 id="1-两数之和"><a href="#1-两数之和" class="headerlink" title="1. 两数之和"></a>1. 两数之和</h1><p> 给定一个整数数组 nums 和一个整数目标值 target，请你在该数组中找出 和为目标值 target  的那 两个 整数，并返回它们的数组下标。<br> 你可以假设每种输入只会对应一个答案，并且你不能使用两次相同的元素。<br> 你可以按任意顺序返回答案。<br><img src="/images/post1/1.png" alt="题目输出案例"></p>
-<h2 id="1-1-思路1"><a href="#1-1-思路1" class="headerlink" title="1.1 思路1"></a>1.1 思路1</h2><p>  思路1是最简单的思路，就是遍历数组，对于每个元素，都去数组中查找是否有目标值减去当前值的元素。<br>  时间复杂度为O(n^2)，空间复杂度为O(1)。<br>  <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span>:</span><br><span class="line">  <span class="keyword">def</span> <span class="title function_">twoSum</span>(<span class="params">self, nums: <span class="type">List</span>[<span class="built_in">int</span>], target: <span class="built_in">int</span></span>) -&gt; <span class="type">List</span>[<span class="built_in">int</span>]:</span><br><span class="line">      <span class="keyword">for</span> i <span class="keyword">in</span> nums:</span><br><span class="line">          j = target - i</span><br><span class="line">          start_index = nums.index(i)</span><br><span class="line">          next_index = start_index + <span class="number">1</span> </span><br><span class="line">          nums_new = nums[next_index:]<span class="comment">#对原数组进行切片，去掉当前元素之前的元素</span></span><br><span class="line">          <span class="keyword">if</span> j <span class="keyword">in</span> nums_new:</span><br><span class="line">              <span class="keyword">return</span> [start_index,next_index+nums_new.index(j)]</span><br></pre></td></tr></table></figure></p>
-<h2 id="1-2-思路2-哈希表"><a href="#1-2-思路2-哈希表" class="headerlink" title="1.2 思路2(哈希表)"></a>1.2 思路2(哈希表)</h2><p>  思路2是利用哈希表来解决问题。我们遍历数组，对于每个元素，都去哈希表中查找是否有目标值减去当前值的元素。<br>  如果有，就返回当前元素的下标和哈希表中目标值减去当前值的元素的下标。<br>  如果没有，就将当前元素和下标加入哈希表中。<br>  时间复杂度为O(n)，空间复杂度为O(n)。<em><strong>用空间换时间</strong></em><br>  <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span>:</span><br><span class="line">  <span class="keyword">def</span> <span class="title function_">twoSum</span>(<span class="params">self, nums: <span class="type">List</span>[<span class="built_in">int</span>], target: <span class="built_in">int</span></span>) -&gt; <span class="type">List</span>[<span class="built_in">int</span>]:</span><br><span class="line">      <span class="built_in">dir</span>=&#123;&#125;</span><br><span class="line">      <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="built_in">len</span>(nums)): <span class="comment">#遍历数组</span></span><br><span class="line">          <span class="keyword">if</span> target-nums[i] <span class="keyword">not</span> <span class="keyword">in</span> <span class="built_in">dir</span>: <span class="comment">#如果目标值减去当前值不在字典中</span></span><br><span class="line">              <span class="built_in">dir</span>[nums[i]] = i</span><br><span class="line">          <span class="keyword">else</span> :</span><br><span class="line">              <span class="keyword">return</span> [<span class="built_in">dir</span>[target-nums[i]],i]</span><br></pre></td></tr></table></figure></p>
+      <p>  不得不说我的代码能力太弱了，只能先从简单的开始了。</p>
+<h1 id="1-A-B问题I"><a href="#1-A-B问题I" class="headerlink" title="1.A+B问题I"></a>1.A+B问题I</h1><p>题目描述</p>
+<blockquote>
+<p>你的任务是计算a+b。<br>输入描述<br>输入包含一系列的a和b对，通过空格隔开。一对a和b占一行。<br>输出描述<br>如对于输入中的第二对a和b，<br>  在输出中它们的和应该也在第二行。<br>输入示例<br>1 2<br>  3 4<br>输出示例<br>3<br>  7</p>
+</blockquote>
+<h2 id="我的解法"><a href="#我的解法" class="headerlink" title="我的解法"></a>我的解法</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">while</span> <span class="literal">True</span>:</span><br><span class="line">    <span class="keyword">try</span>:</span><br><span class="line">        a,b = <span class="built_in">map</span>(<span class="built_in">int</span>,<span class="built_in">input</span>().split())</span><br><span class="line">        <span class="built_in">print</span>(a+b)</span><br><span class="line">    <span class="keyword">except</span>:</span><br><span class="line">        <span class="keyword">break</span></span><br></pre></td></tr></table></figure>
+<p>好吧我承认我的代码能力是极差的。<br>第一个问题如何保证一直接受用户输入，首先就要用一个一直循环的while语句，直到没有输入后跳出循环。可以用if判断啥时候输入为空，也可以用try except保证输入的合法性。<br>然后就是map函数，这个函数的核心是对序列里面的每一个元素批量应用同一个处理规则，这里是将输入的字符串转换为整数。<br>这里的.split()函数是将输入的字符串按照空格隔开，返回一个列表。<br>哦，补充一下input函数输入的内容是字符串。</p>
+<h1 id="2-A-B问题II"><a href="#2-A-B问题II" class="headerlink" title="2.A+B问题II"></a>2.A+B问题II</h1><p>题目描述</p>
+<blockquote>
+<p>计算a+b，但输入方式有所改变。<br>输入描述<br>第一行是一个整数N，表示后面会有N行a和b，通过空格隔开。<br>输出描述<br>对于输入的每对a和b，你需要在相应的行输出a、b的和。<br>  如第二对a和b，对应的和也输出在第二行。<br>输入示例<br>2<br>  2 4<br>  9 21<br>输出示例<br>6<br>  30<br>提示信息<br>注意，测试数据不仅仅一组。也就是说，会持续输入N以及后面的a和b</p>
+</blockquote>
+<h2 id="解法1"><a href="#解法1" class="headerlink" title="解法1"></a>解法1</h2><p>这道题和上一道题的区别在于，上一道题是一直接受用户输入，直到没有输入为止。<br>这道题是先接受一个整数N，然后接受N行a和b，输出N行a+b。而且分组输入导致每一块都有组数N，就不能像上一道题一样无脑接收输入了。<br>补充知识：<br>.strip()函数是去掉字符串首尾的空格，包括换行符、制表符等。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">while</span> <span class="literal">True</span>:</span><br><span class="line">    <span class="keyword">try</span>:</span><br><span class="line">        N = <span class="built_in">int</span>(<span class="built_in">input</span>().strip())</span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(N):</span><br><span class="line">            a,b = <span class="built_in">map</span>(<span class="built_in">int</span>,<span class="built_in">input</span>().split())</span><br><span class="line">            <span class="built_in">print</span>(a+b)</span><br><span class="line">    <span class="keyword">except</span>:</span><br><span class="line">        <span class="keyword">break</span></span><br></pre></td></tr></table></figure>
+<h2 id="解法2"><a href="#解法2" class="headerlink" title="解法2"></a>解法2</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> sys</span><br><span class="line"><span class="keyword">for</span> line <span class="keyword">in</span> sys.stdin:</span><br><span class="line">    N=<span class="built_in">int</span>(line.strip())</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(N):</span><br><span class="line">        a,b=<span class="built_in">map</span>(<span class="built_in">int</span>,sys.stdin.readline().strip().split())</span><br><span class="line">        <span class="built_in">print</span>(a+b)</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>导入sys模块后，通过<code>for line in sys.stdin</code>启动外层循环——这个循环的作用是<strong>逐个读取输入中“每组数据的开头行（即N所在的行）”</strong>。每次外层循环执行时：</p>
+</blockquote>
+<ol>
+<li><p>首先处理当前读取到的<code>line</code>：这行内容是当前组的分组信息（整数N），通过<code>int(line.strip())</code>转成整数后，明确“这一组需要处理N对a和b”。</p>
+</li>
+<li><p>接着启动内层循环<code>for _ in range(N)</code>：这个循环的作用是<strong>主动读取当前组内的N行a和b数据</strong>。<br>每次内层循环会通过<code>sys.stdin.readline()</code>读取一行新的输入（这行是a和b，用空格分隔），经过<code>strip()</code>清理空白、<code>split()</code>拆分、<code>map(int, ...)</code>转整数后，得到a和b的值，计算并输出它们的和。<br>内层循环会严格执行N次，确保当前组的N对a和b全部被处理。</p>
+</li>
+<li><p>内层循环结束后，外层循环才会继续执行：此时外层循环会自动读取下一行输入，而这一行恰好是“下一组数据的N”（因为内层循环已经主动读完了上一组的N行a和b，不会让外层循环误读这些行）。</p>
+</li>
+</ol>
+<p>整个过程中，外层循环负责“按组拆分输入”（找到每一组的N），内层循环负责“按组内数量处理数据”（读完N对a和b），两层循环分工配合，既不会漏读数据，也不会错把a和b的行当成N处理，最终完美实现“持续处理多组N及对应a+b”的题目要求。<br>sys.stdin():内置的标准输入流对象，用于从控制台或其他输入源读取数据。<br>sys.stdin.readline()：读取输入的一行,从stdin中读取一行数据,包括换行符。</p>
 
     </div>
   </article>
@@ -233,11 +251,11 @@ article: http://ogp.me/ns/article#">
                     </div>
                     <div class="title">
                         <p>标题</p>
-                        <p>LeetCode_1</p>
+                        <p>python_入门练习</p>
                     </div>
                         <div class="publish">
                             <p>发布于</p>
-                            <p>2025-12-01</p>
+                            <p>2025-12-09</p>
                         </div>
                     <div class="ccbyncsa-icon">
                         <p>授权协议</p>
@@ -257,11 +275,11 @@ article: http://ogp.me/ns/article#">
 </div>
   <nav class="post-pagination">
     
-    
-      <div class="post-next">
-        <span class="nav-label">下一篇</span>
-        <a href="/2025/12/09/python-%E5%85%A5%E9%97%A8%E7%BB%83%E4%B9%A0/">python_入门练习</a>
+      <div class="post-prev">
+        <span class="nav-label">上一篇</span>
+        <a href="/2025/12/01/hello-world/">LeetCode_1</a>
       </div>
+    
     
   </nav>
   
@@ -336,24 +354,17 @@ article: http://ogp.me/ns/article#">
 
     </div>
     <div class="sidebar-bg">
-        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#1-%E4%B8%A4%E6%95%B0%E4%B9%8B%E5%92%8C"><span class="toc-number">1.</span> <span class="toc-text">1. 两数之和</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-1-%E6%80%9D%E8%B7%AF1"><span class="toc-number">1.1.</span> <span class="toc-text">1.1 思路1</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-2-%E6%80%9D%E8%B7%AF2-%E5%93%88%E5%B8%8C%E8%A1%A8"><span class="toc-number">1.2.</span> <span class="toc-text">1.2 思路2(哈希表)</span></a></li></ol></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#1-A-B%E9%97%AE%E9%A2%98I"><span class="toc-number">1.</span> <span class="toc-text">1.A+B问题I</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%88%91%E7%9A%84%E8%A7%A3%E6%B3%95"><span class="toc-number">1.1.</span> <span class="toc-text">我的解法</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#2-A-B%E9%97%AE%E9%A2%98II"><span class="toc-number">2.</span> <span class="toc-text">2.A+B问题II</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%A7%A3%E6%B3%951"><span class="toc-number">2.1.</span> <span class="toc-text">解法1</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%A7%A3%E6%B3%952"><span class="toc-number">2.2.</span> <span class="toc-text">解法2</span></a></li></ol></li></ol>
     </div>
     <div class="sidebar-bg">
         <div class="card-tags">
             
-                <a href="/tags/leetcode/" class="tag" aria-label="标签: #leetcode">#leetcode</a>
+                <a href="/tags/%E5%85%A5%E9%97%A8%E7%AE%97%E6%B3%95/" class="tag" aria-label="标签: #入门算法">#入门算法</a>
             
         </div>
     </div>
     <div>
         <div class="categories-list">
-            
-                <div class="category-item">
-                    <a href="/categories/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0%E2%80%94%E2%80%94%E5%93%88%E5%B8%8C/" aria-label="分类: 算法学习——哈希">
-                        算法学习——哈希
-                        <span>(1)</span>
-                    </a>
-                </div>
             
         </div>
     </div>
