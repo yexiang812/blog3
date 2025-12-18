@@ -7,12 +7,12 @@ article: http://ogp.me/ns/article#">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="keywords" content="Leetcode,机器学习,生活">
 
-<title>代码随想录_day1 || yeye 想变强</title>
+<title>代码随想录-day2 || yeye 想变强</title>
 <link rel="icon" href="http://example.comimages/wang.icon" type="image/x-icon">
 <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
-<meta property="og:title" content="代码随想录_day1">
+<meta property="og:title" content="代码随想录-day2">
 <meta property="og:type" content="website">
-<meta property="og:url" content="http://example.com/2025/12/17/%E4%BB%A3%E7%A0%81%E9%9A%8F%E6%83%B3%E5%BD%95-day1/index.html">
+<meta property="og:url" content="http://example.com/2025/12/18/%E4%BB%A3%E7%A0%81%E9%9A%8F%E6%83%B3%E5%BD%95-day2/index.html">
 <meta property="og:image" content="">
 <meta property="og:site_name" content="yeye 想变强">
 <meta property="og:author" content="yeyeyefirst">
@@ -20,7 +20,7 @@ article: http://ogp.me/ns/article#">
   
   
   
-  <meta name="description" content="可恶，今天有点拖拖拉拉的，博客只能水一点了二分查找给定一个n个元素有序的（升序）整型数组nums和一个目标值target，写一个函数搜索nums中的target，如果目标值存在返回下标，否则返回-1。示例1:输入:nums&amp;#x3D;[-1,0,3,5,9,12],target&amp;#x3D;9输出:4解释:9出">
+  <meta name="description" content="长度最小的子数组给定一个含有n个正整数的数组和一个正整数s，找出该数组中满足其和≥s的长度最小的连续子数组，并返回其长度。如果不存在符合条件的子数组，返回0。示例：输入：s&amp;#x3D;7,nums&amp;#x3D;[2,3,1,2,4,3]输出：2解释：子数组[4,3]是该条件下的长度最小的子数组。提示：1&amp;#x3">
 
 
 <script src="/js/wang.js"></script>
@@ -198,10 +198,10 @@ article: http://ogp.me/ns/article#">
 </aside>
 <div class="post-container">
   <article class="post">
-    <h1 class="post-title">代码随想录_day1</h1>
+    <h1 class="post-title">代码随想录-day2</h1>
 
     <div class="post-meta">
-      <span class="post-date">发布于 <time datetime="2025-12-17T15:02:58.000Z">2025-12-17</time></span>
+      <span class="post-date">发布于 <time datetime="2025-12-18T09:42:23.000Z">2025-12-18</time></span>
       
         <span class="post-categories">
           分类：<a class="category-link" href="/categories/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0%E2%80%94%E2%80%94%E6%95%B0%E7%BB%84/">算法学习——数组</a>
@@ -209,43 +209,41 @@ article: http://ogp.me/ns/article#">
       
       
         <span class="post-updated">
-          最后更新于 <time datetime="2025-12-18T09:43:27.379Z">2025-12-18</time>
+          最后更新于 <time datetime="2025-12-18T10:13:03.134Z">2025-12-18</time>
         </span>
       
       <span style="margin-left:10px;">👁<span id="busuanzi_value_page_pv"></span></span>
     </div>
     <div class="post-content">
-      <p>可恶，今天有点拖拖拉拉的，博客只能水一点了</p>
-<h1 id="二分查找"><a href="#二分查找" class="headerlink" title="二分查找"></a>二分查找</h1><p>给定一个 n 个元素有序的（升序）整型数组 nums 和一个目标值 target  ，写一个函数搜索 nums 中的 target，如果目标值存在返回下标，否则返回 -1。</p>
+      <h1 id="长度最小的子数组"><a href="#长度最小的子数组" class="headerlink" title="长度最小的子数组"></a>长度最小的子数组</h1><blockquote>
+<p>给定一个含有 n 个正整数的数组和一个正整数 s ，找出该数组中满足其和 ≥ s 的长度最小的 连续 子数组，并返回其长度。如果不存在符合条件的子数组，返回 0。</p>
+</blockquote>
+<p>示例：</p>
 <ul>
-<li>示例 1:<br> 输入: nums &#x3D; [-1,0,3,5,9,12], target &#x3D; 9<br> 输出: 4<br> 解释: 9 出现在 nums 中并且下标为 4<br> 示例 2:</li>
+<li>输入：s &#x3D; 7, nums &#x3D; [2,3,1,2,4,3]</li>
+<li>输出：2</li>
+<li>解释：子数组 [4,3] 是该条件下的长度最小的子数组。</li>
 </ul>
-<p> 输入: nums &#x3D; [-1,0,3,5,9,12], target &#x3D; 2<br> 输出: -1<br> 解释: 2 不存在 nums 中因此返回 -1<br> 提示：</p>
-<p> 你可以假设 nums 中的所有元素是不重复的。<br> n 将在 [1, 10000]之间。<br> nums 的每个元素都将在 [-9999, 9999]之间</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">right=<span class="built_in">len</span>(nums)</span><br><span class="line">        left=<span class="number">0</span></span><br><span class="line">        <span class="keyword">while</span> left &lt; right:</span><br><span class="line">            middle = (left + right) // <span class="number">2</span></span><br><span class="line">            <span class="keyword">if</span> target &lt; nums[middle]:</span><br><span class="line">                right = middle</span><br><span class="line">            <span class="keyword">elif</span> target &gt; nums[middle]:</span><br><span class="line">                left  = middle + <span class="number">1</span></span><br><span class="line">            <span class="keyword">else</span> :</span><br><span class="line">                <span class="keyword">return</span> middle</span><br><span class="line">        <span class="keyword">return</span> -<span class="number">1</span></span><br></pre></td></tr></table></figure>
-<p>二分查找有点类似数学的二分法，来简化查找的次数，一个是左闭右闭，right就是指向真实的下标，然后更新的左右都不取到中间值，另一个是<br>左闭右开，right指向数组的数量（实际加一），更新的右边都取到中间值。</p>
-<h1 id="移除数组"><a href="#移除数组" class="headerlink" title="移除数组"></a>移除数组</h1><p>给你一个数组 nums 和一个值 val，你需要 原地 移除所有数值等于 val 的元素，并返回移除后数组的新长度。</p>
-<p>不要使用额外的数组空间，你必须仅使用 O(1) 额外空间并原地修改输入数组。</p>
-<p>元素的顺序可以改变。你不需要考虑数组中超出新长度后面的元素。</p>
+<p>提示：</p>
 <ul>
-<li>示例 1: 给定 nums &#x3D; [3,2,2,3], val &#x3D; 3, 函数应该返回新的长度 2, 并且 nums 中的前两个元素均为 2。 你不需要考虑数组中超出新长度后面的元素。</li>
+<li>1 &lt;&#x3D; target &lt;&#x3D; 10^9</li>
+<li>1 &lt;&#x3D; nums.length &lt;&#x3D; 10^5</li>
+<li>1 &lt;&#x3D; nums[i] &lt;&#x3D; 10^5</li>
 </ul>
-<p>示例 2: 给定 nums &#x3D; [0,1,2,2,3,0,4,2], val &#x3D; 2, 函数应该返回新的长度 5, 并且 nums 中的前五个元素为 0, 1, 3, 0, 4。</p>
-<p>你不需要考虑数组中超出新长度后面的元素。</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span>:</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">removeElement</span>(<span class="params">self, nums: <span class="type">List</span>[<span class="built_in">int</span>], val: <span class="built_in">int</span></span>) -&gt; <span class="built_in">int</span>:</span><br><span class="line">        length=<span class="built_in">len</span>(nums)</span><br><span class="line">        i = <span class="number">0</span></span><br><span class="line">        <span class="keyword">while</span> i &lt; length:</span><br><span class="line">            <span class="keyword">if</span> nums[i]  == val:</span><br><span class="line">                <span class="keyword">for</span> j <span class="keyword">in</span> <span class="built_in">range</span>(i,length-<span class="number">1</span>):</span><br><span class="line">                    nums[j]=nums[j+<span class="number">1</span>]</span><br><span class="line">                length -= <span class="number">1</span></span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                i += <span class="number">1</span></span><br><span class="line">        <span class="keyword">return</span> length</span><br></pre></td></tr></table></figure>
-<p>这个是暴力解法，双层循环</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">slow = <span class="number">0</span></span><br><span class="line">        <span class="keyword">for</span> fast <span class="keyword">in</span> <span class="built_in">range</span>(<span class="built_in">len</span>(nums)):</span><br><span class="line">            <span class="keyword">if</span>  nums[fast] != val:</span><br><span class="line">                nums[slow]=nums[fast]</span><br><span class="line">                slow += <span class="number">1</span></span><br><span class="line">        <span class="keyword">return</span> slow</span><br></pre></td></tr></table></figure>
-<p>这个是快慢指针<br>讲一下思路，简单来说就是，设置两个指针，快的指针用来遍历原来的数组，慢的就用来表示新的数组的下标，然后比较快指针对应的和val一不一样，留下不一样的，一样的就跳过，最后返回慢指针的下标就是新数组的长度</p>
-<h1 id="有序数组的平方"><a href="#有序数组的平方" class="headerlink" title="有序数组的平方"></a>有序数组的平方</h1><p>给你一个按 非递减顺序 排序的整数数组 nums，返回 每个数字的平方 组成的新数组，要求也按 非递减顺序 排序。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span>:</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">minSubArrayLen</span>(<span class="params">self, target: <span class="built_in">int</span>, nums: <span class="type">List</span>[<span class="built_in">int</span>]</span>) -&gt; <span class="built_in">int</span>:</span><br><span class="line">        length = <span class="built_in">len</span>(nums)</span><br><span class="line">        left = <span class="number">0</span></span><br><span class="line">        right = <span class="number">0</span>  <span class="comment">#左闭右闭</span></span><br><span class="line">        min_nums = length + <span class="number">1</span></span><br><span class="line">        sum_n = <span class="number">0</span></span><br><span class="line">        <span class="keyword">while</span> right &lt; length:</span><br><span class="line">            sum_n += nums[right]</span><br><span class="line">            <span class="keyword">while</span> sum_n &gt;= target:</span><br><span class="line">                min_nums = <span class="built_in">min</span>(right - left + <span class="number">1</span>,min_nums)</span><br><span class="line">                sum_n -= nums[left]</span><br><span class="line">                left += <span class="number">1</span></span><br><span class="line">            right += <span class="number">1</span></span><br><span class="line">        <span class="keyword">return</span> min_nums <span class="keyword">if</span> min_nums != length + <span class="number">1</span> <span class="keyword">else</span> <span class="number">0</span></span><br></pre></td></tr></table></figure>
+<p>这道题可以用<strong>滑动窗口</strong>的方式来实现<br>设置两个指针left和right，分别指向子数组的左右边界。<br>初始的时候设置两个指针都是0，即指向数组的第一个元素。<br>然后通过移动右指针来扩大子数组的大小直到子数组的和大于等于target。<br>这个时候我们得到的就是在起点为0条件下获得的最小子数组长度。<br>因此我们可以移动左指针的位置，一方面可以缩小子数组的长度，另一方面也是调整子数组的起点。<br>如果减去初始的左指针指向的元素后子数组的和仍然大于等于target，那么我们就可以继续移动左指针，直到子数组的和小于target，当然在这过程中要更新最小数组长度。<br>如果子数组的和小于target了那我们就继续移动右指针，扩大子数组的大小。重复这个过程到循环结束</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span>:</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">minSubArrayLen</span>(<span class="params">self, target: <span class="built_in">int</span>, nums: <span class="type">List</span>[<span class="built_in">int</span>]</span>) -&gt; <span class="built_in">int</span>:</span><br><span class="line">        length = <span class="built_in">len</span>(nums)</span><br><span class="line">        min_nums = length + <span class="number">1</span></span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(length):</span><br><span class="line">            sum_n = <span class="number">0</span></span><br><span class="line">            <span class="keyword">for</span> j <span class="keyword">in</span> <span class="built_in">range</span>(i,length):</span><br><span class="line">                sum_n += nums[j]</span><br><span class="line">                <span class="keyword">if</span> sum_n &gt;= target:</span><br><span class="line">                    min_nums = <span class="built_in">min</span>(min_nums,j-i+<span class="number">1</span>)</span><br><span class="line">                    <span class="keyword">break</span></span><br><span class="line">        <span class="keyword">return</span> min_nums <span class="keyword">if</span> min_nums != length + <span class="number">1</span> <span class="keyword">else</span> <span class="number">0</span></span><br></pre></td></tr></table></figure>
+<p>暴力解法就是用两个for循环，一个for循环遍历数组的每个元素，另一个for循环遍历从当前元素开始的所有子数组，计算子数组的和是否大于等于target。超时了就是了</p>
+<h1 id="螺旋矩阵II"><a href="#螺旋矩阵II" class="headerlink" title="螺旋矩阵II"></a>螺旋矩阵II</h1><blockquote>
+<p>给定一个正整数 n，生成一个包含 1 到 n^2 所有元素，且元素按顺时针顺序螺旋排列的正方形矩阵。</p>
+</blockquote>
+<p>示例:</p>
 <ul>
-<li>示例 1：<br> 输入：nums &#x3D; [-4,-1,0,3,10]<br> 输出：[0,1,9,16,100]<br> 解释：平方后，数组变为 [16,1,0,9,100]，排序后，数组变为 [0,1,9,16,100]</li>
+<li>输入: 3 输出: [ [ 1, 2, 3 ], [ 8, 9, 4 ], [ 7, 6, 5 ] ]<br><img src="/images/day2_code/%E4%BB%A3%E7%A0%81%E9%9A%8F%E6%83%B3%E5%BD%95-day2-T2.png" alt="题目示例"></li>
 </ul>
-<p> 示例 2：<br> 输入：nums &#x3D; [-7,-3,2,3,11]<br> 输出：[4,9,9,49,121]</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span>:</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">sortedSquares</span>(<span class="params">self, nums: <span class="type">List</span>[<span class="built_in">int</span>]</span>) -&gt; <span class="type">List</span>[<span class="built_in">int</span>]:</span><br><span class="line">        s1 = <span class="number">0</span></span><br><span class="line">        k= s2 = <span class="built_in">len</span>(nums)-<span class="number">1</span></span><br><span class="line">        nums_list=[<span class="number">0</span>]*<span class="built_in">len</span>(nums)</span><br><span class="line">        <span class="keyword">while</span> s1 &lt;= s2:</span><br><span class="line">            <span class="keyword">if</span> nums[s1]**<span class="number">2</span> &gt; nums[s2]**<span class="number">2</span>:</span><br><span class="line">                nums_list[k] = nums[s1]**<span class="number">2</span></span><br><span class="line">                s1 += <span class="number">1</span></span><br><span class="line">            <span class="keyword">else</span> :</span><br><span class="line">                nums_list[k] = nums[s2]**<span class="number">2</span> </span><br><span class="line">                s2 -= <span class="number">1</span></span><br><span class="line">            k -= <span class="number">1</span></span><br><span class="line">        <span class="keyword">return</span> nums_list</span><br></pre></td></tr></table></figure>
-<p>这个是双指针的方法，设置两个指针，一个指向数组的头，一个指向数组的尾，然后比较两个指针指向的元素的平方，把大的那个放到新数组的最后面，然后相应的指针向中间移动，最后返回新数组</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">return</span> <span class="built_in">sorted</span>(x*x <span class="keyword">for</span> x <span class="keyword">in</span> nums)</span><br></pre></td></tr></table></figure>
-<p>无需多言，排序加推导式</p>
-<p>来不及了，要回宿舍了，下次不能拖拖拉拉了</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span>:</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">generateMatrix</span>(<span class="params">self, n: <span class="built_in">int</span></span>) -&gt; <span class="type">List</span>[<span class="type">List</span>[<span class="built_in">int</span>]]:</span><br><span class="line">        nums=[[<span class="number">0</span>]*n <span class="keyword">for</span> _ <span class="keyword">in</span> <span class="built_in">range</span>(n)] <span class="comment"># 创建一个n*n的空列表</span></span><br><span class="line">        start_x,start_y = <span class="number">0</span>,<span class="number">0</span> <span class="comment">#每一圈的起始位置，注意是每一圈的，因此转完一圈后起始位置的x、y都要加一 ,x表示行数，y表示列数</span></span><br><span class="line">        count = <span class="number">1</span> <span class="comment">#表示转到哪个数字</span></span><br><span class="line">        offset = <span class="number">1</span> <span class="comment">#偏移量，其实我觉得也是圈数</span></span><br><span class="line">        <span class="keyword">while</span> n // <span class="number">2</span> &gt; offset-<span class="number">1</span>: <span class="comment">#转一圈消耗两层啦</span></span><br><span class="line">            <span class="keyword">for</span> j <span class="keyword">in</span> <span class="built_in">range</span>(start_y,n-offset):</span><br><span class="line">                nums[start_x][j] = count</span><br><span class="line">                count += <span class="number">1</span></span><br><span class="line">            <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(start_x,n-offset):</span><br><span class="line">                nums[i][n-offset] = count</span><br><span class="line">                count += <span class="number">1</span></span><br><span class="line">            <span class="keyword">for</span> j <span class="keyword">in</span> <span class="built_in">range</span>(n-offset,start_y,-<span class="number">1</span>):</span><br><span class="line">                nums[n-offset][j] = count</span><br><span class="line">                count += <span class="number">1</span></span><br><span class="line">            <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(n-offset,start_x,-<span class="number">1</span>):</span><br><span class="line">                nums[i][start_y] = count</span><br><span class="line">                count += <span class="number">1</span></span><br><span class="line">            start_x += <span class="number">1</span></span><br><span class="line">            start_y += <span class="number">1</span></span><br><span class="line">            offset += <span class="number">1</span></span><br><span class="line">        <span class="keyword">if</span> n %<span class="number">2</span> == <span class="number">1</span>:</span><br><span class="line">            nums[n//<span class="number">2</span>][n//<span class="number">2</span>] = count</span><br><span class="line">        <span class="keyword">return</span> nums</span><br></pre></td></tr></table></figure>
+<p>这道题目的核心在处理边界问题，特别在顶点的取否上，这里我们采用左闭右开的方式，然后明白转一圈消耗两层，然后每一圈更新起始位置和偏移量。</p>
+<p>扩展题看了思路，但是我自己还没憋出来，等晚上再试试</p>
 
     </div>
   </article>
@@ -260,11 +258,11 @@ article: http://ogp.me/ns/article#">
                     </div>
                     <div class="title">
                         <p>标题</p>
-                        <p>代码随想录_day1</p>
+                        <p>代码随想录-day2</p>
                     </div>
                         <div class="publish">
                             <p>发布于</p>
-                            <p>2025-12-17</p>
+                            <p>2025-12-18</p>
                         </div>
                     <div class="ccbyncsa-icon">
                         <p>授权协议</p>
@@ -286,14 +284,9 @@ article: http://ogp.me/ns/article#">
     
       <div class="post-prev">
         <span class="nav-label">上一篇</span>
-        <a href="/2025/12/09/python-%E5%85%A5%E9%97%A8%E7%BB%83%E4%B9%A0/">python_入门练习</a>
+        <a href="/2025/12/17/%E4%BB%A3%E7%A0%81%E9%9A%8F%E6%83%B3%E5%BD%95-day1/">代码随想录_day1</a>
       </div>
     
-    
-      <div class="post-next">
-        <span class="nav-label">下一篇</span>
-        <a href="/2025/12/18/%E4%BB%A3%E7%A0%81%E9%9A%8F%E6%83%B3%E5%BD%95-day2/">代码随想录-day2</a>
-      </div>
     
   </nav>
   
@@ -368,12 +361,12 @@ article: http://ogp.me/ns/article#">
 
     </div>
     <div class="sidebar-bg">
-        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BE"><span class="toc-number">1.</span> <span class="toc-text">二分查找</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%A7%BB%E9%99%A4%E6%95%B0%E7%BB%84"><span class="toc-number">2.</span> <span class="toc-text">移除数组</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%9C%89%E5%BA%8F%E6%95%B0%E7%BB%84%E7%9A%84%E5%B9%B3%E6%96%B9"><span class="toc-number">3.</span> <span class="toc-text">有序数组的平方</span></a></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E9%95%BF%E5%BA%A6%E6%9C%80%E5%B0%8F%E7%9A%84%E5%AD%90%E6%95%B0%E7%BB%84"><span class="toc-number">1.</span> <span class="toc-text">长度最小的子数组</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E8%9E%BA%E6%97%8B%E7%9F%A9%E9%98%B5II"><span class="toc-number">2.</span> <span class="toc-text">螺旋矩阵II</span></a></li></ol>
     </div>
     <div class="sidebar-bg">
         <div class="card-tags">
             
-                <a href="/tags/%E4%BB%A3%E7%A0%81/" class="tag" aria-label="标签: #代码">#代码</a>
+                <a href="/tags/%E4%BB%A3%E7%A0%81%E9%9A%8F%E6%83%B3%E5%BD%95/" class="tag" aria-label="标签: #代码随想录">#代码随想录</a>
             
         </div>
     </div>
