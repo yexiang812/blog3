@@ -7,12 +7,12 @@ article: http://ogp.me/ns/article#">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="keywords" content="Leetcode,机器学习,生活">
 
-<title>LeetCode_1 || yeye 想变强</title>
+<title>week1_复盘 || yeye 想变强</title>
 <link rel="icon" href="http://example.comimages/wang.icon" type="image/x-icon">
 <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
-<meta property="og:title" content="LeetCode_1">
+<meta property="og:title" content="week1_复盘">
 <meta property="og:type" content="website">
-<meta property="og:url" content="http://example.com/2025/12/01/hello-world/index.html">
+<meta property="og:url" content="http://example.com/2025/12/21/week1-%E5%A4%8D%E7%9B%98/index.html">
 <meta property="og:image" content="">
 <meta property="og:site_name" content="yeye 想变强">
 <meta property="og:author" content="yeyeyefirst">
@@ -20,7 +20,7 @@ article: http://ogp.me/ns/article#">
   
   
   
-  <meta name="description" content="从这篇文章开始，我将会将我在算法练习中的所想和收获记录下来。1.两数之和给定一个整数数组nums和一个整数目标值target，请你在该数组中找出和为目标值target的那两个整数，并返回它们的数组下标。你可以假设每种输入只会对应一个答案，并且你不能使用两次相同的元素。你可以按任意顺序返回答案。1.1思路1思路">
+  <meta name="description" content="week1_复盘day1第一道题第一道题是二分搜索，几个关键点是，二分搜索得是有序数组，通过数学的二分法实现。代码细节，一个是左闭右开，目标值小于mid，调整右指针到mid，注意右边是开的，因此mid&amp;#x3D;right，如果目标值大于mid，调整左指针到mid+1，注意左边是闭的，因此left&amp;#x3D;">
 
 
 <script src="/js/wang.js"></script>
@@ -198,29 +198,37 @@ article: http://ogp.me/ns/article#">
 </aside>
 <div class="post-container">
   <article class="post">
-    <h1 class="post-title">LeetCode_1</h1>
+    <h1 class="post-title">week1_复盘</h1>
 
     <div class="post-meta">
-      <span class="post-date">发布于 <time datetime="2025-12-01T03:32:38.765Z">2025-12-01</time></span>
+      <span class="post-date">发布于 <time datetime="2025-12-21T14:28:51.000Z">2025-12-21</time></span>
       
         <span class="post-categories">
-          分类：<a class="category-link" href="/categories/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0%E2%80%94%E2%80%94%E5%93%88%E5%B8%8C/">算法学习——哈希</a>
+          分类：<a class="category-link" href="/categories/%E6%9D%82%E8%B0%88/">杂谈</a>
         </span>
       
       
         <span class="post-updated">
-          最后更新于 <time datetime="2025-12-21T14:27:06.074Z">2025-12-21</time>
+          最后更新于 <time datetime="2025-12-21T15:06:18.346Z">2025-12-21</time>
         </span>
       
       <span style="margin-left:10px;">👁<span id="busuanzi_value_page_pv"></span></span>
     </div>
     <div class="post-content">
-      <p>  从这篇文章开始，我将会将我在算法练习中的所想和收获记录下来。</p>
-<h1 id="1-两数之和"><a href="#1-两数之和" class="headerlink" title="1. 两数之和"></a>1. 两数之和</h1><p> 给定一个整数数组 nums 和一个整数目标值 target，请你在该数组中找出 和为目标值 target  的那 两个 整数，并返回它们的数组下标。<br> 你可以假设每种输入只会对应一个答案，并且你不能使用两次相同的元素。<br> 你可以按任意顺序返回答案。<br><img src="/images/post1/1.png" alt="题目输出案例"></p>
-<h2 id="1-1-思路1"><a href="#1-1-思路1" class="headerlink" title="1.1 思路1"></a>1.1 思路1</h2><p>  思路1是最简单的思路，就是遍历数组，对于每个元素，都去数组中查找是否有目标值减去当前值的元素。<br>  时间复杂度为O(n^2)，空间复杂度为O(1)。<br>  <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span>:</span><br><span class="line">  <span class="keyword">def</span> <span class="title function_">twoSum</span>(<span class="params">self, nums: <span class="type">List</span>[<span class="built_in">int</span>], target: <span class="built_in">int</span></span>) -&gt; <span class="type">List</span>[<span class="built_in">int</span>]:</span><br><span class="line">      <span class="keyword">for</span> i <span class="keyword">in</span> nums:</span><br><span class="line">          j = target - i</span><br><span class="line">          start_index = nums.index(i)</span><br><span class="line">          next_index = start_index + <span class="number">1</span> </span><br><span class="line">          nums_new = nums[next_index:]<span class="comment">#对原数组进行切片，去掉当前元素之前的元素</span></span><br><span class="line">          <span class="keyword">if</span> j <span class="keyword">in</span> nums_new:</span><br><span class="line">              <span class="keyword">return</span> [start_index,next_index+nums_new.index(j)]</span><br></pre></td></tr></table></figure></p>
-<h2 id="1-2-思路2-哈希表"><a href="#1-2-思路2-哈希表" class="headerlink" title="1.2 思路2(哈希表)"></a>1.2 思路2(哈希表)</h2><p>  思路2是利用哈希表来解决问题。我们遍历数组，对于每个元素，都去哈希表中查找是否有目标值减去当前值的元素。<br>  如果有，就返回当前元素的下标和哈希表中目标值减去当前值的元素的下标。<br>  如果没有，就将当前元素和下标加入哈希表中。<br>  时间复杂度为O(n)，空间复杂度为O(n)。<em><strong>用空间换时间</strong></em><br>  <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span>:</span><br><span class="line">  <span class="keyword">def</span> <span class="title function_">twoSum</span>(<span class="params">self, nums: <span class="type">List</span>[<span class="built_in">int</span>], target: <span class="built_in">int</span></span>) -&gt; <span class="type">List</span>[<span class="built_in">int</span>]:</span><br><span class="line">      <span class="built_in">dir</span>=&#123;&#125;</span><br><span class="line">      <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="built_in">len</span>(nums)): <span class="comment">#遍历数组</span></span><br><span class="line">          <span class="keyword">if</span> target-nums[i] <span class="keyword">not</span> <span class="keyword">in</span> <span class="built_in">dir</span>: <span class="comment">#如果目标值减去当前值不在字典中</span></span><br><span class="line">              <span class="built_in">dir</span>[nums[i]] = i</span><br><span class="line">          <span class="keyword">else</span> :</span><br><span class="line">              <span class="keyword">return</span> [<span class="built_in">dir</span>[target-nums[i]],i]</span><br></pre></td></tr></table></figure></p>
-<h1 id="9-回文数"><a href="#9-回文数" class="headerlink" title="9. 回文数"></a>9. 回文数</h1><p>  给你一个整数 x ，如果 x 是一个回文整数，返回 true ；否则，返回 false 。<br>  回文数是指正序（从左向右）和倒序（从右向左）读都是一样的整数。<br>  例如，121 是回文，而 123 不是。(负数不是回文数)</p>
-<h1 id="9-1-思路1"><a href="#9-1-思路1" class="headerlink" title="9.1 思路1"></a>9.1 思路1</h1><p>  思路1是将整数%10，得到最后一位数，然后将整数&#x2F;&#x2F;10，去掉最后一位数，重复这个过程，直到整数变成0。<br>  每次得到的数都乘以10，最后得到的数就是整数的倒序。<br>  时间复杂度为O(logn)，空间复杂度为O(1)。<br>  <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (x&lt;<span class="number">0</span>):</span><br><span class="line">          <span class="keyword">return</span> <span class="literal">False</span></span><br><span class="line">      <span class="keyword">else</span> :</span><br><span class="line">          a = x</span><br><span class="line">          num = <span class="number">0</span></span><br><span class="line">          <span class="keyword">while</span>(a!=<span class="number">0</span>):</span><br><span class="line">              num =<span class="number">10</span> * num + a % <span class="number">10</span></span><br><span class="line">              a = a // <span class="number">10</span></span><br><span class="line">          <span class="keyword">if</span> (x == num):</span><br><span class="line">              <span class="keyword">return</span> <span class="literal">True</span></span><br><span class="line">          <span class="keyword">else</span>:</span><br><span class="line">              <span class="keyword">return</span> <span class="literal">False</span></span><br></pre></td></tr></table></figure></p>
+      <h1 id="week1-复盘"><a href="#week1-复盘" class="headerlink" title="week1_复盘"></a>week1_复盘</h1><h2 id="day1"><a href="#day1" class="headerlink" title="day1"></a>day1</h2><h3 id="第一道题"><a href="#第一道题" class="headerlink" title="第一道题"></a>第一道题</h3><p> 第一道题是二分搜索，几个关键点是，二分搜索得是有序数组，通过数学的二分法实现。<br>代码细节，一个是左闭右开，目标值小于mid，调整右指针到mid，注意右边是开的，因此mid&#x3D;right，如果目标值大于mid，调整左指针到mid+1，注意左边是闭的，因此left&#x3D;mid+1。<br>当然如果是左闭右闭，代码细节就会有一些变化，目标值小于mid，调整右指针到mid-1，注意右边是闭的，因此right&#x3D;mid-1，如果目标值大于mid，调整左指针到mid+1，注意左边是闭的，因此left&#x3D;mid+1。</p>
+<h3 id="第二题"><a href="#第二题" class="headerlink" title="第二题"></a>第二题</h3><p>是移除元素，设置快慢指针，快指针用来遍历数组，慢指针用来指向新数组的位置。然后和目标值比较，如果不相等，慢指针加一，然后赋值为快指针的值。如果相等，快指针加一，继续遍历。</p>
+<h3 id="第三题"><a href="#第三题" class="headerlink" title="第三题"></a>第三题</h3><p>然后是有序数组的平方，因为数组是有序的，所以平方后的最大值一定在数组的两端，所以可以设置双指针，一个指向数组的头，一个指向数组的尾。然后比较两个指针指向的元素的平方，将较大的那个放到新数组的末尾，然后对应的指针向中间移动。<br>当然也可以用python的推导式加上sort函数，实现有序数组的平方。</p>
+<h2 id="day2"><a href="#day2" class="headerlink" title="day2"></a>day2</h2><h3 id="第一题长度最小的子数组"><a href="#第一题长度最小的子数组" class="headerlink" title="第一题长度最小的子数组"></a>第一题长度最小的子数组</h3><p>这道题是滑动窗口，设置左右指针，初始都指向数组的头，然后右指针向右移动，直到窗口内的元素和大于等于目标值，然后记录下窗口的长度，然后左指针向右移动，直到窗口内的元素和小于目标值，然后继续移动右指针满足条件后继续记录下窗口的长度，直到右指针到达数组的尾。</p>
+<h3 id="第二题螺旋矩阵II"><a href="#第二题螺旋矩阵II" class="headerlink" title="第二题螺旋矩阵II"></a>第二题螺旋矩阵II</h3><p>这道题的关键是边界判定，四条边都用左闭右开的方式，最后一个点给下一条边，还有是循环条件是n&#x2F;&#x2F;2，转一圈掉两层，然后是偏移量，最开始是0 0 然后每次循环偏移量加一，然后是n为奇数时，最后一个点单独处理等于n。</p>
+<p>你看看果然不能托现在才想起来附加题没做</p>
+<h2 id="day3"><a href="#day3" class="headerlink" title="day3"></a>day3</h2><h3 id="第一题-移除链表元素"><a href="#第一题-移除链表元素" class="headerlink" title="第一题 移除链表元素"></a>第一题 移除链表元素</h3><p>这道题主要是考虑头节点被删除的情况，所以可以设置一个虚拟头节点，指向头节点，然后设置一个指针指向虚拟头节点，然后遍历链表，如果下一个节点的值等于目标值，就删除下一个节点，否则指针后移。最后返回虚拟头节点的下一个节点。</p>
+<h3 id="第二题-设计链表"><a href="#第二题-设计链表" class="headerlink" title="第二题 设计链表"></a>第二题 设计链表</h3><p>这道题主要是考虑链表的基本操作，比如添加节点，删除节点，获取节点的值等。主要是index的处理，哦对链表没法用下标的方式来访问节点，所以需要遍历链表来找到目标节点。</p>
+<h3 id="第三题-反转链表"><a href="#第三题-反转链表" class="headerlink" title="第三题 反转链表"></a>第三题 反转链表</h3><p>这道题是双指针一个cur节点加一个pre节点以及临时节点temp，初始时pre指向None，cur指向头节点，然后遍历链表，每次将cur的next指向pre，然后pre移动到cur，cur移动到temp，最后返回pre。<br>然后递归，还是不会写</p>
+<h2 id="day4"><a href="#day4" class="headerlink" title="day4"></a>day4</h2><h3 id="第一题-两两交换链表中的节点"><a href="#第一题-两两交换链表中的节点" class="headerlink" title="第一题 两两交换链表中的节点"></a>第一题 两两交换链表中的节点</h3><p>这道题主要是找到前置节点，然后交换两个节点，然后移动指针到下一个位置，注意判断条件的先后，防止空指针异常。设置了两个temp节点，一个用来保存下一个节点，一个用来保存下下下一个节点。可以用画图帮助理解。</p>
+<h3 id="第二题-删除链表的倒数第N个节点"><a href="#第二题-删除链表的倒数第N个节点" class="headerlink" title="第二题 删除链表的倒数第N个节点"></a>第二题 删除链表的倒数第N个节点</h3><p>这道题是快慢指针，先让快指针移动n+1步，然后快慢指针同时移动，直到快指针到达链表尾部，然后删除慢指针的下一个节点。</p>
+<h3 id="第三题-链表相交"><a href="#第三题-链表相交" class="headerlink" title="第三题 链表相交"></a>第三题 链表相交</h3><p>这道题是双指针法，设置两个指针分别指向两个链表的头节点，然后同时移动两个指针，当一个指针到达链表尾部时，移动到另一个链表的头节点，继续移动，直到两个指针相等或者都为None。这样就能找到链表的交点。然后我自己想的是用梯形的感觉。</p>
+<h3 id="第四题-环形链表II"><a href="#第四题-环形链表II" class="headerlink" title="第四题 环形链表II"></a>第四题 环形链表II</h3><p>这道题是快慢指针，快指针每次移动两步，慢指针每次移动一步，直到快指针追上慢指针，或者快指针到达链表尾部。如果追上了，说明链表有环，然后快指针从链表头开始，慢指针从相遇点开始，每次移动一步，直到再次相遇，相遇点就是环的入口。如果快指针到达链表尾部，说明链表没有环。<br>然后在起点的相遇的位置两个快慢节点改成速度相同，再次相遇的位置就是环的入口。</p>
+<h1 id="我自己的杂谈"><a href="#我自己的杂谈" class="headerlink" title="我自己的杂谈"></a>我自己的杂谈</h1><p>这一周要准备期末考，又要坚持学代码，压力挺大的其实。虽然感觉期末成绩对我没啥用，但是总害怕大家觉得我天天不在宿舍一定天天读书的那种压力，尽管生活没有那么多的观众就是了，但是这种自我暗示也算是让我进行期末准备了，其实我还有很多自己想做的是，想看鱼书，想学数学，当然ctf也是落下好久了，确实娱乐比以前少了，但是效率总是很低，欸，可能也是天赋的缘故吧。其实我本来有很多想说的，但是这个blog公开了，也是怪不好意思的，那就这样吧</p>
 
     </div>
   </article>
@@ -235,11 +243,11 @@ article: http://ogp.me/ns/article#">
                     </div>
                     <div class="title">
                         <p>标题</p>
-                        <p>LeetCode_1</p>
+                        <p>week1_复盘</p>
                     </div>
                         <div class="publish">
                             <p>发布于</p>
-                            <p>2025-12-01</p>
+                            <p>2025-12-21</p>
                         </div>
                     <div class="ccbyncsa-icon">
                         <p>授权协议</p>
@@ -259,11 +267,11 @@ article: http://ogp.me/ns/article#">
 </div>
   <nav class="post-pagination">
     
-    
-      <div class="post-next">
-        <span class="nav-label">下一篇</span>
-        <a href="/2025/12/09/python-%E5%85%A5%E9%97%A8%E7%BB%83%E4%B9%A0/">python_入门练习</a>
+      <div class="post-prev">
+        <span class="nav-label">上一篇</span>
+        <a href="/2025/12/20/%E4%BB%A3%E7%A0%81%E9%9A%8F%E6%83%B3%E5%BD%95-day4/">代码随想录day-4</a>
       </div>
+    
     
   </nav>
   
@@ -338,12 +346,12 @@ article: http://ogp.me/ns/article#">
 
     </div>
     <div class="sidebar-bg">
-        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#1-%E4%B8%A4%E6%95%B0%E4%B9%8B%E5%92%8C"><span class="toc-number">1.</span> <span class="toc-text">1. 两数之和</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-1-%E6%80%9D%E8%B7%AF1"><span class="toc-number">1.1.</span> <span class="toc-text">1.1 思路1</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-2-%E6%80%9D%E8%B7%AF2-%E5%93%88%E5%B8%8C%E8%A1%A8"><span class="toc-number">1.2.</span> <span class="toc-text">1.2 思路2(哈希表)</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#9-%E5%9B%9E%E6%96%87%E6%95%B0"><span class="toc-number">2.</span> <span class="toc-text">9. 回文数</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#9-1-%E6%80%9D%E8%B7%AF1"><span class="toc-number">3.</span> <span class="toc-text">9.1 思路1</span></a></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#week1-%E5%A4%8D%E7%9B%98"><span class="toc-number">1.</span> <span class="toc-text">week1_复盘</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#day1"><span class="toc-number">1.1.</span> <span class="toc-text">day1</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AC%AC%E4%B8%80%E9%81%93%E9%A2%98"><span class="toc-number">1.1.1.</span> <span class="toc-text">第一道题</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AC%AC%E4%BA%8C%E9%A2%98"><span class="toc-number">1.1.2.</span> <span class="toc-text">第二题</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AC%AC%E4%B8%89%E9%A2%98"><span class="toc-number">1.1.3.</span> <span class="toc-text">第三题</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#day2"><span class="toc-number">1.2.</span> <span class="toc-text">day2</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AC%AC%E4%B8%80%E9%A2%98%E9%95%BF%E5%BA%A6%E6%9C%80%E5%B0%8F%E7%9A%84%E5%AD%90%E6%95%B0%E7%BB%84"><span class="toc-number">1.2.1.</span> <span class="toc-text">第一题长度最小的子数组</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AC%AC%E4%BA%8C%E9%A2%98%E8%9E%BA%E6%97%8B%E7%9F%A9%E9%98%B5II"><span class="toc-number">1.2.2.</span> <span class="toc-text">第二题螺旋矩阵II</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#day3"><span class="toc-number">1.3.</span> <span class="toc-text">day3</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AC%AC%E4%B8%80%E9%A2%98-%E7%A7%BB%E9%99%A4%E9%93%BE%E8%A1%A8%E5%85%83%E7%B4%A0"><span class="toc-number">1.3.1.</span> <span class="toc-text">第一题 移除链表元素</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AC%AC%E4%BA%8C%E9%A2%98-%E8%AE%BE%E8%AE%A1%E9%93%BE%E8%A1%A8"><span class="toc-number">1.3.2.</span> <span class="toc-text">第二题 设计链表</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AC%AC%E4%B8%89%E9%A2%98-%E5%8F%8D%E8%BD%AC%E9%93%BE%E8%A1%A8"><span class="toc-number">1.3.3.</span> <span class="toc-text">第三题 反转链表</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#day4"><span class="toc-number">1.4.</span> <span class="toc-text">day4</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AC%AC%E4%B8%80%E9%A2%98-%E4%B8%A4%E4%B8%A4%E4%BA%A4%E6%8D%A2%E9%93%BE%E8%A1%A8%E4%B8%AD%E7%9A%84%E8%8A%82%E7%82%B9"><span class="toc-number">1.4.1.</span> <span class="toc-text">第一题 两两交换链表中的节点</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AC%AC%E4%BA%8C%E9%A2%98-%E5%88%A0%E9%99%A4%E9%93%BE%E8%A1%A8%E7%9A%84%E5%80%92%E6%95%B0%E7%AC%ACN%E4%B8%AA%E8%8A%82%E7%82%B9"><span class="toc-number">1.4.2.</span> <span class="toc-text">第二题 删除链表的倒数第N个节点</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AC%AC%E4%B8%89%E9%A2%98-%E9%93%BE%E8%A1%A8%E7%9B%B8%E4%BA%A4"><span class="toc-number">1.4.3.</span> <span class="toc-text">第三题 链表相交</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AC%AC%E5%9B%9B%E9%A2%98-%E7%8E%AF%E5%BD%A2%E9%93%BE%E8%A1%A8II"><span class="toc-number">1.4.4.</span> <span class="toc-text">第四题 环形链表II</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%88%91%E8%87%AA%E5%B7%B1%E7%9A%84%E6%9D%82%E8%B0%88"><span class="toc-number">2.</span> <span class="toc-text">我自己的杂谈</span></a></li></ol>
     </div>
     <div class="sidebar-bg">
         <div class="card-tags">
             
-                <a href="/tags/leetcode/" class="tag" aria-label="标签: #leetcode">#leetcode</a>
+                <a href="/tags/%E6%9D%82%E8%B0%88%E2%80%94%E2%80%94%E5%A4%8D%E7%9B%98/" class="tag" aria-label="标签: #杂谈——复盘">#杂谈——复盘</a>
             
         </div>
     </div>
@@ -351,8 +359,8 @@ article: http://ogp.me/ns/article#">
         <div class="categories-list">
             
                 <div class="category-item">
-                    <a href="/categories/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0%E2%80%94%E2%80%94%E5%93%88%E5%B8%8C/" aria-label="分类: 算法学习——哈希">
-                        算法学习——哈希
+                    <a href="/categories/%E6%9D%82%E8%B0%88/" aria-label="分类: 杂谈">
+                        杂谈
                         <span>(1)</span>
                     </a>
                 </div>
