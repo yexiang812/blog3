@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+<html class="dark" lang="zh-CN" prefix="og: http://ogp.me/ns# 
+fb: http://ogp.me/ns/fb#
+article: http://ogp.me/ns/article#">
+<head>
+    <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="keywords" content="Leetcode,机器学习,生活">
+
+<title>代码随想录-day7 || yeye 想变强</title>
+<link rel="icon" href="http://example.comimages/wang.icon" type="image/x-icon">
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<meta property="og:title" content="代码随想录-day7">
+<meta property="og:type" content="website">
+<meta property="og:url" content="http://example.com/2025/12/23/%E4%BB%A3%E7%A0%81%E9%9A%8F%E6%83%B3%E5%BD%95-day7/index.html">
+<meta property="og:image" content="">
+<meta property="og:site_name" content="yeye 想变强">
+<meta property="og:author" content="yeyeyefirst">
+
+  
+  
+  
+  <meta name="description" content="四数相加II给定四个包含整数的数组列表A,B,C,D,计算有多少个元组(i,j,k,l)，使得A[i]+B[j]+C[k]+D[l]&amp;#x3D;0。为了使问题简单化，所有的A,B,C,D具有相同的长度N，且0≤N≤500。所有整数的范围在-2^28到2^28-1之间，最终结果不会超过2^31-1。例如:输入:">
+
+
+<script src="/js/wang.js"></script>
+
+<link rel="stylesheet" href="/css/wang.css">
+<script> console.log("Hello hexo-theme-wang"); </script>
+<meta name="generator" content="Hexo 8.1.1"><link rel="alternate" href="/atom.xml" title="yeye 想变强" type="application/atom+xml">
+</head>
+<body>
+<main>
+    <div id="agplAlert" style="z-index: 9999;">
+    <strong>请遵守AGPL 3.0协议</strong> 本主题已开源于<a target="_blank" rel="noopener" href="https://github.com/xingwangzhe/hexo-theme-wang">hexo-theme-wang</a>
+</div>
+    <header>
+    <nav>
+        <ul>
+            
+                <li>
+                    <a href="/" rel="noopener">
+                        
+                            <img src="/images/menu_ico/home.svg" class="menu-icon" alt="首页">
+                        
+                        首页
+                    </a>
+                </li>
+            
+                <li>
+                    <a href="/archives" rel="noopener">
+                        
+                            <img src="/images/menu_ico/archives.svg" class="menu-icon" alt="归档">
+                        
+                        归档
+                    </a>
+                </li>
+            
+                <li>
+                    <a href="/categories" rel="noopener">
+                        
+                            <img src="/images/menu_ico/categories.svg" class="menu-icon" alt="分类">
+                        
+                        分类
+                    </a>
+                </li>
+            
+                <li>
+                    <a href="/tags" rel="noopener">
+                        
+                            <img src="/images/menu_ico/tags.svg" class="menu-icon" alt="标签">
+                        
+                        标签
+                    </a>
+                </li>
+            
+                <li>
+                    <a href="/about" rel="noopener">
+                        
+                            <img src="/images/menu_ico/about.svg" class="menu-icon" alt="关于">
+                        
+                        关于
+                    </a>
+                </li>
+            
+                <li>
+                    <a href="/links" rel="noopener">
+                        
+                            <img src="/images/menu_ico/links.svg" class="menu-icon" alt="友链">
+                        
+                        友链
+                    </a>
+                </li>
+            
+                <li>
+                    <a href="/atom.xml" rel="noopener">
+                        
+                            <img src="/images/menu_ico/rss.svg" class="menu-icon" alt="RSS订阅">
+                        
+                        RSS订阅
+                    </a>
+                </li>
+            
+                <li>
+                    <a target="_blank" href="https://www.travellings.cn/go.html" rel="noopener noopener">
+                        
+                            <img src="/images/menu_ico/train.svg" class="menu-icon" alt="开往">
+                        
+                        开往
+                    </a>
+                </li>
+            
+            
+                <li>
+                    <button class="search-toggle-btn" aria-label="打开搜索">
+                        <img src="/images/menu_ico/search.svg" class="menu-icon" alt="search">
+                        搜索
+                    </button>
+                </li>
+            
+        </ul>
+    </nav>
+</header>
+
+<script src="/js/header.js"></script>
+
+    
+<script src="/js/search.js"></script>
+
+
+    
+        <!-- 搜索模态框 -->
+        <div id="search-modal" class="search-modal">
+          <div class="search-modal-content">
+            <div class="search-header">
+              <form class="search-form" action="#" onsubmit="return false;">
+                <input type="text" id="search-input" placeholder="输入关键词搜索" autocomplete="off">
+                <button type="button" class="search-close-btn" aria-label="关闭">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="18" y1="6" x2="6" y2="18"></line>
+                    <line x1="6" y1="6" x2="18" y2="18"></line>
+                  </svg>
+                </button>
+              </form>
+            </div>
+            <div id="search-results"></div>
+          </div>
+        </div>
+
+        <script>
+        // 向全局对象添加i18n数据，以便search.js使用
+        window.WANG_THEME = window.WANG_THEME || {};
+        window.WANG_THEME.i18n = {
+          search: {
+            noResults: '没有找到相关结果',
+            loading: '正在加载...',
+            placeholder: '输入关键词搜索',
+            close: '关闭',
+            shortcut_tip: '按 ESC 关闭',
+            toggle_search: '打开搜索',
+            error_loading: '加载搜索数据失败'
+          }
+        };
+        </script>
+    
+    <aside class="sidebar-container sidebar-left">
+    <div class="sidebar-bg">
+        <h2 class="site-title">yeye 想变强</h2>
+        <img class="avatar avatar-round" src="/images/favicon.ico" style="width:50px;" alt="网站头像">
+        <h2 class="site-author">yeyeyefirst</h2>
+        <h3 class="site-subtitle">技术&生活blog</h3>
+    </div>
+    <div class="sidebar-bg">
+        <ul class="social_links">
+            
+                <li>
+                    <a target="_blank" rel="noopener" href="https://github.com/xingwangzhe" aria-label="Github的链接">
+                        
+                            <div style="display: flex; margin-left: auto; margin-left: auto; justify-content: center;">
+                                <img src="/images/social_links/github.svg" class="icon" alt="Github的图标"><p>Github</p>
+                            </div>
+                        
+                    </a>
+                </li>
+            
+                <li>
+                    <a href="mailto:xingwangzhe@outloock.com" aria-label="Email的链接">
+                        
+                            <div style="display: flex; margin-left: auto; margin-left: auto; justify-content: center;">
+                                <img src="/images/social_links/envelope.svg" class="icon" alt="Email的图标"><p>Email</p>
+                            </div>
+                        
+                    </a>
+                </li>
+            
+        </ul>
+    </div>
+</aside>
+<div class="post-container">
+  <article class="post">
+    <h1 class="post-title">代码随想录-day7</h1>
+
+    <div class="post-meta">
+      <span class="post-date">发布于 <time datetime="2025-12-23T12:08:42.000Z">2025-12-23</time></span>
+      
+        <span class="post-categories">
+          分类：<a class="category-link" href="/categories/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0%E2%80%94%E2%80%94%E5%93%88%E5%B8%8C%E8%A1%A8/">算法学习——哈希表</a>
+        </span>
+      
+      
+        <span class="post-updated">
+          最后更新于 <time datetime="2025-12-23T15:16:20.381Z">2025-12-23</time>
+        </span>
+      
+      <span style="margin-left:10px;">👁<span id="busuanzi_value_page_pv"></span></span>
+    </div>
+    <div class="post-content">
+      <h1 id="四数相加II"><a href="#四数相加II" class="headerlink" title="四数相加II"></a>四数相加II</h1><blockquote>
+<p>给定四个包含整数的数组列表 A , B , C , D ,计算有多少个元组 (i, j, k, l) ，使得 A[i] + B[j] + C[k] + D[l] &#x3D; 0。<br>为了使问题简单化，所有的 A, B, C, D 具有相同的长度 N，且 0 ≤ N ≤ 500 。所有整数的范围在 -2^28 到 2^28 - 1 之间，最终结果不会超过 2^31 - 1 。</p>
+</blockquote>
+<ul>
+<li>例如:<br>输入:<br>A &#x3D; [ 1, 2]<br>B &#x3D; [-2,-1]<br>C &#x3D; [-1, 2]<br>D &#x3D; [ 0, 2]<br>输出:<br>2<br>解释:<br>两个元组如下:<br>(0, 0, 0, 1) -&gt; A[0] + B[0] + C[0] + D[1] &#x3D; 1 + (-2) + (-1) + 2 &#x3D; 0<br>(1, 1, 0, 0) -&gt; A[1] + B[1] + C[0] + D[0] &#x3D; 2 + (-1) + (-1) + 0 &#x3D; 0</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span>:</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">fourSumCount</span>(<span class="params">self, nums1: <span class="type">List</span>[<span class="built_in">int</span>], nums2: <span class="type">List</span>[<span class="built_in">int</span>], nums3: <span class="type">List</span>[<span class="built_in">int</span>], nums4: <span class="type">List</span>[<span class="built_in">int</span>]</span>) -&gt; <span class="built_in">int</span>:</span><br><span class="line">        t_set = &#123;&#125;</span><br><span class="line">        count = <span class="number">0</span></span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> nums1:</span><br><span class="line">            <span class="keyword">for</span> j <span class="keyword">in</span> nums2:</span><br><span class="line">                t_set[i+j] = t_set.get(i+j,<span class="number">0</span>) + <span class="number">1</span></span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> nums3:</span><br><span class="line">            <span class="keyword">for</span> j <span class="keyword">in</span> nums4:</span><br><span class="line">                <span class="keyword">if</span> <span class="number">0</span>-(i+j) <span class="keyword">in</span> t_set.keys():</span><br><span class="line">                    count += t_set[<span class="number">0</span>-(i+j)]</span><br><span class="line">        <span class="keyword">return</span> count</span><br></pre></td></tr></table></figure>
+<p>这道题就是将四个数分成两组前两个数一组，并把他们的和作为key，出现的次数作为value，存到一个哈希表中。<br>然后遍历后两个数的组合，判断0-(i+j)是否在哈希表中，如果在，就把出现的次数加到count中（注意加的是value的值不是一，原因是不用去重）。</p>
+<h1 id="赎金信"><a href="#赎金信" class="headerlink" title="赎金信"></a>赎金信</h1><blockquote>
+<p>给定一个赎金信 (ransom) 字符串和一个杂志(magazine)字符串，判断第一个字符串 ransom 能不能由第二个字符串 magazines 里面的字符构成。如果可以构成，返回 true ；否则返回 false。<br>(题目说明：为了不暴露赎金信字迹，要从杂志上搜索各个需要的字母，组成单词来表达意思。杂志字符串中的每个字符只能在赎金信字符串中使用一次。)</p>
+</blockquote>
+<ul>
+<li>例如:<br>输入: ransomNote &#x3D; “a”, magazine &#x3D; “b”<br>输出: false<br>输入: ransomNote &#x3D; “aa”, magazine &#x3D; “ab”<br>输出: false<br>输入: ransomNote &#x3D; “aa”, magazine &#x3D; “aab”<br>输出: true</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span>:</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">canConstruct</span>(<span class="params">self, ransomNote: <span class="built_in">str</span>, magazine: <span class="built_in">str</span></span>) -&gt; <span class="built_in">bool</span>:</span><br><span class="line">        a_hash = [<span class="number">0</span>] * <span class="number">26</span></span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> magazine:</span><br><span class="line">            a_hash[<span class="built_in">ord</span>(i)-<span class="built_in">ord</span>(<span class="string">&#x27;a&#x27;</span>)] += <span class="number">1</span></span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> ransomNote:</span><br><span class="line">            <span class="keyword">if</span> a_hash[<span class="built_in">ord</span>(i)-<span class="built_in">ord</span>(<span class="string">&#x27;a&#x27;</span>)] == <span class="number">0</span>:</span><br><span class="line">                <span class="keyword">return</span> <span class="literal">False</span></span><br><span class="line">            <span class="keyword">else</span> :</span><br><span class="line">                a_hash[<span class="built_in">ord</span>(i)-<span class="built_in">ord</span>(<span class="string">&#x27;a&#x27;</span>)] -= <span class="number">1</span></span><br><span class="line">        <span class="keyword">return</span> <span class="literal">True</span></span><br></pre></td></tr></table></figure>
+<p>这道题就是用一个哈希表来记录 magazine 中的字符出现的次数，然后遍历 ransomNote 中的字符，判断是否在哈希表中，如果在，就把哈希表中对应的值减一。<br>直到遇到了0，就说明 magazine 中的字符不能构成 ransomNote 中的字符，返回 False。跟昨天第一题很像</p>
+<h1 id="三数之和"><a href="#三数之和" class="headerlink" title="三数之和"></a>三数之和</h1><blockquote>
+<p>给你一个包含 n 个整数的数组 nums，判断 nums 中是否存在三个元素 a，b，c ，使得 a + b + c &#x3D; 0 ？请你找出所有满足条件且不重复的三元组。<br>注意： 答案中不可以包含重复的三元组。</p>
+</blockquote>
+<ul>
+<li>示例：<br>给定数组 nums &#x3D; [-1, 0, 1, 2, -1, -4]，<br>满足要求的三元组集合为： [ [-1, 0, 1], [-1, -1, 2] ]</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span>:</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">threeSum</span>(<span class="params">self, nums: <span class="type">List</span>[<span class="built_in">int</span>]</span>) -&gt; <span class="type">List</span>[<span class="type">List</span>[<span class="built_in">int</span>]]:</span><br><span class="line">        result = []</span><br><span class="line">        nums.sort()</span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="built_in">len</span>(nums)):</span><br><span class="line">            <span class="keyword">if</span> nums[i] &gt; <span class="number">0</span> :</span><br><span class="line">                <span class="keyword">return</span> result</span><br><span class="line">            <span class="keyword">if</span> i &gt; <span class="number">0</span> <span class="keyword">and</span> nums[i] == nums[i-<span class="number">1</span>]:</span><br><span class="line">                <span class="keyword">continue</span></span><br><span class="line">            left = i + <span class="number">1</span></span><br><span class="line">            right = <span class="built_in">len</span>(nums) - <span class="number">1</span></span><br><span class="line">            <span class="keyword">while</span> left &lt; right:</span><br><span class="line">                <span class="keyword">if</span> nums[i] + nums[left] + nums[right] &gt; <span class="number">0</span>:</span><br><span class="line">                    right -= <span class="number">1</span></span><br><span class="line">                <span class="keyword">elif</span> nums[i] + nums[left] + nums[right] &lt; <span class="number">0</span>:</span><br><span class="line">                    left += <span class="number">1</span></span><br><span class="line">                <span class="keyword">else</span>:</span><br><span class="line">                    result.append([nums[i],nums[left],nums[right]])</span><br><span class="line">                    <span class="keyword">while</span> left &lt; right <span class="keyword">and</span> nums[left] == nums[left + <span class="number">1</span>]:</span><br><span class="line">                        left += <span class="number">1</span></span><br><span class="line">                    <span class="keyword">while</span> left &lt; right <span class="keyword">and</span> right &lt; <span class="built_in">len</span>(nums)-<span class="number">1</span> <span class="keyword">and</span> nums[right] == nums[right - <span class="number">1</span>]:</span><br><span class="line">                        right -= <span class="number">1</span></span><br><span class="line">                    right -= <span class="number">1</span></span><br><span class="line">                    left += <span class="number">1</span></span><br><span class="line">        <span class="keyword">return</span> result</span><br></pre></td></tr></table></figure>
+<p>用了双指针的思路<br>首先先对数组排序，然后for循环用i作为第一个数，left作为第二个数，right作为第三个数，三个数求和判断是否等于0，如果等于0，就把这三个数加入到结果中。<br>如果大于0，就把right减一，如果小于0，就把left加一。<br>直到left大于等于right，就说明这个数组合完了，就可以继续下一个数了。<br>注意点<strong>去重操作是i和i-1比较，left和left+1比较，right和right-1比较</strong>，为啥这样的，因为i是基准，如果i和i+1判断，把下一个i跳了，i就像边界一样，left就指不到被跳的i的那个位置了，比如-2 -1 -1 0 2，但是i继续加一以后，发现和之前的i一样，这个i就可去掉了，这里不会重复是上一组的i已经用过这个顺序了，例如-1 -1 0 0 1 2，然后left和right就是和自己的下一个数比较即可，而且不会遗漏，哪怕有连续的left挑掉，right也会移动过去，不像i是基准</p>
+<h1 id="四数之和"><a href="#四数之和" class="headerlink" title="四数之和"></a>四数之和</h1><blockquote>
+<p>题意：给定一个包含 n 个整数的数组 nums 和一个目标值 target，判断 nums 中是否存在四个元素 a，b，c 和 d ，使得 a + b + c + d 的值与 target 相等？找出所有满足条件且不重复的四元组。<br>注意：<br>答案中不可以包含重复的四元组。</p>
+</blockquote>
+<ul>
+<li>示例： 给定数组 nums &#x3D; [1, 0, -1, 0, -2, 2]，和 target &#x3D; 0。 满足要求的四元组集合为： [ [-1, 0, 0, 1], [-2, -1, 1, 2], [-2, 0, 0, 2] ]</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span>:</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">fourSum</span>(<span class="params">self, nums: <span class="type">List</span>[<span class="built_in">int</span>], target: <span class="built_in">int</span></span>) -&gt; <span class="type">List</span>[<span class="type">List</span>[<span class="built_in">int</span>]]:</span><br><span class="line">        result = []</span><br><span class="line">        nums.sort()</span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="built_in">len</span>(nums)):</span><br><span class="line">            <span class="keyword">if</span> nums[i]&gt;<span class="number">0</span> <span class="keyword">and</span> nums[i] &gt; target//<span class="number">4</span> :</span><br><span class="line">                <span class="keyword">break</span> <span class="comment">#这里不能return result</span></span><br><span class="line">            <span class="keyword">if</span> i&gt;<span class="number">0</span> <span class="keyword">and</span> nums[i] == nums[i-<span class="number">1</span>]:</span><br><span class="line">                <span class="keyword">continue</span></span><br><span class="line">            <span class="keyword">for</span> j <span class="keyword">in</span> <span class="built_in">range</span>(i+<span class="number">1</span>,<span class="built_in">len</span>(nums)):</span><br><span class="line">                <span class="keyword">if</span> nums[i] + nums[j] &gt; target <span class="keyword">and</span> target &gt; <span class="number">0</span>: </span><br><span class="line">                    <span class="keyword">break</span></span><br><span class="line">                <span class="keyword">if</span> j &gt; i+<span class="number">1</span> <span class="keyword">and</span> nums[j] == nums[j-<span class="number">1</span>]:</span><br><span class="line">                    <span class="keyword">continue</span></span><br><span class="line">                left,right = j+<span class="number">1</span>,<span class="built_in">len</span>(nums)-<span class="number">1</span></span><br><span class="line">                <span class="keyword">while</span> left &lt; right:</span><br><span class="line">                    sum_=nums[i]+nums[j]+nums[left]+nums[right]</span><br><span class="line">                    <span class="keyword">if</span> sum_ == target:</span><br><span class="line">                        result.append([nums[i],nums[j],nums[left],nums[right]])</span><br><span class="line">                        <span class="keyword">while</span> left &lt; right <span class="keyword">and</span> nums[left] == nums[left+<span class="number">1</span>]:</span><br><span class="line">                            left += <span class="number">1</span></span><br><span class="line">                        <span class="keyword">while</span> right &gt; left <span class="keyword">and</span> nums[right] == nums[right-<span class="number">1</span>]:</span><br><span class="line">                            right -= <span class="number">1</span></span><br><span class="line">                        left += <span class="number">1</span></span><br><span class="line">                        right -= <span class="number">1</span></span><br><span class="line">                    <span class="keyword">elif</span> sum_ &gt; target    :</span><br><span class="line">                        right -= <span class="number">1</span></span><br><span class="line">                    <span class="keyword">else</span> :</span><br><span class="line">                        left += <span class="number">1</span></span><br><span class="line">        <span class="keyword">return</span> result</span><br></pre></td></tr></table></figure>
+<p>就是在i的基础上加了一个j也作为基准，然后在i和j的基础上用双指针的思路，left和right作为第三个数和第四个数，判断是否等于target，如果等于0，就把这四个数加入到结果中。<br>我再思考一下</p>
+
+    </div>
+  </article>
+  <div class="ccbyncsa">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="copyright">
+                    <div class="author">
+                        <p>作者</p>
+                        <p>yeyeyefirst</p>
+                    </div>
+                    <div class="title">
+                        <p>标题</p>
+                        <p>代码随想录-day7</p>
+                    </div>
+                        <div class="publish">
+                            <p>发布于</p>
+                            <p>2025-12-23</p>
+                        </div>
+                    <div class="ccbyncsa-icon">
+                        <p>授权协议</p>
+                        <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">
+                        <p class="ccbyncsa-icon-imgs" style="display: flex;">
+                        <img src="/images/cc.svg" alt="cc">
+                        <img src="/images/by.svg" alt="by">
+                        <img src="/images/nc.svg" alt="nc">
+                        <img src="/images/sa.svg" alt="sa">
+                        </p>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+  <nav class="post-pagination">
+    
+      <div class="post-prev">
+        <span class="nav-label">上一篇</span>
+        <a href="/2025/12/23/python%E4%B8%AD%E6%88%91%E9%81%87%E5%88%B0%E7%9A%84%E8%AF%AD%E6%B3%95%E9%97%AE%E9%A2%98/">python中我遇到的语法问题</a>
+      </div>
+    
+    
+  </nav>
+  
+
+</div>
+
+<script src="/js/copy.js"></script>
+
+<aside class="sidebar-container sidebar-right">
+    <div class="sidebar-bg">
+        <p id="date"></p>
+<script>
+  function updateDate() {
+    var now = new Date();
+    var dateString = now.toISOString().slice(0, 10);
+    document.getElementById('date').textContent = dateString;
+  }
+
+  window.addEventListener('load', function() {
+    updateDate();
+    // 更新频率为每5分钟更新一次，减少不必要的更新
+    setInterval(updateDate, 300000);
+  });
+</script>
+        <span id="clock" role="timer" aria-live="polite"></span>
+
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const clockElement = document.getElementById('clock');
+    let timerInterval;
+
+    // 格式化时间函数
+    function formatTime(unit) {
+      return unit < 10 ? '0' + unit : unit;
+    }
+
+    // 更新时钟 - 包含秒
+    function updateClock() {
+      const now = new Date();
+      const hours = formatTime(now.getHours());
+      const minutes = formatTime(now.getMinutes());
+      const seconds = formatTime(now.getSeconds());
+      clockElement.textContent = `${hours}:${minutes}:${seconds}`;
+    }
+
+    // 初始化时钟
+    function startClock() {
+      // 立即更新一次时间
+      updateClock();
+      // 每秒更新一次
+      timerInterval = setInterval(updateClock, 1000);
+    }
+
+    // 页面可见性变化时的优化
+    document.addEventListener('visibilitychange', function() {
+      if (document.hidden) {
+        // 页面不可见时停止更新
+        clearInterval(timerInterval);
+      } else {
+        // 页面重新可见时，重新开始
+        clearInterval(timerInterval);
+        startClock();
+      }
+    });
+
+    // 启动时钟
+    startClock();
+  });
+</script>
+
+
+    </div>
+    <div class="sidebar-bg">
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%9B%9B%E6%95%B0%E7%9B%B8%E5%8A%A0II"><span class="toc-number">1.</span> <span class="toc-text">四数相加II</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E8%B5%8E%E9%87%91%E4%BF%A1"><span class="toc-number">2.</span> <span class="toc-text">赎金信</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%B8%89%E6%95%B0%E4%B9%8B%E5%92%8C"><span class="toc-number">3.</span> <span class="toc-text">三数之和</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%9B%9B%E6%95%B0%E4%B9%8B%E5%92%8C"><span class="toc-number">4.</span> <span class="toc-text">四数之和</span></a></li></ol>
+    </div>
+    <div class="sidebar-bg">
+        <div class="card-tags">
+            
+                <a href="/tags/%E4%BB%A3%E7%A0%81%E9%9A%8F%E6%83%B3%E5%BD%95/" class="tag" aria-label="标签: #代码随想录">#代码随想录</a>
+            
+        </div>
+    </div>
+    <div>
+        <div class="categories-list">
+            
+                <div class="category-item">
+                    <a href="/categories/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0%E2%80%94%E2%80%94%E5%93%88%E5%B8%8C%E8%A1%A8/" aria-label="分类: 算法学习——哈希表">
+                        算法学习——哈希表
+                        <span>(2)</span>
+                    </a>
+                </div>
+            
+        </div>
+    </div>
+</aside>
+
+    <!-- No categories available -->
+
+
+    <footer>
+    <span id="busuanzi_container_site_pv" style="display: inline;"></span>
+    <span>👁<span id="busuanzi_value_site_pv"></span></span>
+    <div class="padding border border-sub border-dotted fadein-right">
+        <span style="color:aliceblue">👤<span id="busuanzi_value_site_uv"></span></span>
+    </div>
+    <span>
+        由 <a target="_blank" rel="noopener" href="https://hexo.io" alt="Hexo">
+            <p class="hover-underline night" style="display: inline;">Hexo</p>
+        </a> 驱动
+        <p style="display: inline; color: red;">❤</p>
+        <a target="_blank" rel="noopener" href="https://github.com/xingwangzhe/hexo-theme-wang" alt="Wang">
+            <p class="hover-underline night" style="display: inline;">Wang</p>
+        </a> 主题构建
+    </span>
+
+    <!-- 带图片的链接 -->
+    <div class="footer-links">
+        
+            
+                <a href="https://www.travellings.cn/go.html" target="_blank" rel="noopener">
+                    <img src="https://www.travellings.cn/assets/logo.gif" alt="开往-友链接力" title="开往-友链接力">
+                </a>
+            
+                <a href="https://www.aliyun.com/minisite/goods?userCode=lmvvqvl9" target="_blank" rel="noopener">
+                    <img src="https://i.ibb.co/h7XJkfm/LOGO.png" alt="阿里云支持" title="阿里云支持">
+                </a>
+            
+                <a href="https://www.dalao.net/" target="_blank" rel="noopener">
+                    <img src="https://www.dalao.net/img/dalao-svg.svg" alt="大佬论坛" title="大佬论坛">
+                </a>
+            
+                <a href="https://bf.zzxworld.com/" target="_blank" rel="noopener">
+                    <img src="https://bf.zzxworld.com/images/logo-v2.png" alt="BlogFinder" title="BlogFinder">
+                </a>
+            
+                <a href="https://www.blogsclub.org/go" target="_blank" rel="noopener">
+                    <img src="https://www.blogsclub.org/images/shuttle_4.png" alt="空间穿梭-随机访问BlogsClub成员博客" title="空间穿梭-随机访问BlogsClub成员博客">
+                </a>
+            
+        
+    </div>
+
+    <!-- 纯文本链接 -->
+    <div class="footer-text-links">
+        
+            
+                <a href="" target="_blank" rel="noopener">
+                    文字链接
+                </a>
+            
+        
+    </div>
+</footer>
+    
+<script src="/js/background.js"></script>
+    
+        
+<script src="/js/search.js"></script>
+    
+</main>
+</body>
+</html>
