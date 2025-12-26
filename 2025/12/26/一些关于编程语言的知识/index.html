@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html class="dark" lang="zh-CN" prefix="og: http://ogp.me/ns# 
+fb: http://ogp.me/ns/fb#
+article: http://ogp.me/ns/article#">
+<head>
+    <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="keywords" content="Leetcode,机器学习,生活">
+
+<title>一些关于编程语言的知识 || yeye 想变强</title>
+<link rel="icon" href="http://example.comimages/wang.icon" type="image/x-icon">
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<meta property="og:title" content="一些关于编程语言的知识">
+<meta property="og:type" content="website">
+<meta property="og:url" content="http://example.com/2025/12/26/%E4%B8%80%E4%BA%9B%E5%85%B3%E4%BA%8E%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80%E7%9A%84%E7%9F%A5%E8%AF%86/index.html">
+<meta property="og:image" content="">
+<meta property="og:site_name" content="yeye 想变强">
+<meta property="og:author" content="yeyeyefirst">
+
+  
+  
+  
+  <meta name="description" content="STL一、STL到底是什么？STL是StandardTemplateLibrary（标准模板库）的缩写，是C++标准库的核心组成部分，本质是一套通用、可复用的模板类&amp;#x2F;函数库。简单说：它是C++官方提供的“工具集”，不用自己写基础数据结构（比如栈、队列、数组、链表）和算法（比如排序、查找、遍历），直接">
+
+
+<script src="/js/wang.js"></script>
+
+<link rel="stylesheet" href="/css/wang.css">
+<script> console.log("Hello hexo-theme-wang"); </script>
+<meta name="generator" content="Hexo 8.1.1"><link rel="alternate" href="/atom.xml" title="yeye 想变强" type="application/atom+xml">
+</head>
+<body>
+<main>
+    <div id="agplAlert" style="z-index: 9999;">
+    <strong>请遵守AGPL 3.0协议</strong> 本主题已开源于<a target="_blank" rel="noopener" href="https://github.com/xingwangzhe/hexo-theme-wang">hexo-theme-wang</a>
+</div>
+    <header>
+    <nav>
+        <ul>
+            
+                <li>
+                    <a href="/" rel="noopener">
+                        
+                            <img src="/images/menu_ico/home.svg" class="menu-icon" alt="首页">
+                        
+                        首页
+                    </a>
+                </li>
+            
+                <li>
+                    <a href="/archives" rel="noopener">
+                        
+                            <img src="/images/menu_ico/archives.svg" class="menu-icon" alt="归档">
+                        
+                        归档
+                    </a>
+                </li>
+            
+                <li>
+                    <a href="/categories" rel="noopener">
+                        
+                            <img src="/images/menu_ico/categories.svg" class="menu-icon" alt="分类">
+                        
+                        分类
+                    </a>
+                </li>
+            
+                <li>
+                    <a href="/tags" rel="noopener">
+                        
+                            <img src="/images/menu_ico/tags.svg" class="menu-icon" alt="标签">
+                        
+                        标签
+                    </a>
+                </li>
+            
+                <li>
+                    <a href="/about" rel="noopener">
+                        
+                            <img src="/images/menu_ico/about.svg" class="menu-icon" alt="关于">
+                        
+                        关于
+                    </a>
+                </li>
+            
+                <li>
+                    <a href="/links" rel="noopener">
+                        
+                            <img src="/images/menu_ico/links.svg" class="menu-icon" alt="友链">
+                        
+                        友链
+                    </a>
+                </li>
+            
+                <li>
+                    <a href="/atom.xml" rel="noopener">
+                        
+                            <img src="/images/menu_ico/rss.svg" class="menu-icon" alt="RSS订阅">
+                        
+                        RSS订阅
+                    </a>
+                </li>
+            
+                <li>
+                    <a target="_blank" href="https://www.travellings.cn/go.html" rel="noopener noopener">
+                        
+                            <img src="/images/menu_ico/train.svg" class="menu-icon" alt="开往">
+                        
+                        开往
+                    </a>
+                </li>
+            
+            
+                <li>
+                    <button class="search-toggle-btn" aria-label="打开搜索">
+                        <img src="/images/menu_ico/search.svg" class="menu-icon" alt="search">
+                        搜索
+                    </button>
+                </li>
+            
+        </ul>
+    </nav>
+</header>
+
+<script src="/js/header.js"></script>
+
+    
+<script src="/js/search.js"></script>
+
+
+    
+        <!-- 搜索模态框 -->
+        <div id="search-modal" class="search-modal">
+          <div class="search-modal-content">
+            <div class="search-header">
+              <form class="search-form" action="#" onsubmit="return false;">
+                <input type="text" id="search-input" placeholder="输入关键词搜索" autocomplete="off">
+                <button type="button" class="search-close-btn" aria-label="关闭">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="18" y1="6" x2="6" y2="18"></line>
+                    <line x1="6" y1="6" x2="18" y2="18"></line>
+                  </svg>
+                </button>
+              </form>
+            </div>
+            <div id="search-results"></div>
+          </div>
+        </div>
+
+        <script>
+        // 向全局对象添加i18n数据，以便search.js使用
+        window.WANG_THEME = window.WANG_THEME || {};
+        window.WANG_THEME.i18n = {
+          search: {
+            noResults: '没有找到相关结果',
+            loading: '正在加载...',
+            placeholder: '输入关键词搜索',
+            close: '关闭',
+            shortcut_tip: '按 ESC 关闭',
+            toggle_search: '打开搜索',
+            error_loading: '加载搜索数据失败'
+          }
+        };
+        </script>
+    
+    <aside class="sidebar-container sidebar-left">
+    <div class="sidebar-bg">
+        <h2 class="site-title">yeye 想变强</h2>
+        <img class="avatar avatar-round" src="/images/favicon.ico" style="width:50px;" alt="网站头像">
+        <h2 class="site-author">yeyeyefirst</h2>
+        <h3 class="site-subtitle">技术&生活blog</h3>
+    </div>
+    <div class="sidebar-bg">
+        <ul class="social_links">
+            
+                <li>
+                    <a target="_blank" rel="noopener" href="https://github.com/xingwangzhe" aria-label="Github的链接">
+                        
+                            <div style="display: flex; margin-left: auto; margin-left: auto; justify-content: center;">
+                                <img src="/images/social_links/github.svg" class="icon" alt="Github的图标"><p>Github</p>
+                            </div>
+                        
+                    </a>
+                </li>
+            
+                <li>
+                    <a href="mailto:xingwangzhe@outloock.com" aria-label="Email的链接">
+                        
+                            <div style="display: flex; margin-left: auto; margin-left: auto; justify-content: center;">
+                                <img src="/images/social_links/envelope.svg" class="icon" alt="Email的图标"><p>Email</p>
+                            </div>
+                        
+                    </a>
+                </li>
+            
+        </ul>
+    </div>
+</aside>
+<div class="post-container">
+  <article class="post">
+    <h1 class="post-title">一些关于编程语言的知识</h1>
+
+    <div class="post-meta">
+      <span class="post-date">发布于 <time datetime="2025-12-26T12:40:16.000Z">2025-12-26</time></span>
+      
+      
+        <span class="post-updated">
+          最后更新于 <time datetime="2025-12-26T14:06:19.127Z">2025-12-26</time>
+        </span>
+      
+      <span style="margin-left:10px;">👁<span id="busuanzi_value_page_pv"></span></span>
+    </div>
+    <div class="post-content">
+      <h2 id="STL"><a href="#STL" class="headerlink" title="STL"></a>STL</h2><h3 id="一、STL-到底是什么？"><a href="#一、STL-到底是什么？" class="headerlink" title="一、STL 到底是什么？"></a>一、STL 到底是什么？</h3><p>STL 是 <strong>Standard Template Library（标准模板库）</strong> 的缩写，是 C++ 标准库的核心组成部分，本质是一套 <strong>通用、可复用的模板类&#x2F;函数库</strong>。</p>
+<p>简单说：</p>
+<ul>
+<li>它是 C++ 官方提供的“工具集”，不用自己写基础数据结构（比如栈、队列、数组、链表）和算法（比如排序、查找、遍历），直接调用就行；</li>
+<li>核心优势是 <strong>模板化</strong>（跨数据类型通用，比如一个 <code>vector</code> 既可以存 <code>int</code>，也能存 <code>string</code>）、<strong>高效</strong>（底层用最优算法实现）、<strong>标准化</strong>（所有符合 C++ 标准的编译器都支持，比如 GCC、Clang、MSVC）。</li>
+</ul>
+<p>STL 主要包含 6 大组件，日常开发最常用的是前 4 个：</p>
+<table>
+<thead>
+<tr>
+<th>组件</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>容器（Container）</td>
+<td>存储数据的“容器”（比如 <code>vector</code> 动态数组、<code>list</code> 链表、<code>stack</code> 栈、<code>map</code> 字典）</td>
+</tr>
+<tr>
+<td>算法（Algorithm）</td>
+<td>操作容器数据的算法（比如 <code>sort</code> 排序、<code>find</code> 查找、<code>reverse</code> 反转）</td>
+</tr>
+<tr>
+<td>迭代器（Iterator）</td>
+<td>连接容器和算法的“桥梁”（类似指针，遍历容器数据）</td>
+</tr>
+<tr>
+<td>适配器（Adaptor）</td>
+<td>对现有容器“包装改造”，改变其接口（比如 <code>stack</code> 就是对其他容器的适配器）</td>
+</tr>
+<tr>
+<td>函数对象（Functor）</td>
+<td>行为类似函数的对象（配合算法使用，比如自定义排序规则）</td>
+</tr>
+<tr>
+<td>分配器（Allocator）</td>
+<td>负责容器的内存分配&#x2F;释放（底层细节，用户一般不用关心）</td>
+</tr>
+</tbody></table>
+<h3 id="二、STL-中-stack-的实现原理"><a href="#二、STL-中-stack-的实现原理" class="headerlink" title="二、STL 中 stack 的实现原理"></a>二、STL 中 <code>stack</code> 的实现原理</h3><p><code>stack</code>（栈）的核心特性是 <strong>LIFO（后进先出）</strong>：只能从“栈顶”插入（<code>push</code>）、删除（<code>pop</code>）和访问（<code>top</code>）数据，不能随机访问中间元素。</p>
+<h4 id="关键结论：stack-不是独立的容器，而是「容器适配器」"><a href="#关键结论：stack-不是独立的容器，而是「容器适配器」" class="headerlink" title="关键结论：stack 不是独立的容器，而是「容器适配器」"></a>关键结论：<code>stack</code> 不是独立的容器，而是「容器适配器」</h4><p>STL 的 <code>stack</code> 本身不存储数据，它是对一个 <strong>底层容器（Underlying Container）</strong> 进行“包装”，限制了其接口（只暴露栈需要的 <code>push/pop/top</code> 等），底层数据的存储、内存管理全靠这个“被包装的容器”。</p>
+<h4 id="1-默认底层容器是什么？"><a href="#1-默认底层容器是什么？" class="headerlink" title="1. 默认底层容器是什么？"></a>1. 默认底层容器是什么？</h4><p>C++ 标准规定，<code>stack</code> 的 <strong>默认底层容器是 <code>deque</code></strong>（双端队列）。<br>选择 <code>deque</code> 的原因很简单：<code>deque</code> 支持 <strong>两端高效插入&#x2F;删除</strong>（时间复杂度 O(1)），而栈只需要操作“一端”（栈顶），用 <code>deque</code> 刚好匹配，且 <code>deque</code> 没有 <code>vector</code> 扩容时的拷贝开销，效率更高。</p>
+<h4 id="2-可以自定义底层容器吗？"><a href="#2-可以自定义底层容器吗？" class="headerlink" title="2. 可以自定义底层容器吗？"></a>2. 可以自定义底层容器吗？</h4><p>可以！<code>stack</code> 是模板类，允许用户指定底层容器，只要这个容器支持以下 3 个核心操作即可：</p>
+<ul>
+<li><code>push_back()</code>：在尾部插入元素（栈顶对应容器尾部）；</li>
+<li><code>pop_back()</code>：删除尾部元素；</li>
+<li><code>back()</code>：访问尾部元素。</li>
+</ul>
+<p>满足条件的容器有 <code>vector</code>、<code>list</code>、<code>deque</code>，比如：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;stack&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;vector&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;list&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 1. 默认底层容器：deque</span></span><br><span class="line">std::stack&lt;<span class="type">int</span>&gt; st1;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 2. 自定义底层容器为 vector</span></span><br><span class="line">std::stack&lt;<span class="type">int</span>, std::vector&lt;<span class="type">int</span>&gt;&gt; st2;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 3. 自定义底层容器为 list</span></span><br><span class="line">std::stack&lt;<span class="type">int</span>, std::list&lt;<span class="type">int</span>&gt;&gt; st3;</span><br></pre></td></tr></table></figure>
+
+<h4 id="3-stack-的核心接口实现（伪代码）"><a href="#3-stack-的核心接口实现（伪代码）" class="headerlink" title="3. stack 的核心接口实现（伪代码）"></a>3. <code>stack</code> 的核心接口实现（伪代码）</h4><p><code>stack</code> 的接口非常简单，本质就是“转发”到底层容器的对应操作，伪代码能直观体现：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">template</span> &lt;<span class="keyword">typename</span> T, <span class="keyword">typename</span> Container = std::deque&lt;T&gt;&gt;</span><br><span class="line"><span class="keyword">class</span> stack &#123;</span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line">    Container c;  <span class="comment">// 底层容器（被包装的对象）</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="comment">// 入栈：调用底层容器的 push_back()</span></span><br><span class="line">    <span class="function"><span class="type">void</span> <span class="title">push</span><span class="params">(<span class="type">const</span> T&amp; x)</span> </span>&#123; c.<span class="built_in">push_back</span>(x); &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// 出栈：调用底层容器的 pop_back()（注意：不返回元素）</span></span><br><span class="line">    <span class="function"><span class="type">void</span> <span class="title">pop</span><span class="params">()</span> </span>&#123; c.<span class="built_in">pop_back</span>(); &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// 访问栈顶：调用底层容器的 back()</span></span><br><span class="line">    <span class="function">T&amp; <span class="title">top</span><span class="params">()</span> </span>&#123; <span class="keyword">return</span> c.<span class="built_in">back</span>(); &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// 栈是否为空：调用底层容器的 empty()</span></span><br><span class="line">    <span class="function"><span class="type">bool</span> <span class="title">empty</span><span class="params">()</span> <span class="type">const</span> </span>&#123; <span class="keyword">return</span> c.<span class="built_in">empty</span>(); &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// 栈的大小：调用底层容器的 size()</span></span><br><span class="line">    <span class="function"><span class="type">size_t</span> <span class="title">size</span><span class="params">()</span> <span class="type">const</span> </span>&#123; <span class="keyword">return</span> c.<span class="built_in">size</span>(); &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<p>从伪代码能看出来：<code>stack</code> 没有自己的“数据存储逻辑”，所有操作都依赖底层容器，它只做了一件事——<strong>隐藏底层容器的其他接口（比如 <code>vector</code> 的 <code>operator[]</code> 随机访问），只暴露栈需要的 LIFO 接口</strong>。</p>
+<h3 id="三、补充：stack-为什么不叫“容器”而叫“适配器”？"><a href="#三、补充：stack-为什么不叫“容器”而叫“适配器”？" class="headerlink" title="三、补充：stack 为什么不叫“容器”而叫“适配器”？"></a>三、补充：<code>stack</code> 为什么不叫“容器”而叫“适配器”？</h3><ul>
+<li>容器（比如 <code>vector</code>、<code>list</code>）：是“原始存储容器”，支持完整的元素访问&#x2F;操作（比如 <code>vector</code> 可以随机访问、<code>list</code> 可以双向遍历）；</li>
+<li>适配器（比如 <code>stack</code>、<code>queue</code>）：是“包装器”，不提供原始存储，而是基于现有容器，通过“限制接口”来实现特定的数据结构行为（栈的 LIFO、队列的 FIFO）。</li>
+</ul>
+<p>简单说：适配器是“改造现有容器”，而容器是“原生存储数据”。</p>
+<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><ol>
+<li>STL 是 C++ 标准库的核心，是通用的模板工具集，包含容器、算法、迭代器等组件；</li>
+<li>STL 的 <code>stack</code> 是 <strong>容器适配器</strong>，底层不存数据，依赖其他容器实现；</li>
+<li>默认底层容器是 <code>deque</code>，也可指定 <code>vector</code> 或 <code>list</code>（需支持 <code>push_back/pop_back/back</code>）；</li>
+<li><code>stack</code> 的所有接口（<code>push/pop/top</code>）都是转发到底层容器的对应操作，核心是实现 LIFO 特性。</li>
+</ol>
+
+    </div>
+  </article>
+  <div class="ccbyncsa">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="copyright">
+                    <div class="author">
+                        <p>作者</p>
+                        <p>yeyeyefirst</p>
+                    </div>
+                    <div class="title">
+                        <p>标题</p>
+                        <p>一些关于编程语言的知识</p>
+                    </div>
+                        <div class="publish">
+                            <p>发布于</p>
+                            <p>2025-12-26</p>
+                        </div>
+                    <div class="ccbyncsa-icon">
+                        <p>授权协议</p>
+                        <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">
+                        <p class="ccbyncsa-icon-imgs" style="display: flex;">
+                        <img src="/images/cc.svg" alt="cc">
+                        <img src="/images/by.svg" alt="by">
+                        <img src="/images/nc.svg" alt="nc">
+                        <img src="/images/sa.svg" alt="sa">
+                        </p>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+  <nav class="post-pagination">
+    
+      <div class="post-prev">
+        <span class="nav-label">上一篇</span>
+        <a href="/2025/12/25/%E4%BB%A3%E7%A0%81%E9%9A%8F%E6%83%B3%E5%BD%95-day9/">代码随想录-day9</a>
+      </div>
+    
+    
+      <div class="post-next">
+        <span class="nav-label">下一篇</span>
+        <a href="/2025/12/26/%E4%BB%A3%E7%A0%81%E9%9A%8F%E6%83%B3%E5%BD%95-day10/">代码随想录-day10</a>
+      </div>
+    
+  </nav>
+  
+
+</div>
+
+<script src="/js/copy.js"></script>
+
+<aside class="sidebar-container sidebar-right">
+    <div class="sidebar-bg">
+        <p id="date"></p>
+<script>
+  function updateDate() {
+    var now = new Date();
+    var dateString = now.toISOString().slice(0, 10);
+    document.getElementById('date').textContent = dateString;
+  }
+
+  window.addEventListener('load', function() {
+    updateDate();
+    // 更新频率为每5分钟更新一次，减少不必要的更新
+    setInterval(updateDate, 300000);
+  });
+</script>
+        <span id="clock" role="timer" aria-live="polite"></span>
+
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const clockElement = document.getElementById('clock');
+    let timerInterval;
+
+    // 格式化时间函数
+    function formatTime(unit) {
+      return unit < 10 ? '0' + unit : unit;
+    }
+
+    // 更新时钟 - 包含秒
+    function updateClock() {
+      const now = new Date();
+      const hours = formatTime(now.getHours());
+      const minutes = formatTime(now.getMinutes());
+      const seconds = formatTime(now.getSeconds());
+      clockElement.textContent = `${hours}:${minutes}:${seconds}`;
+    }
+
+    // 初始化时钟
+    function startClock() {
+      // 立即更新一次时间
+      updateClock();
+      // 每秒更新一次
+      timerInterval = setInterval(updateClock, 1000);
+    }
+
+    // 页面可见性变化时的优化
+    document.addEventListener('visibilitychange', function() {
+      if (document.hidden) {
+        // 页面不可见时停止更新
+        clearInterval(timerInterval);
+      } else {
+        // 页面重新可见时，重新开始
+        clearInterval(timerInterval);
+        startClock();
+      }
+    });
+
+    // 启动时钟
+    startClock();
+  });
+</script>
+
+
+    </div>
+    <div class="sidebar-bg">
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#STL"><span class="toc-number">1.</span> <span class="toc-text">STL</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%80%E3%80%81STL-%E5%88%B0%E5%BA%95%E6%98%AF%E4%BB%80%E4%B9%88%EF%BC%9F"><span class="toc-number">1.1.</span> <span class="toc-text">一、STL 到底是什么？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BA%8C%E3%80%81STL-%E4%B8%AD-stack-%E7%9A%84%E5%AE%9E%E7%8E%B0%E5%8E%9F%E7%90%86"><span class="toc-number">1.2.</span> <span class="toc-text">二、STL 中 stack 的实现原理</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%85%B3%E9%94%AE%E7%BB%93%E8%AE%BA%EF%BC%9Astack-%E4%B8%8D%E6%98%AF%E7%8B%AC%E7%AB%8B%E7%9A%84%E5%AE%B9%E5%99%A8%EF%BC%8C%E8%80%8C%E6%98%AF%E3%80%8C%E5%AE%B9%E5%99%A8%E9%80%82%E9%85%8D%E5%99%A8%E3%80%8D"><span class="toc-number">1.2.1.</span> <span class="toc-text">关键结论：stack 不是独立的容器，而是「容器适配器」</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#1-%E9%BB%98%E8%AE%A4%E5%BA%95%E5%B1%82%E5%AE%B9%E5%99%A8%E6%98%AF%E4%BB%80%E4%B9%88%EF%BC%9F"><span class="toc-number">1.2.2.</span> <span class="toc-text">1. 默认底层容器是什么？</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-%E5%8F%AF%E4%BB%A5%E8%87%AA%E5%AE%9A%E4%B9%89%E5%BA%95%E5%B1%82%E5%AE%B9%E5%99%A8%E5%90%97%EF%BC%9F"><span class="toc-number">1.2.3.</span> <span class="toc-text">2. 可以自定义底层容器吗？</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-stack-%E7%9A%84%E6%A0%B8%E5%BF%83%E6%8E%A5%E5%8F%A3%E5%AE%9E%E7%8E%B0%EF%BC%88%E4%BC%AA%E4%BB%A3%E7%A0%81%EF%BC%89"><span class="toc-number">1.2.4.</span> <span class="toc-text">3. stack 的核心接口实现（伪代码）</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%89%E3%80%81%E8%A1%A5%E5%85%85%EF%BC%9Astack-%E4%B8%BA%E4%BB%80%E4%B9%88%E4%B8%8D%E5%8F%AB%E2%80%9C%E5%AE%B9%E5%99%A8%E2%80%9D%E8%80%8C%E5%8F%AB%E2%80%9C%E9%80%82%E9%85%8D%E5%99%A8%E2%80%9D%EF%BC%9F"><span class="toc-number">1.3.</span> <span class="toc-text">三、补充：stack 为什么不叫“容器”而叫“适配器”？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%80%BB%E7%BB%93"><span class="toc-number">1.4.</span> <span class="toc-text">总结</span></a></li></ol></li></ol>
+    </div>
+    <div class="sidebar-bg">
+        <div class="card-tags">
+            
+                <a href="/tags/%E7%AC%94%E8%AE%B0/" class="tag" aria-label="标签: #笔记">#笔记</a>
+            
+        </div>
+    </div>
+    <div>
+        <div class="categories-list">
+            
+        </div>
+    </div>
+</aside>
+
+    <!-- No categories available -->
+
+
+    <footer>
+    <span id="busuanzi_container_site_pv" style="display: inline;"></span>
+    <span>👁<span id="busuanzi_value_site_pv"></span></span>
+    <div class="padding border border-sub border-dotted fadein-right">
+        <span style="color:aliceblue">👤<span id="busuanzi_value_site_uv"></span></span>
+    </div>
+    <span>
+        由 <a target="_blank" rel="noopener" href="https://hexo.io" alt="Hexo">
+            <p class="hover-underline night" style="display: inline;">Hexo</p>
+        </a> 驱动
+        <p style="display: inline; color: red;">❤</p>
+        <a target="_blank" rel="noopener" href="https://github.com/xingwangzhe/hexo-theme-wang" alt="Wang">
+            <p class="hover-underline night" style="display: inline;">Wang</p>
+        </a> 主题构建
+    </span>
+
+    <!-- 带图片的链接 -->
+    <div class="footer-links">
+        
+            
+                <a href="https://www.travellings.cn/go.html" target="_blank" rel="noopener">
+                    <img src="https://www.travellings.cn/assets/logo.gif" alt="开往-友链接力" title="开往-友链接力">
+                </a>
+            
+                <a href="https://www.aliyun.com/minisite/goods?userCode=lmvvqvl9" target="_blank" rel="noopener">
+                    <img src="https://i.ibb.co/h7XJkfm/LOGO.png" alt="阿里云支持" title="阿里云支持">
+                </a>
+            
+                <a href="https://www.dalao.net/" target="_blank" rel="noopener">
+                    <img src="https://www.dalao.net/img/dalao-svg.svg" alt="大佬论坛" title="大佬论坛">
+                </a>
+            
+                <a href="https://bf.zzxworld.com/" target="_blank" rel="noopener">
+                    <img src="https://bf.zzxworld.com/images/logo-v2.png" alt="BlogFinder" title="BlogFinder">
+                </a>
+            
+                <a href="https://www.blogsclub.org/go" target="_blank" rel="noopener">
+                    <img src="https://www.blogsclub.org/images/shuttle_4.png" alt="空间穿梭-随机访问BlogsClub成员博客" title="空间穿梭-随机访问BlogsClub成员博客">
+                </a>
+            
+        
+    </div>
+
+    <!-- 纯文本链接 -->
+    <div class="footer-text-links">
+        
+            
+                <a href="" target="_blank" rel="noopener">
+                    文字链接
+                </a>
+            
+        
+    </div>
+</footer>
+    
+<script src="/js/background.js"></script>
+    
+        
+<script src="/js/search.js"></script>
+    
+</main>
+</body>
+</html>
