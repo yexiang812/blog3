@@ -209,7 +209,7 @@ article: http://ogp.me/ns/article#">
       
       
         <span class="post-updated">
-          最后更新于 <time datetime="2025-12-27T07:48:38.433Z">2025-12-27</time>
+          最后更新于 <time datetime="2025-12-27T07:58:11.823Z">2025-12-27</time>
         </span>
       
       <span style="margin-left:10px;">👁<span id="busuanzi_value_page_pv"></span></span>
@@ -243,7 +243,7 @@ article: http://ogp.me/ns/article#">
 <p>这道题是用单调队列来解决的，单调队列是指队列中的元素是单调递增或递减的。<br>那如何保证队列中的元素是单调递减的呢？<br>当有新元素加入时，我们将队列中所有比新元素小的元素都弹出，直到队列为空或者队列尾部的元素大于等于新元素为止。这样就保证了队列中的元素是单调递减的。</p>
 <ul>
 <li>关于我在视频弹幕上遇到的一个情况5231，其实解决这个的方式是在push方法中加入一个判断，当队列非空且队尾元素小于等于新元素时，弹出队尾元素，直到队列为空或者队列尾部的元素大于等于新元素为止。（这样3进去的之前2就被弹出了）<hr></li>
-<li>为啥要判断队列非空？<br><br>初始阶段：刚实例化 Queue 时（<strong>init</strong> 后），self.que &#x3D; deque() 是空的，此时调用 pop&#x2F;get 都会操作空队列。<br>窗口滑动时移除元素后：比如窗口内所有元素都被 pop 方法移除（例如滑动窗口移动时，队首元素是前一个窗口的最大值，被弹出后队列无其他元素）。<br>nums 数组本身为空或 k&#x3D;0：当输入 nums &#x3D; [] 或 k&#x3D;0 时，循环不执行 push，队列始终为空。<hr></li>
+<li>为啥要判断队列非空？<br><br>初始阶段：刚实例化 Queue 时（<strong>init</strong> 后），self.que &#x3D; deque() 是空的，此时调用 pop&#x2F;get 都会操作空队列。<br><br>窗口滑动时移除元素后：比如窗口内所有元素都被 pop 方法移除（例如滑动窗口移动时，队首元素是前一个窗口的最大值，被弹出后队列无其他元素）。<br><br>nums 数组本身为空或 k&#x3D;0：当输入 nums &#x3D; [] 或 k&#x3D;0 时，循环不执行 push，队列始终为空。<hr></li>
 </ul>
 <h1 id="前-K-个高频元素"><a href="#前-K-个高频元素" class="headerlink" title="前 K 个高频元素"></a>前 K 个高频元素</h1><p><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/top-k-frequent-elements/">题目链接</a></p>
 <blockquote>
