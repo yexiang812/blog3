@@ -18,8 +18,9 @@ article: http://ogp.me/ns/article#">
 <meta property="og:author" content="yeyeyefirst">
 
   
-    <meta name="description" content="代码随想录-day14 || yeye 想变强 || 分享我学的技术和我的生活">
   
+  
+  <meta name="description" content="翻转二叉树翻转二叉树给你一棵二叉树的根节点root，翻转这棵二叉树，并返回其根节点。翻转二叉树-递归12345678910classSolution:definvertTree(self,root:Optional[TreeNode])-&amp;gt;Optional[TreeNode]:defdfs(root):">
 
 
 <script src="/js/wang.js"></script>
@@ -202,15 +203,36 @@ article: http://ogp.me/ns/article#">
     <div class="post-meta">
       <span class="post-date">发布于 <time datetime="2025-12-31T13:04:22.000Z">2025-12-31</time></span>
       
+        <span class="post-categories">
+          分类：<a class="category-link" href="/categories/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0%E2%80%94%E2%80%94%E6%A0%91/">算法学习——树</a>
+        </span>
+      
       
         <span class="post-updated">
-          最后更新于 <time datetime="2025-12-31T13:04:22.983Z">2025-12-31</time>
+          最后更新于 <time datetime="2025-12-31T15:17:50.056Z">2025-12-31</time>
         </span>
       
       <span style="margin-left:10px;">👁<span id="busuanzi_value_page_pv"></span></span>
     </div>
     <div class="post-content">
-      
+      <h1 id="翻转二叉树"><a href="#翻转二叉树" class="headerlink" title="翻转二叉树"></a>翻转二叉树</h1><p><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/invert-binary-tree/description/">翻转二叉树</a><br>给你一棵二叉树的根节点 root ，翻转这棵二叉树，并返回其根节点。</p>
+<h2 id="翻转二叉树-递归"><a href="#翻转二叉树-递归" class="headerlink" title="翻转二叉树-递归"></a>翻转二叉树-递归</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span>:</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">invertTree</span>(<span class="params">self, root: <span class="type">Optional</span>[TreeNode]</span>) -&gt; <span class="type">Optional</span>[TreeNode]:</span><br><span class="line">        <span class="keyword">def</span> <span class="title function_">dfs</span>(<span class="params">root</span>):</span><br><span class="line">            <span class="keyword">if</span> <span class="keyword">not</span> root:</span><br><span class="line">                <span class="keyword">return</span> <span class="literal">None</span></span><br><span class="line">            root.left,root.right = root.right,root.left</span><br><span class="line">            dfs(root.left)</span><br><span class="line">            dfs(root.right)</span><br><span class="line">        dfs(root)</span><br><span class="line">        <span class="keyword">return</span> root</span><br></pre></td></tr></table></figure>
+<p>就是在前序遍历前交换左右子树</p>
+<h1 id="对称二叉树"><a href="#对称二叉树" class="headerlink" title="对称二叉树"></a>对称二叉树</h1><p><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/symmetric-tree/description/">对称二叉树</a><br>给你一个二叉树的根节点 root ， 检查它是否轴对称。</p>
+<h2 id="对称二叉树-递归"><a href="#对称二叉树-递归" class="headerlink" title="对称二叉树-递归"></a>对称二叉树-递归</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span>:</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">isSymmetric</span>(<span class="params">self, root: <span class="type">Optional</span>[TreeNode]</span>) -&gt; <span class="built_in">bool</span>:</span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> root:</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">True</span></span><br><span class="line">        <span class="keyword">return</span> <span class="variable language_">self</span>.compare(root.left,root.right)</span><br><span class="line">        </span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">compare</span>(<span class="params">self,left,right</span>):</span><br><span class="line">        <span class="keyword">if</span> left != <span class="literal">None</span> <span class="keyword">and</span> right == <span class="literal">None</span>:</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">False</span></span><br><span class="line">        <span class="keyword">elif</span> left == <span class="literal">None</span> <span class="keyword">and</span> right != <span class="literal">None</span>:</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">False</span></span><br><span class="line">        <span class="keyword">elif</span> left == <span class="literal">None</span> <span class="keyword">and</span> right == <span class="literal">None</span>:</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">True</span></span><br><span class="line">        <span class="keyword">elif</span> left.val != right.val:</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">False</span></span><br><span class="line">        outside = <span class="variable language_">self</span>.compare(left.left,right.right)</span><br><span class="line">        inside = <span class="variable language_">self</span>.compare(left.right,right.left)</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> inside <span class="keyword">and</span> outside</span><br></pre></td></tr></table></figure>
+<p>在后续遍历的基础上，判断以 left 为根的子树和以 right 为根的子树，是否互为镜像，为了让两棵子树互为镜像，必须满足以下三个条件：<br>它们的根节点值必须相同。</p>
+<ul>
+<li>left 子树的左孩子，必须和 right 子树的右孩子互为镜像。</li>
+<li>left 子树的右孩子，必须和 right 子树的左孩子互为镜像。</li>
+</ul>
+<h1 id="二叉树的最大深度"><a href="#二叉树的最大深度" class="headerlink" title="二叉树的最大深度"></a>二叉树的最大深度</h1><p><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/maximum-depth-of-binary-tree/description/">二叉树的最大深度</a><br>给你一个二叉树的根节点 root ，返回它的 最大深度 。</p>
+<h2 id="二叉树的最大深度-递归"><a href="#二叉树的最大深度-递归" class="headerlink" title="二叉树的最大深度-递归"></a>二叉树的最大深度-递归</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span>:</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">maxDepth</span>(<span class="params">self, root: <span class="type">Optional</span>[TreeNode]</span>) -&gt; <span class="built_in">int</span>:</span><br><span class="line">        <span class="keyword">return</span> <span class="variable language_">self</span>.getdeepth(root)</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">getdeepth</span>(<span class="params">self,node</span>):</span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> node:</span><br><span class="line">            <span class="keyword">return</span> <span class="number">0</span></span><br><span class="line">        leftdeepth = <span class="variable language_">self</span>.getdeepth(node.left)</span><br><span class="line">        rightdeepth = <span class="variable language_">self</span>.getdeepth(node.right)</span><br><span class="line">        deepth = <span class="built_in">max</span>(leftdeepth,rightdeepth) + <span class="number">1</span></span><br><span class="line">        <span class="keyword">return</span> deepth </span><br></pre></td></tr></table></figure>
+<p>首先区分高度和深度</p>
+<ul>
+<li>高度：指的是从根节点到叶子节点的最长路径上的节点数。</li>
+<li>深度：指的是从根节点到当前节点的路径上的节点数。<br>所以这里可以用根节点的高度来表示二叉树的最大深度，而求根节点的高度可以用后序遍历。<br>并且初始深度为0，当前节点的深度，等于其左右子树中较深的那一个的深度，再加上当前节点自己这一层</li>
+</ul>
+
     </div>
   </article>
   <div class="ccbyncsa">
@@ -327,15 +349,24 @@ article: http://ogp.me/ns/article#">
 
     </div>
     <div class="sidebar-bg">
-        
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%BF%BB%E8%BD%AC%E4%BA%8C%E5%8F%89%E6%A0%91"><span class="toc-number">1.</span> <span class="toc-text">翻转二叉树</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BF%BB%E8%BD%AC%E4%BA%8C%E5%8F%89%E6%A0%91-%E9%80%92%E5%BD%92"><span class="toc-number">1.1.</span> <span class="toc-text">翻转二叉树-递归</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%AF%B9%E7%A7%B0%E4%BA%8C%E5%8F%89%E6%A0%91"><span class="toc-number">2.</span> <span class="toc-text">对称二叉树</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AF%B9%E7%A7%B0%E4%BA%8C%E5%8F%89%E6%A0%91-%E9%80%92%E5%BD%92"><span class="toc-number">2.1.</span> <span class="toc-text">对称二叉树-递归</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9A%84%E6%9C%80%E5%A4%A7%E6%B7%B1%E5%BA%A6"><span class="toc-number">3.</span> <span class="toc-text">二叉树的最大深度</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9A%84%E6%9C%80%E5%A4%A7%E6%B7%B1%E5%BA%A6-%E9%80%92%E5%BD%92"><span class="toc-number">3.1.</span> <span class="toc-text">二叉树的最大深度-递归</span></a></li></ol></li></ol>
     </div>
     <div class="sidebar-bg">
         <div class="card-tags">
+            
+                <a href="/tags/%E4%BB%A3%E7%A0%81%E9%9A%8F%E6%83%B3%E5%BD%95/" class="tag" aria-label="标签: #代码随想录">#代码随想录</a>
             
         </div>
     </div>
     <div>
         <div class="categories-list">
+            
+                <div class="category-item">
+                    <a href="/categories/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0%E2%80%94%E2%80%94%E6%A0%91/" aria-label="分类: 算法学习——树">
+                        算法学习——树
+                        <span>(2)</span>
+                    </a>
+                </div>
             
         </div>
     </div>
