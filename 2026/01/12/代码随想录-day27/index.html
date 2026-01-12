@@ -7,12 +7,12 @@ article: http://ogp.me/ns/article#">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="keywords" content="Leetcode,机器学习,生活">
 
-<title>代码随想录-day25 || yeye 想变强</title>
+<title>代码随想录-day27 || yeye 想变强</title>
 <link rel="icon" href="http://example.comimages/wang.icon" type="image/x-icon">
 <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
-<meta property="og:title" content="代码随想录-day25">
+<meta property="og:title" content="代码随想录-day27">
 <meta property="og:type" content="website">
-<meta property="og:url" content="http://example.com/2026/01/11/%E4%BB%A3%E7%A0%81%E9%9A%8F%E6%83%B3%E5%BD%95-day25/index.html">
+<meta property="og:url" content="http://example.com/2026/01/12/%E4%BB%A3%E7%A0%81%E9%9A%8F%E6%83%B3%E5%BD%95-day27/index.html">
 <meta property="og:image" content="">
 <meta property="og:site_name" content="yeye 想变强">
 <meta property="og:author" content="yeyeyefirst">
@@ -20,7 +20,7 @@ article: http://ogp.me/ns/article#">
   
   
   
-  <meta name="description" content="复原IP地址93.复原IP地址有效IP地址正好由四个整数（每个整数位于0到255之间组成，且不能含有前导0），整数之间用‘.’分隔。例如：”0.1.2.201”和“192.168.1.1”是有效IP地址，但是“0.011.255.245”、”192.168.1.312”和“192.168@1.1“是无效IP地">
+  <meta name="description" content="非递减子序列491.非递减子序列给你一个整数数组nums，找出并返回所有该数组中不同的递增子序列，递增子序列中至少有两个元素。你可以按任意顺序返回答案。数组中可能含有重复元素，如出现两个整数相等，也可以视作递增序列的一种特殊情况数组的子序列是由数组删除一些元素（也可能不删除）而不改变剩余元素顺序形成的序列。例">
 
 
 <script src="/js/wang.js"></script>
@@ -198,10 +198,10 @@ article: http://ogp.me/ns/article#">
 </aside>
 <div class="post-container">
   <article class="post">
-    <h1 class="post-title">代码随想录-day25</h1>
+    <h1 class="post-title">代码随想录-day27</h1>
 
     <div class="post-meta">
-      <span class="post-date">发布于 <time datetime="2026-01-11T12:27:16.000Z">2026-01-11</time></span>
+      <span class="post-date">发布于 <time datetime="2026-01-12T13:59:33.000Z">2026-01-12</time></span>
       
         <span class="post-categories">
           分类：<a class="category-link" href="/categories/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0%E2%80%94%E2%80%94%E5%9B%9E%E6%BA%AF/">算法学习——回溯</a>
@@ -209,59 +209,50 @@ article: http://ogp.me/ns/article#">
       
       
         <span class="post-updated">
-          最后更新于 <time datetime="2026-01-11T13:39:33.010Z">2026-01-11</time>
+          最后更新于 <time datetime="2026-01-12T15:10:52.675Z">2026-01-12</time>
         </span>
       
       <span style="margin-left:10px;">👁<span id="busuanzi_value_page_pv"></span></span>
     </div>
     <div class="post-content">
-      <h1 id="复原IP地址"><a href="#复原IP地址" class="headerlink" title="复原IP地址"></a>复原IP地址</h1><p><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/restore-ip-addresses/description/">93. 复原 IP 地址</a></p>
+      <h1 id="非递减子序列"><a href="#非递减子序列" class="headerlink" title="非递减子序列"></a>非递减子序列</h1><p><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/increasing-subsequences/description/">491. 非递减子序列</a></p>
 <blockquote>
-<p>有效 IP 地址 正好由四个整数（每个整数位于 0 到 255 之间组成，且不能含有前导 0），整数之间用 ‘.’ 分隔。</p>
+<p>给你一个整数数组 nums ，找出并返回所有该数组中不同的递增子序列，递增子序列中 至少有两个元素 。你可以按 任意顺序 返回答案。<br><br>数组中可能含有重复元素，如出现两个整数相等，也可以视作递增序列的一种特殊情况    </p>
 </blockquote>
 <ul>
-<li>例如：”0.1.2.201” 和 “192.168.1.1” 是 有效 IP 地址，但是 “0.011.255.245”、”192.168.1.312” 和 “<a href="mailto:&#x31;&#57;&#x32;&#46;&#x31;&#54;&#56;&#x40;&#49;&#46;&#49;">192.168@1.1</a>“ 是 无效 IP 地址。<br></li>
+<li>数组的子序列是由数组删除一些元素（也可能不删除）而不改变剩余元素顺序形成的序列。</li>
+<li>例如，[4,6,7] 是数组 [4,5,6,7] 的一个子序列。</li>
+<li>题目数据保证答案中至少有一个非递减子序列。</li>
 </ul>
-<blockquote>
-<p>给定一个只包含数字的字符串 s ，用以表示一个 IP 地址，返回所有可能的有效 IP 地址，这些地址可以通过在 s 中插入 ‘.’ 来形成。你 不能 重新排序或删除 s 中的任何数字。你可以按 任何 顺序返回答案。</p>
-</blockquote>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span>:</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">isok</span>(<span class="params">self,s,s_index,e_index</span>):</span><br><span class="line">        <span class="keyword">if</span> s_index &gt; e_index:</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">False</span></span><br><span class="line">        <span class="keyword">if</span> s[s_index] == <span class="string">&#x27;0&#x27;</span> <span class="keyword">and</span> s_index != e_index:</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">False</span></span><br><span class="line">        <span class="keyword">if</span> <span class="built_in">int</span>(s[s_index:e_index+<span class="number">1</span>]) &gt; <span class="number">255</span>:</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">False</span></span><br><span class="line">        <span class="keyword">return</span> <span class="literal">True</span></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">backtracking</span>(<span class="params">self,s,index,count,cur,result</span>):</span><br><span class="line">        <span class="keyword">if</span> count == <span class="number">3</span> <span class="keyword">and</span> <span class="variable language_">self</span>.isok(s,index,<span class="built_in">len</span>(s)-<span class="number">1</span>):</span><br><span class="line">            cur += s[index:]</span><br><span class="line">            result.append(cur)</span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(index,<span class="built_in">len</span>(s)):</span><br><span class="line">            <span class="keyword">if</span> <span class="variable language_">self</span>.isok(s,index,i):</span><br><span class="line">                temp = s[index:i+<span class="number">1</span>]</span><br><span class="line">                count += <span class="number">1</span></span><br><span class="line">                <span class="variable language_">self</span>.backtracking(s,i+<span class="number">1</span>,count,cur+temp+<span class="string">&#x27;.&#x27;</span>,result) <span class="comment">#隐式回溯，cur本身不变</span></span><br><span class="line">                count -=<span class="number">1</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">restoreIpAddresses</span>(<span class="params">self, s: <span class="built_in">str</span></span>) -&gt; <span class="type">List</span>[<span class="built_in">str</span>]:</span><br><span class="line">        result = []</span><br><span class="line">        <span class="variable language_">self</span>.backtracking(s,<span class="number">0</span>,<span class="number">0</span>,<span class="string">&#x27;&#x27;</span>,result)</span><br><span class="line">        <span class="keyword">return</span> result</span><br></pre></td></tr></table></figure>
-<p>不能直接用s，字符串不可变还是要设置个变量接住</p>
-<h1 id="子集"><a href="#子集" class="headerlink" title="子集"></a>子集</h1><p><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/subsets/description/">78. 子集</a></p>
-<blockquote>
-<p>给你一个整数数组 nums ，数组中的元素 互不相同 。返回该数组所有可能的子集（幂集）。</p>
-</blockquote>
-<ul>
-<li>解集 不能 包含重复的子集。你可以按 任意顺序 返回解集。</li>
-</ul>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span>:</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">backtracking</span>(<span class="params">self,nums,index,path,result</span>):</span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(index,<span class="built_in">len</span>(nums)):</span><br><span class="line">            path.append(nums[i])</span><br><span class="line">            result.append(path[:])</span><br><span class="line">            <span class="variable language_">self</span>.backtracking(nums,i+<span class="number">1</span>,path,result)</span><br><span class="line">            path.pop()</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">subsets</span>(<span class="params">self, nums: <span class="type">List</span>[<span class="built_in">int</span>]</span>) -&gt; <span class="type">List</span>[<span class="type">List</span>[<span class="built_in">int</span>]]:</span><br><span class="line">        result = [[]]</span><br><span class="line">        <span class="variable language_">self</span>.backtracking(nums,<span class="number">0</span>,[],result)</span><br><span class="line">        <span class="keyword">return</span> result</span><br></pre></td></tr></table></figure>
-<p>真别说，连剪枝都不要，但是这道题每个节点都要记录一下</p>
-<h1 id="子集II"><a href="#子集II" class="headerlink" title="子集II"></a>子集II</h1><p><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/subsets-ii/description/">90. 子集 II</a></p>
-<blockquote>
-<p>给你一个整数数组 nums ，其中可能包含重复元素，请你返回该数组所有可能的子集（幂集）。</p>
-</blockquote>
-<ul>
-<li><p>解集 不能 包含重复的子集。返回的解集中，子集可以按 任意顺序 排列。</p>
-<blockquote>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span>:</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">backtracking</span>(<span class="params">self,nums,index,path,result</span>):</span><br><span class="line">        <span class="keyword">if</span> <span class="built_in">len</span>(path) &gt; <span class="number">1</span>:</span><br><span class="line">            result.append(path[:])</span><br><span class="line">        set_ = <span class="built_in">set</span>()    <span class="comment">#!!!!!!进入下一层前重置集合，相当于只在同层里面使用set实现层去重</span></span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(index,<span class="built_in">len</span>(nums)):</span><br><span class="line">            <span class="keyword">if</span> (path <span class="keyword">and</span> nums[i] &lt; path[-<span class="number">1</span>]) <span class="keyword">or</span> nums[i] <span class="keyword">in</span> set_:</span><br><span class="line">                <span class="keyword">continue</span></span><br><span class="line">            path.append(nums[i])</span><br><span class="line">            set_.add(nums[i]) <span class="comment">#但是往下探索返回的set不会设置成最底下的元素吗</span></span><br><span class="line">            <span class="comment">#不会，我的理解是for循环是分树枝，回溯函数是生长枝条，哦，used在每个函数里被创建，就属于这个函数的局部变量，所以每一层都有自己的used</span></span><br><span class="line">            <span class="variable language_">self</span>.backtracking(nums,i+<span class="number">1</span>,path,result)</span><br><span class="line">            path.pop()</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">findSubsequences</span>(<span class="params">self, nums: <span class="type">List</span>[<span class="built_in">int</span>]</span>) -&gt; <span class="type">List</span>[<span class="type">List</span>[<span class="built_in">int</span>]]:</span><br><span class="line">        result = []</span><br><span class="line">        <span class="variable language_">self</span>.backtracking(nums,<span class="number">0</span>,[],result)</span><br><span class="line">        <span class="keyword">return</span> result</span><br></pre></td></tr></table></figure>
+<p>主要是加了一个set来实现树层去重，注意<code>set</code>是在每一层递归开始时创建的<hr><br>不能直接排序<code>nums</code>,因为排序会改变元素的相对顺序，导致错误的结果,因此这里想实现返回的是非递减子序列就要在path加元素的时候判断是否比path[-1]大<hr><br>然后还有个有意思的就是实现树层去重（就是在分层的时候根节点相同的树枝就不要了），结合这几天的学习我对这种题目的理解就是————<strong>for循环是分树枝，回溯函数是生长枝条</strong>，所以在for循环里面判断是否去重，而不是在回溯函数里面判断是否去重。<br><br>那如何实现树层去重呢？<br><br>那就是用<code>set_</code>这个集合来实现，并且这是个局部变量（作用域在当前层，也就是在每个回溯函数中），每一层递归都会创建当层的集合，用来记录当层已经使用过的元素，从而实现树层去重。<br></p>
+<h1 id="全排列"><a href="#全排列" class="headerlink" title="全排列"></a>全排列</h1><p><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/permutations/description/">46. 全排列(题目链接)</a><br><br>给定一个不含重复数字的数组 nums ，返回其所有可能的全排列。你可以按 任意顺序 返回答案。<br></p>
 <p>示例 1：</p>
-</blockquote>
-</li>
-<li><p>输入：nums &#x3D; [1,2,2]</p>
-</li>
-<li><p>输出：[[],[1],[1,2],[1,2,2],[2],[2,2]]</p>
 <blockquote>
-<p>示例 2：</p>
+<p>输入：nums &#x3D; [1,2,3]<br><br>输出：[[1,2,3],[1,3,2],[2,1,3],[2,3,1],[3,1,2],[3,2,1]]<br><br></p>
 </blockquote>
-</li>
-<li><p>输入：nums &#x3D; [0]</p>
-</li>
-<li><p>输出：[[],[0]]</p>
-</li>
-</ul>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span>:</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">backtracking</span>(<span class="params">self,nums,index,path,result,used</span>):</span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(index,<span class="built_in">len</span>(nums)):</span><br><span class="line">            <span class="keyword">if</span> i&gt;index <span class="keyword">and</span> nums[i]==nums[i-<span class="number">1</span>] <span class="keyword">and</span> <span class="keyword">not</span> used[i-<span class="number">1</span>]:</span><br><span class="line">                <span class="keyword">continue</span> </span><br><span class="line">            path.append(nums[i])</span><br><span class="line">            used[i] = <span class="literal">True</span></span><br><span class="line">            result.append(path[:])</span><br><span class="line">            <span class="variable language_">self</span>.backtracking(nums,i+<span class="number">1</span>,path,result,used)</span><br><span class="line">            path.pop()</span><br><span class="line">            used[i] = <span class="literal">False</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">subsetsWithDup</span>(<span class="params">self, nums: <span class="type">List</span>[<span class="built_in">int</span>]</span>) -&gt; <span class="type">List</span>[<span class="type">List</span>[<span class="built_in">int</span>]]:</span><br><span class="line">        result = [[]]</span><br><span class="line">        nums.sort()</span><br><span class="line">        used = [<span class="literal">False</span>]*<span class="built_in">len</span>(nums)</span><br><span class="line">        <span class="variable language_">self</span>.backtracking(nums,<span class="number">0</span>,[],result,used)</span><br><span class="line">        <span class="keyword">return</span> result</span><br></pre></td></tr></table></figure>
-<p>就是在上道题的基础上，加一个去重的操作，用昨天的树层去重的方法，添加一个<code>uesd</code>来表示是否被使用</p>
-<p>怎么说，终于赶上来，之前每天都要在截止前，现在也可以按时完成了，感觉回溯学的不如之前的，可能是在期末考，总是把这个当负担，希望后面考完状态可以调整过来。</p>
-
+<p>示例 2：</p>
+<blockquote>
+<p>输入：nums &#x3D; [0,1]<br><br>输出：[[0,1],[1,0]]<br><br></p>
+</blockquote>
+<p>示例 3：</p>
+<blockquote>
+<p>输入：nums &#x3D; [1]<br><br>输出：[[1]]</p>
+</blockquote>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span>:</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">backtracking</span>(<span class="params">self,nums,used,path,result</span>):</span><br><span class="line">        <span class="keyword">if</span> <span class="built_in">len</span>(path) == <span class="built_in">len</span>(nums):</span><br><span class="line">            result.append(path[:])</span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span> (<span class="built_in">len</span>(nums)):</span><br><span class="line">            <span class="keyword">if</span> used[i]:</span><br><span class="line">                <span class="keyword">continue</span></span><br><span class="line">            path.append(nums[i])</span><br><span class="line">            used[i] = <span class="literal">True</span></span><br><span class="line">            <span class="variable language_">self</span>.backtracking(nums,used,path,result)</span><br><span class="line">            path.pop()</span><br><span class="line">            used[i] = <span class="literal">False</span></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">permute</span>(<span class="params">self, nums: <span class="type">List</span>[<span class="built_in">int</span>]</span>) -&gt; <span class="type">List</span>[<span class="type">List</span>[<span class="built_in">int</span>]]:</span><br><span class="line">        result = []</span><br><span class="line">        used = [<span class="literal">False</span>]*<span class="built_in">len</span>(nums)</span><br><span class="line">        <span class="variable language_">self</span>.backtracking(nums,used,[],result)</span><br><span class="line">        <span class="keyword">return</span> result</span><br></pre></td></tr></table></figure>
+<p>在排列问题上就不再需要startIndex了，因为排列是有序的，所以每次都从0开始遍历<br><br><br>但是选过的元素就不能再选了，所以需要一个used数组来记录哪些元素已经被选过了（类似组合问题的剪枝，每调用回溯函数就剪一条边）</p>
+<h1 id="全排列-II"><a href="#全排列-II" class="headerlink" title="全排列 II"></a>全排列 II</h1><p><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/permutations-ii/description/">47. 全排列 II(题目链接)</a><br>给定一个可包含重复数字的序列 nums ，按任意顺序 返回所有不重复的全排列。<br><br>示例 1：</p>
+<blockquote>
+<p>输入：nums &#x3D; [1,1,2]<br><br>输出：<br>[[1,1,2],<br> [1,2,1],<br> [2,1,1]]<br><br></p>
+</blockquote>
+<p>示例 2：</p>
+<blockquote>
+<p>输入：nums &#x3D; [1,2,3]<br><br>输出：[[1,2,3],[1,3,2],[2,1,3],[2,3,1],[3,1,2],[3,2,1]]</p>
+</blockquote>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span>:</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">backtracking</span>(<span class="params">self,nums,used,path,result</span>):</span><br><span class="line">        <span class="keyword">if</span> <span class="built_in">len</span>(path) == <span class="built_in">len</span>(nums):</span><br><span class="line">            result.append(path[:])</span><br><span class="line">        set_ = <span class="built_in">set</span>()</span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="built_in">len</span>(nums)):</span><br><span class="line">            <span class="keyword">if</span> nums[i] <span class="keyword">in</span> set_ <span class="keyword">or</span> used[i]:</span><br><span class="line">                <span class="keyword">continue</span></span><br><span class="line">            path.append(nums[i])</span><br><span class="line">            used[i] = <span class="literal">True</span></span><br><span class="line">            set_.add(nums[i])</span><br><span class="line">            <span class="variable language_">self</span>.backtracking(nums,used,path,result)</span><br><span class="line">            used[i] = <span class="literal">False</span></span><br><span class="line">            path.pop()</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">permuteUnique</span>(<span class="params">self, nums: <span class="type">List</span>[<span class="built_in">int</span>]</span>) -&gt; <span class="type">List</span>[<span class="type">List</span>[<span class="built_in">int</span>]]:</span><br><span class="line">        result = []</span><br><span class="line">        used = [<span class="literal">False</span>] * <span class="built_in">len</span>(nums)</span><br><span class="line">        <span class="variable language_">self</span>.backtracking(nums,used,[],result)</span><br><span class="line">        <span class="keyword">return</span> result</span><br></pre></td></tr></table></figure>
+<p>主要是在排列的基础上加了一个set来实现树层去重，注意<code>set</code>是在每一层递归开始时创建的,就是结合上道题的排列，和上上道题的去重。<hr><br>实际上一个uesd也行，用之前的排序加<code>used[i]</code>和<code>used[i-1]</code>判断是否相同来实现树层去重</p>
+<hr>
+感觉先自己做再看视频就激情四射了
     </div>
   </article>
   <div class="ccbyncsa">
@@ -275,11 +266,11 @@ article: http://ogp.me/ns/article#">
                     </div>
                     <div class="title">
                         <p>标题</p>
-                        <p>代码随想录-day25</p>
+                        <p>代码随想录-day27</p>
                     </div>
                         <div class="publish">
                             <p>发布于</p>
-                            <p>2026-01-11</p>
+                            <p>2026-01-12</p>
                         </div>
                     <div class="ccbyncsa-icon">
                         <p>授权协议</p>
@@ -301,14 +292,9 @@ article: http://ogp.me/ns/article#">
     
       <div class="post-prev">
         <span class="nav-label">上一篇</span>
-        <a href="/2026/01/10/%E4%BB%A3%E7%A0%81%E9%9A%8F%E6%83%B3%E5%BD%95-day24/">代码随想录-day24</a>
+        <a href="/2026/01/11/%E4%BB%A3%E7%A0%81%E9%9A%8F%E6%83%B3%E5%BD%95-day25/">代码随想录-day25</a>
       </div>
     
-    
-      <div class="post-next">
-        <span class="nav-label">下一篇</span>
-        <a href="/2026/01/12/%E4%BB%A3%E7%A0%81%E9%9A%8F%E6%83%B3%E5%BD%95-day27/">代码随想录-day27</a>
-      </div>
     
   </nav>
   
@@ -383,7 +369,7 @@ article: http://ogp.me/ns/article#">
 
     </div>
     <div class="sidebar-bg">
-        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%A4%8D%E5%8E%9FIP%E5%9C%B0%E5%9D%80"><span class="toc-number">1.</span> <span class="toc-text">复原IP地址</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%AD%90%E9%9B%86"><span class="toc-number">2.</span> <span class="toc-text">子集</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%AD%90%E9%9B%86II"><span class="toc-number">3.</span> <span class="toc-text">子集II</span></a></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E9%9D%9E%E9%80%92%E5%87%8F%E5%AD%90%E5%BA%8F%E5%88%97"><span class="toc-number">1.</span> <span class="toc-text">非递减子序列</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%85%A8%E6%8E%92%E5%88%97"><span class="toc-number">2.</span> <span class="toc-text">全排列</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%85%A8%E6%8E%92%E5%88%97-II"><span class="toc-number">3.</span> <span class="toc-text">全排列 II</span></a></li></ol>
     </div>
     <div class="sidebar-bg">
         <div class="card-tags">
