@@ -209,7 +209,7 @@ article: http://ogp.me/ns/article#">
       
       
         <span class="post-updated">
-          最后更新于 <time datetime="2026-01-13T15:06:40.262Z">2026-01-13</time>
+          最后更新于 <time datetime="2026-01-14T13:04:56.550Z">2026-01-14</time>
         </span>
       
       <span style="margin-left:10px;">👁<span id="busuanzi_value_page_pv"></span></span>
@@ -274,8 +274,8 @@ article: http://ogp.me/ns/article#">
 <li>输入：nums &#x3D; [5,4,-1,7,8]</li>
 <li>输出：23<br></li>
 </ul>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span>:</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">maxSubArray</span>(<span class="params">self, nums: <span class="type">List</span>[<span class="built_in">int</span>]</span>) -&gt; <span class="built_in">int</span>:</span><br><span class="line">        <span class="keyword">if</span> <span class="built_in">len</span>(nums) == <span class="number">1</span>:</span><br><span class="line">            <span class="keyword">return</span> nums[<span class="number">0</span>]</span><br><span class="line">        result = <span class="built_in">float</span>(<span class="string">&#x27;-inf&#x27;</span>)</span><br><span class="line"><span class="comment"># </span></span><br></pre></td></tr></table></figure>
-<p>今天状态不好，明天继续</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span>:</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">maxSubArray</span>(<span class="params">self, nums: <span class="type">List</span>[<span class="built_in">int</span>]</span>) -&gt; <span class="built_in">int</span>:</span><br><span class="line">        result = <span class="built_in">float</span>(<span class="string">&#x27;-inf&#x27;</span>)</span><br><span class="line">        count = <span class="number">0</span></span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> nums:</span><br><span class="line">            count += i</span><br><span class="line">            <span class="keyword">if</span> count &gt; result:</span><br><span class="line">                result = count</span><br><span class="line">            <span class="keyword">if</span> count &lt; <span class="number">0</span>:</span><br><span class="line">                count = <span class="number">0</span></span><br><span class="line">        <span class="keyword">return</span> result</span><br></pre></td></tr></table></figure>
+<p>局部最大，如果局部最大为负数，那么就从下一个数开始计算（用置零来实现）<br>把昨天的补了，今天的暂时不行，明天考英语</p>
 
     </div>
   </article>
@@ -319,6 +319,11 @@ article: http://ogp.me/ns/article#">
         <a href="/2026/01/12/%E4%BB%A3%E7%A0%81%E9%9A%8F%E6%83%B3%E5%BD%95-day27/">代码随想录-day27</a>
       </div>
     
+    
+      <div class="post-next">
+        <span class="nav-label">下一篇</span>
+        <a href="/2026/01/14/%E4%BB%A3%E7%A0%81%E9%9A%8F%E6%83%B3%E5%BD%95-day29/">代码随想录-day29</a>
+      </div>
     
   </nav>
   
@@ -408,7 +413,7 @@ article: http://ogp.me/ns/article#">
                 <div class="category-item">
                     <a href="/categories/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0%E2%80%94%E2%80%94%E8%B4%AA%E5%BF%83/" aria-label="分类: 算法学习——贪心">
                         算法学习——贪心
-                        <span>(1)</span>
+                        <span>(2)</span>
                     </a>
                 </div>
             

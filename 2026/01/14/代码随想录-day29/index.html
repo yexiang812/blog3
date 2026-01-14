@@ -7,12 +7,12 @@ article: http://ogp.me/ns/article#">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="keywords" content="Leetcode,机器学习,生活">
 
-<title>代码随想录-day25 || yeye 想变强</title>
+<title>代码随想录-day29 || yeye 想变强</title>
 <link rel="icon" href="http://example.comimages/wang.icon" type="image/x-icon">
 <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
-<meta property="og:title" content="代码随想录-day25">
+<meta property="og:title" content="代码随想录-day29">
 <meta property="og:type" content="website">
-<meta property="og:url" content="http://example.com/2026/01/11/%E4%BB%A3%E7%A0%81%E9%9A%8F%E6%83%B3%E5%BD%95-day25/index.html">
+<meta property="og:url" content="http://example.com/2026/01/14/%E4%BB%A3%E7%A0%81%E9%9A%8F%E6%83%B3%E5%BD%95-day29/index.html">
 <meta property="og:image" content="">
 <meta property="og:site_name" content="yeye 想变强">
 <meta property="og:author" content="yeyeyefirst">
@@ -20,7 +20,7 @@ article: http://ogp.me/ns/article#">
   
   
   
-  <meta name="description" content="复原IP地址93.复原IP地址有效IP地址正好由四个整数（每个整数位于0到255之间组成，且不能含有前导0），整数之间用‘.’分隔。例如：”0.1.2.201”和“192.168.1.1”是有效IP地址，但是“0.011.255.245”、”192.168.1.312”和“192.168@1.1“是无效IP地">
+  <meta name="description" content="买卖股票的最佳时机II买卖股票的最佳时机II给你一个整数数组prices，其中prices[i]表示某支股票第i天的价格。在每一天，你可以决定是否购买和&amp;#x2F;或出售股票。你在任何时候最多只能持有一股股票。你也可以先购买，然后在同一天出售。返回你能获得的最大利润。">
 
 
 <script src="/js/wang.js"></script>
@@ -198,69 +198,27 @@ article: http://ogp.me/ns/article#">
 </aside>
 <div class="post-container">
   <article class="post">
-    <h1 class="post-title">代码随想录-day25</h1>
+    <h1 class="post-title">代码随想录-day29</h1>
 
     <div class="post-meta">
-      <span class="post-date">发布于 <time datetime="2026-01-11T12:27:16.000Z">2026-01-11</time></span>
+      <span class="post-date">发布于 <time datetime="2026-01-14T13:15:23.000Z">2026-01-14</time></span>
       
         <span class="post-categories">
-          分类：<a class="category-link" href="/categories/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0%E2%80%94%E2%80%94%E5%9B%9E%E6%BA%AF/">算法学习——回溯</a>
+          分类：<a class="category-link" href="/categories/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0%E2%80%94%E2%80%94%E8%B4%AA%E5%BF%83/">算法学习——贪心</a>
         </span>
       
       
         <span class="post-updated">
-          最后更新于 <time datetime="2026-01-11T13:39:33.010Z">2026-01-11</time>
+          最后更新于 <time datetime="2026-01-14T13:16:30.601Z">2026-01-14</time>
         </span>
       
       <span style="margin-left:10px;">👁<span id="busuanzi_value_page_pv"></span></span>
     </div>
     <div class="post-content">
-      <h1 id="复原IP地址"><a href="#复原IP地址" class="headerlink" title="复原IP地址"></a>复原IP地址</h1><p><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/restore-ip-addresses/description/">93. 复原 IP 地址</a></p>
+      <h1 id="买卖股票的最佳时机-II"><a href="#买卖股票的最佳时机-II" class="headerlink" title="买卖股票的最佳时机 II"></a>买卖股票的最佳时机 II</h1><p><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/best-time-to-buy-and-sell-stock-ii/">买卖股票的最佳时机 II</a></p>
 <blockquote>
-<p>有效 IP 地址 正好由四个整数（每个整数位于 0 到 255 之间组成，且不能含有前导 0），整数之间用 ‘.’ 分隔。</p>
+<p>给你一个整数数组 prices ，其中 prices[i] 表示某支股票第 i 天的价格。<br>在每一天，你可以决定是否购买和&#x2F;或出售股票。你在任何时候 最多 只能持有 一股 股票。你也可以先购买，然后在 同一天 出售。<br>返回 你能获得的 最大 利润 。</p>
 </blockquote>
-<ul>
-<li>例如：”0.1.2.201” 和 “192.168.1.1” 是 有效 IP 地址，但是 “0.011.255.245”、”192.168.1.312” 和 “<a href="mailto:&#x31;&#57;&#x32;&#46;&#x31;&#x36;&#x38;&#64;&#x31;&#46;&#49;">192.168@1.1</a>“ 是 无效 IP 地址。<br></li>
-</ul>
-<blockquote>
-<p>给定一个只包含数字的字符串 s ，用以表示一个 IP 地址，返回所有可能的有效 IP 地址，这些地址可以通过在 s 中插入 ‘.’ 来形成。你 不能 重新排序或删除 s 中的任何数字。你可以按 任何 顺序返回答案。</p>
-</blockquote>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span>:</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">isok</span>(<span class="params">self,s,s_index,e_index</span>):</span><br><span class="line">        <span class="keyword">if</span> s_index &gt; e_index:</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">False</span></span><br><span class="line">        <span class="keyword">if</span> s[s_index] == <span class="string">&#x27;0&#x27;</span> <span class="keyword">and</span> s_index != e_index:</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">False</span></span><br><span class="line">        <span class="keyword">if</span> <span class="built_in">int</span>(s[s_index:e_index+<span class="number">1</span>]) &gt; <span class="number">255</span>:</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">False</span></span><br><span class="line">        <span class="keyword">return</span> <span class="literal">True</span></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">backtracking</span>(<span class="params">self,s,index,count,cur,result</span>):</span><br><span class="line">        <span class="keyword">if</span> count == <span class="number">3</span> <span class="keyword">and</span> <span class="variable language_">self</span>.isok(s,index,<span class="built_in">len</span>(s)-<span class="number">1</span>):</span><br><span class="line">            cur += s[index:]</span><br><span class="line">            result.append(cur)</span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(index,<span class="built_in">len</span>(s)):</span><br><span class="line">            <span class="keyword">if</span> <span class="variable language_">self</span>.isok(s,index,i):</span><br><span class="line">                temp = s[index:i+<span class="number">1</span>]</span><br><span class="line">                count += <span class="number">1</span></span><br><span class="line">                <span class="variable language_">self</span>.backtracking(s,i+<span class="number">1</span>,count,cur+temp+<span class="string">&#x27;.&#x27;</span>,result) <span class="comment">#隐式回溯，cur本身不变</span></span><br><span class="line">                count -=<span class="number">1</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">restoreIpAddresses</span>(<span class="params">self, s: <span class="built_in">str</span></span>) -&gt; <span class="type">List</span>[<span class="built_in">str</span>]:</span><br><span class="line">        result = []</span><br><span class="line">        <span class="variable language_">self</span>.backtracking(s,<span class="number">0</span>,<span class="number">0</span>,<span class="string">&#x27;&#x27;</span>,result)</span><br><span class="line">        <span class="keyword">return</span> result</span><br></pre></td></tr></table></figure>
-<p>不能直接用s，字符串不可变还是要设置个变量接住</p>
-<h1 id="子集"><a href="#子集" class="headerlink" title="子集"></a>子集</h1><p><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/subsets/description/">78. 子集</a></p>
-<blockquote>
-<p>给你一个整数数组 nums ，数组中的元素 互不相同 。返回该数组所有可能的子集（幂集）。</p>
-</blockquote>
-<ul>
-<li>解集 不能 包含重复的子集。你可以按 任意顺序 返回解集。</li>
-</ul>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span>:</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">backtracking</span>(<span class="params">self,nums,index,path,result</span>):</span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(index,<span class="built_in">len</span>(nums)):</span><br><span class="line">            path.append(nums[i])</span><br><span class="line">            result.append(path[:])</span><br><span class="line">            <span class="variable language_">self</span>.backtracking(nums,i+<span class="number">1</span>,path,result)</span><br><span class="line">            path.pop()</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">subsets</span>(<span class="params">self, nums: <span class="type">List</span>[<span class="built_in">int</span>]</span>) -&gt; <span class="type">List</span>[<span class="type">List</span>[<span class="built_in">int</span>]]:</span><br><span class="line">        result = [[]]</span><br><span class="line">        <span class="variable language_">self</span>.backtracking(nums,<span class="number">0</span>,[],result)</span><br><span class="line">        <span class="keyword">return</span> result</span><br></pre></td></tr></table></figure>
-<p>真别说，连剪枝都不要，但是这道题每个节点都要记录一下</p>
-<h1 id="子集II"><a href="#子集II" class="headerlink" title="子集II"></a>子集II</h1><p><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/subsets-ii/description/">90. 子集 II</a></p>
-<blockquote>
-<p>给你一个整数数组 nums ，其中可能包含重复元素，请你返回该数组所有可能的子集（幂集）。</p>
-</blockquote>
-<ul>
-<li><p>解集 不能 包含重复的子集。返回的解集中，子集可以按 任意顺序 排列。</p>
-<blockquote>
-<p>示例 1：</p>
-</blockquote>
-</li>
-<li><p>输入：nums &#x3D; [1,2,2]</p>
-</li>
-<li><p>输出：[[],[1],[1,2],[1,2,2],[2],[2,2]]</p>
-<blockquote>
-<p>示例 2：</p>
-</blockquote>
-</li>
-<li><p>输入：nums &#x3D; [0]</p>
-</li>
-<li><p>输出：[[],[0]]</p>
-</li>
-</ul>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span>:</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">backtracking</span>(<span class="params">self,nums,index,path,result,used</span>):</span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(index,<span class="built_in">len</span>(nums)):</span><br><span class="line">            <span class="keyword">if</span> i&gt;index <span class="keyword">and</span> nums[i]==nums[i-<span class="number">1</span>] <span class="keyword">and</span> <span class="keyword">not</span> used[i-<span class="number">1</span>]:</span><br><span class="line">                <span class="keyword">continue</span> </span><br><span class="line">            path.append(nums[i])</span><br><span class="line">            used[i] = <span class="literal">True</span></span><br><span class="line">            result.append(path[:])</span><br><span class="line">            <span class="variable language_">self</span>.backtracking(nums,i+<span class="number">1</span>,path,result,used)</span><br><span class="line">            path.pop()</span><br><span class="line">            used[i] = <span class="literal">False</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">subsetsWithDup</span>(<span class="params">self, nums: <span class="type">List</span>[<span class="built_in">int</span>]</span>) -&gt; <span class="type">List</span>[<span class="type">List</span>[<span class="built_in">int</span>]]:</span><br><span class="line">        result = [[]]</span><br><span class="line">        nums.sort()</span><br><span class="line">        used = [<span class="literal">False</span>]*<span class="built_in">len</span>(nums)</span><br><span class="line">        <span class="variable language_">self</span>.backtracking(nums,<span class="number">0</span>,[],result,used)</span><br><span class="line">        <span class="keyword">return</span> result</span><br></pre></td></tr></table></figure>
-<p>就是在上道题的基础上，加一个去重的操作，用昨天的树层去重的方法，添加一个<code>uesd</code>来表示是否被使用</p>
-<p>怎么说，终于赶上来，之前每天都要在截止前，现在也可以按时完成了，感觉回溯学的不如之前的，可能是在期末考，总是把这个当负担，希望后面考完状态可以调整过来。</p>
 
     </div>
   </article>
@@ -275,11 +233,11 @@ article: http://ogp.me/ns/article#">
                     </div>
                     <div class="title">
                         <p>标题</p>
-                        <p>代码随想录-day25</p>
+                        <p>代码随想录-day29</p>
                     </div>
                         <div class="publish">
                             <p>发布于</p>
-                            <p>2026-01-11</p>
+                            <p>2026-01-14</p>
                         </div>
                     <div class="ccbyncsa-icon">
                         <p>授权协议</p>
@@ -301,14 +259,9 @@ article: http://ogp.me/ns/article#">
     
       <div class="post-prev">
         <span class="nav-label">上一篇</span>
-        <a href="/2026/01/10/%E4%BB%A3%E7%A0%81%E9%9A%8F%E6%83%B3%E5%BD%95-day24/">代码随想录-day24</a>
+        <a href="/2026/01/13/%E4%BB%A3%E7%A0%81%E9%9A%8F%E6%83%B3%E5%BD%95-day28/">代码随想录-day-28</a>
       </div>
     
-    
-      <div class="post-next">
-        <span class="nav-label">下一篇</span>
-        <a href="/2026/01/12/%E4%BB%A3%E7%A0%81%E9%9A%8F%E6%83%B3%E5%BD%95-day27/">代码随想录-day27</a>
-      </div>
     
   </nav>
   
@@ -383,7 +336,7 @@ article: http://ogp.me/ns/article#">
 
     </div>
     <div class="sidebar-bg">
-        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%A4%8D%E5%8E%9FIP%E5%9C%B0%E5%9D%80"><span class="toc-number">1.</span> <span class="toc-text">复原IP地址</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%AD%90%E9%9B%86"><span class="toc-number">2.</span> <span class="toc-text">子集</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%AD%90%E9%9B%86II"><span class="toc-number">3.</span> <span class="toc-text">子集II</span></a></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%B9%B0%E5%8D%96%E8%82%A1%E7%A5%A8%E7%9A%84%E6%9C%80%E4%BD%B3%E6%97%B6%E6%9C%BA-II"><span class="toc-number">1.</span> <span class="toc-text">买卖股票的最佳时机 II</span></a></li></ol>
     </div>
     <div class="sidebar-bg">
         <div class="card-tags">
@@ -396,9 +349,9 @@ article: http://ogp.me/ns/article#">
         <div class="categories-list">
             
                 <div class="category-item">
-                    <a href="/categories/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0%E2%80%94%E2%80%94%E5%9B%9E%E6%BA%AF/" aria-label="分类: 算法学习——回溯">
-                        算法学习——回溯
-                        <span>(4)</span>
+                    <a href="/categories/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0%E2%80%94%E2%80%94%E8%B4%AA%E5%BF%83/" aria-label="分类: 算法学习——贪心">
+                        算法学习——贪心
+                        <span>(2)</span>
                     </a>
                 </div>
             
