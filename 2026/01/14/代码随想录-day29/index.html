@@ -20,7 +20,7 @@ article: http://ogp.me/ns/article#">
   
   
   
-  <meta name="description" content="买卖股票的最佳时机II买卖股票的最佳时机II给你一个整数数组prices，其中prices[i]表示某支股票第i天的价格。在每一天，你可以决定是否购买和&amp;#x2F;或出售股票。你在任何时候最多只能持有一股股票。你也可以先购买，然后在同一天出售。返回你能获得的最大利润。">
+  <meta name="description" content="买卖股票的最佳时机II买卖股票的最佳时机II给你一个整数数组prices，其中prices[i]表示某支股票第i天的价格。在每一天，你可以决定是否购买和&amp;#x2F;或出售股票。你在任何时候最多只能持有一股股票。你也可以先购买，然后在同一天出售。返回你能获得的最大利润。示例1：输入：prices&amp;#x3D;[7">
 
 
 <script src="/js/wang.js"></script>
@@ -209,16 +209,57 @@ article: http://ogp.me/ns/article#">
       
       
         <span class="post-updated">
-          最后更新于 <time datetime="2026-01-14T13:16:30.601Z">2026-01-14</time>
+          最后更新于 <time datetime="2026-01-15T14:27:22.502Z">2026-01-15</time>
         </span>
       
       <span style="margin-left:10px;">👁<span id="busuanzi_value_page_pv"></span></span>
     </div>
     <div class="post-content">
-      <h1 id="买卖股票的最佳时机-II"><a href="#买卖股票的最佳时机-II" class="headerlink" title="买卖股票的最佳时机 II"></a>买卖股票的最佳时机 II</h1><p><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/best-time-to-buy-and-sell-stock-ii/">买卖股票的最佳时机 II</a></p>
+      <h1 id="买卖股票的最佳时机-II"><a href="#买卖股票的最佳时机-II" class="headerlink" title="买卖股票的最佳时机 II"></a>买卖股票的最佳时机 II</h1><p><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/best-time-to-buy-and-sell-stock-ii/">买卖股票的最佳时机 II</a><br>给你一个整数数组 prices ，其中 prices[i] 表示某支股票第 i 天的价格。<br><br>在每一天，你可以决定是否购买和&#x2F;或出售股票。你在任何时候 最多 只能持有 一股 股票。你也可以先购买，然后在 同一天 出售。<br><br>返回 你能获得的 最大 利润 。<br></p>
+<p>示例 1：</p>
 <blockquote>
-<p>给你一个整数数组 prices ，其中 prices[i] 表示某支股票第 i 天的价格。<br>在每一天，你可以决定是否购买和&#x2F;或出售股票。你在任何时候 最多 只能持有 一股 股票。你也可以先购买，然后在 同一天 出售。<br>返回 你能获得的 最大 利润 。</p>
+<p>输入：prices &#x3D; [7,1,5,3,6,4]<br><br> 输出：7<br><br> 解释：在第 2 天（股票价格 &#x3D; 1）的时候买入，在第 3 天（股票价格 &#x3D; 5）的时候卖出, 这笔交易所能获得利润 &#x3D; 5 - 1 &#x3D; 4。<br><br>随后，在第 4 天（股票价格 &#x3D; 3）的时候买入，在第 5 天（股票价格 &#x3D; 6）的时候卖出, 这笔交易所能获得利润 &#x3D; 6 - 3 &#x3D; 3。<br><br>最大总利润为 4 + 3 &#x3D; 7 。</p>
 </blockquote>
+<p>示例 2：</p>
+<blockquote>
+<p>输入：prices &#x3D; [1,2,3,4,5]<br><br>输出：4<br><br>解释：在第 1 天（股票价格 &#x3D; 1）的时候买入，在第 5 天 （股票价格 &#x3D; 5）的时候卖出, 这笔交易所能获得利润 &#x3D; 5 - 1 &#x3D; 4。<br><br>最大总利润为 4 。<br></p>
+</blockquote>
+<p>示例 3：</p>
+<blockquote>
+<p>输入：prices &#x3D; [7,6,4,3,1]<br><br>输出：0<br><br>解释：在这种情况下, 交易无法获得正利润，所以不参与交易可以获得最大利润，最大利润为 0。<br></p>
+</blockquote>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span>:</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">maxProfit</span>(<span class="params">self, prices: <span class="type">List</span>[<span class="built_in">int</span>]</span>) -&gt; <span class="built_in">int</span>:</span><br><span class="line">        result = []</span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">1</span>,<span class="built_in">len</span>(prices)):</span><br><span class="line">            <span class="keyword">if</span> prices[i] -prices[i-<span class="number">1</span>] &gt; <span class="number">0</span>:</span><br><span class="line">                result.append(prices[i] -prices[i-<span class="number">1</span>])</span><br><span class="line">        <span class="keyword">return</span> <span class="built_in">sum</span>(result)</span><br></pre></td></tr></table></figure>
+<p>贪心算法，局部最优：收集每天的正利润，全局最优：求得最大利润。</p>
+<h1 id="跳跃游戏"><a href="#跳跃游戏" class="headerlink" title="跳跃游戏"></a>跳跃游戏</h1><p><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/jump-game/">跳跃游戏</a><br>给你一个非负整数数组 nums ，你最初位于数组的 第一个下标 。数组中的每个元素代表你在该位置可以跳跃的最大长度。<br><br>判断你是否能够到达最后一个下标，如果可以，返回 true ；否则，返回 false 。<br>   </p>
+<p>示例 1：</p>
+<blockquote>
+<p>输入：nums &#x3D; [2,3,1,1,4]<br><br>输出：true<br><br>解释：可以先跳 1 步，从下标 0 到达下标 1, 然后再从下标 1 跳 3 步到达最后一个下标。<br></p>
+</blockquote>
+<p>示例 2：</p>
+<blockquote>
+<p>输入：nums &#x3D; [3,2,1,0,4]<br><br>输出：false<br><br>解释：无论怎样，总会到达下标为 3 的位置。但该下标的最大跳跃长度是 0 ， 所以永远不可能到达最后一个下标。<br></p>
+</blockquote>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span>:</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">canJump</span>(<span class="params">self, nums: <span class="type">List</span>[<span class="built_in">int</span>]</span>) -&gt; <span class="built_in">bool</span>:</span><br><span class="line">        cover = <span class="number">0</span></span><br><span class="line">        <span class="keyword">if</span> <span class="built_in">len</span>(nums) == <span class="number">1</span>:</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">True</span></span><br><span class="line">        i = <span class="number">0</span></span><br><span class="line">        <span class="keyword">while</span> i &lt;= cover:</span><br><span class="line">            cover = <span class="built_in">max</span>(nums[i]+i,cover)</span><br><span class="line">            <span class="keyword">if</span> cover &gt;= <span class="built_in">len</span>(nums)-<span class="number">1</span>:</span><br><span class="line">                <span class="keyword">return</span> <span class="literal">True</span></span><br><span class="line">            i += <span class="number">1</span></span><br><span class="line">        <span class="keyword">return</span> <span class="literal">False</span> </span><br></pre></td></tr></table></figure>
+<ul>
+<li>i 只能在覆盖范围内移动，所以i &lt;&#x3D; cover</li>
+<li>每次更新覆盖范围cover &#x3D; max(nums[i]+i,cover)</li>
+</ul>
+<h1 id="跳跃游戏-II"><a href="#跳跃游戏-II" class="headerlink" title="跳跃游戏 II"></a>跳跃游戏 II</h1><p><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/jump-game-ii/">跳跃游戏 II</a><br>给你一个非负整数数组 nums ，你最初位于数组的 第一个下标 。数组中的每个元素代表你在该位置可以跳跃的最大长度。<br><br>你的目标是使用最少的跳跃次数到达数组的最后一个下标。<br><br>假设你总是可以到达数组的最后一个下标。<br></p>
+<p>示例 1：</p>
+<blockquote>
+<p>输入：nums &#x3D; [2,3,1,1,4]<br><br>输出：2<br><br>解释：跳到最后一个下标需要 2 步。<br><br>第一步，从下标 0 跳到下标 1, 跳 1 步。<br><br>第二步，从下标 1 跳到下标 4, 跳 3 步。<br></p>
+</blockquote>
+<p>示例 2：</p>
+<blockquote>
+<p>输入：nums &#x3D; [2,3,0,1,4]<br><br>输出：2<br></p>
+</blockquote>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span>:</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">jump</span>(<span class="params">self, nums: <span class="type">List</span>[<span class="built_in">int</span>]</span>) -&gt; <span class="built_in">int</span>:</span><br><span class="line">        cur = <span class="number">0</span></span><br><span class="line">        <span class="built_in">next</span> = <span class="number">0</span></span><br><span class="line">        result = <span class="number">0</span></span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="built_in">len</span>(nums)-<span class="number">1</span>):</span><br><span class="line">            <span class="built_in">next</span> = <span class="built_in">max</span>(i+nums[i],<span class="built_in">next</span>)</span><br><span class="line">            <span class="keyword">if</span> i == cur:</span><br><span class="line">                result+=<span class="number">1</span></span><br><span class="line">                cur = <span class="built_in">next</span></span><br><span class="line">                <span class="keyword">if</span> <span class="built_in">next</span> &gt;= <span class="built_in">len</span>(nums)-<span class="number">1</span> :</span><br><span class="line">                    <span class="keyword">break</span></span><br><span class="line">        <span class="keyword">return</span> result</span><br></pre></td></tr></table></figure>
+<ul>
+<li>cur表示当前覆盖范围的边界</li>
+<li>next表示下一次跳跃能到达的最远位置</li>
+<li>当i到达cur时，说明需要进行下一次跳跃，更新cur为next</li>
+<li>遍历时只需要遍历到len(nums)-2，因为到达最后一个位置不需要跳跃</li>
+</ul>
 
     </div>
   </article>
@@ -336,7 +377,7 @@ article: http://ogp.me/ns/article#">
 
     </div>
     <div class="sidebar-bg">
-        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%B9%B0%E5%8D%96%E8%82%A1%E7%A5%A8%E7%9A%84%E6%9C%80%E4%BD%B3%E6%97%B6%E6%9C%BA-II"><span class="toc-number">1.</span> <span class="toc-text">买卖股票的最佳时机 II</span></a></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%B9%B0%E5%8D%96%E8%82%A1%E7%A5%A8%E7%9A%84%E6%9C%80%E4%BD%B3%E6%97%B6%E6%9C%BA-II"><span class="toc-number">1.</span> <span class="toc-text">买卖股票的最佳时机 II</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E8%B7%B3%E8%B7%83%E6%B8%B8%E6%88%8F"><span class="toc-number">2.</span> <span class="toc-text">跳跃游戏</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E8%B7%B3%E8%B7%83%E6%B8%B8%E6%88%8F-II"><span class="toc-number">3.</span> <span class="toc-text">跳跃游戏 II</span></a></li></ol>
     </div>
     <div class="sidebar-bg">
         <div class="card-tags">
