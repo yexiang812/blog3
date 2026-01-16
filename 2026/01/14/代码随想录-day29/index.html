@@ -209,7 +209,7 @@ article: http://ogp.me/ns/article#">
       
       
         <span class="post-updated">
-          最后更新于 <time datetime="2026-01-15T14:46:04.334Z">2026-01-15</time>
+          最后更新于 <time datetime="2026-01-16T11:49:08.512Z">2026-01-16</time>
         </span>
       
       <span style="margin-left:10px;">👁<span id="busuanzi_value_page_pv"></span></span>
@@ -260,6 +260,21 @@ article: http://ogp.me/ns/article#">
 <li>当i到达cur时，说明需要进行下一次跳跃，更新cur为next</li>
 <li>遍历时只需要遍历到len(nums)-2，因为到达最后一个位置不需要跳跃</li>
 </ul>
+<h1 id="k次取反后最大化的数组和"><a href="#k次取反后最大化的数组和" class="headerlink" title="k次取反后最大化的数组和"></a>k次取反后最大化的数组和</h1><p><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/maximize-sum-of-array-after-k-negations/">K 次取反后最大化的数组和</a><br>给你一个整数数组 nums 和一个整数 k ，按以下方法修改该数组：<br><br>选择某个下标 i 并将 nums[i] 替换为 -nums[i] 。<br><br>重复这个过程恰好 k 次。可以多次选择同一个下标 i 。<br><br>以这种方式修改数组后，返回数组 可能的最大和 。<br></p>
+<p>示例 1：</p>
+<blockquote>
+<p>输入：nums &#x3D; [4,2,3], k &#x3D; 1<br><br>输出：5<br><br>解释：选择下标 1 ，nums 变为 [4,-2,3] 。<br></p>
+</blockquote>
+<p>示例 2：</p>
+<blockquote>
+<p>输入：nums &#x3D; [3,-1,0,2], k &#x3D; 3<br><br>输出：6<br><br>解释：选择下标 (1, 2, 2) ，nums 变为 [3,1,0,2] 。<br></p>
+</blockquote>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span>:</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">largestSumAfterKNegations</span>(<span class="params">self, nums: <span class="type">List</span>[<span class="built_in">int</span>], k: <span class="built_in">int</span></span>) -&gt; <span class="built_in">int</span>:</span><br><span class="line">        nums.sort(key = <span class="keyword">lambda</span> x:<span class="built_in">abs</span>(x),reverse=<span class="literal">True</span>)</span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="built_in">len</span>(nums)):</span><br><span class="line">            <span class="keyword">if</span> k &gt; <span class="number">0</span> <span class="keyword">and</span> nums[i] &lt; <span class="number">0</span>:</span><br><span class="line">                nums[i] *= -<span class="number">1</span></span><br><span class="line">                k -=  <span class="number">1</span></span><br><span class="line">        <span class="keyword">if</span> k % <span class="number">2</span> == <span class="number">1</span>:</span><br><span class="line">            nums[-<span class="number">1</span>] *= -<span class="number">1</span></span><br><span class="line">        <span class="keyword">return</span> <span class="built_in">sum</span>(nums)</span><br></pre></td></tr></table></figure>
+<ul>
+<li>先将数组按绝对值从大到小排序，这样可以优先处理绝对值大的负数</li>
+<li>遍历数组，将负数变为正数，直到k用完或者没有负数为止</li>
+<li>如果k还有剩余且为奇数，则将绝对值最小的数变为负数</li>
+</ul>
 
     </div>
   </article>
@@ -303,6 +318,11 @@ article: http://ogp.me/ns/article#">
         <a href="/2026/01/13/%E4%BB%A3%E7%A0%81%E9%9A%8F%E6%83%B3%E5%BD%95-day28/">代码随想录-day-28</a>
       </div>
     
+    
+      <div class="post-next">
+        <span class="nav-label">下一篇</span>
+        <a href="/2026/01/16/%E4%BB%A3%E7%A0%81%E9%9A%8F%E6%83%B3%E5%BD%95-day30/">代码随想录-day30</a>
+      </div>
     
   </nav>
   
@@ -377,7 +397,7 @@ article: http://ogp.me/ns/article#">
 
     </div>
     <div class="sidebar-bg">
-        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%B9%B0%E5%8D%96%E8%82%A1%E7%A5%A8%E7%9A%84%E6%9C%80%E4%BD%B3%E6%97%B6%E6%9C%BA-II"><span class="toc-number">1.</span> <span class="toc-text">买卖股票的最佳时机 II</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E8%B7%B3%E8%B7%83%E6%B8%B8%E6%88%8F"><span class="toc-number">2.</span> <span class="toc-text">跳跃游戏</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E8%B7%B3%E8%B7%83%E6%B8%B8%E6%88%8F-II"><span class="toc-number">3.</span> <span class="toc-text">跳跃游戏 II</span></a></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%B9%B0%E5%8D%96%E8%82%A1%E7%A5%A8%E7%9A%84%E6%9C%80%E4%BD%B3%E6%97%B6%E6%9C%BA-II"><span class="toc-number">1.</span> <span class="toc-text">买卖股票的最佳时机 II</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E8%B7%B3%E8%B7%83%E6%B8%B8%E6%88%8F"><span class="toc-number">2.</span> <span class="toc-text">跳跃游戏</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E8%B7%B3%E8%B7%83%E6%B8%B8%E6%88%8F-II"><span class="toc-number">3.</span> <span class="toc-text">跳跃游戏 II</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#k%E6%AC%A1%E5%8F%96%E5%8F%8D%E5%90%8E%E6%9C%80%E5%A4%A7%E5%8C%96%E7%9A%84%E6%95%B0%E7%BB%84%E5%92%8C"><span class="toc-number">4.</span> <span class="toc-text">k次取反后最大化的数组和</span></a></li></ol>
     </div>
     <div class="sidebar-bg">
         <div class="card-tags">
@@ -392,7 +412,7 @@ article: http://ogp.me/ns/article#">
                 <div class="category-item">
                     <a href="/categories/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0%E2%80%94%E2%80%94%E8%B4%AA%E5%BF%83/" aria-label="分类: 算法学习——贪心">
                         算法学习——贪心
-                        <span>(2)</span>
+                        <span>(3)</span>
                     </a>
                 </div>
             

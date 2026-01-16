@@ -205,7 +205,7 @@ article: http://ogp.me/ns/article#">
       
       
         <span class="post-updated">
-          最后更新于 <time datetime="2025-12-26T13:58:57.459Z">2025-12-26</time>
+          最后更新于 <time datetime="2026-01-16T13:44:28.138Z">2026-01-16</time>
         </span>
       
       <span style="margin-left:10px;">👁<span id="busuanzi_value_page_pv"></span></span>
@@ -216,6 +216,79 @@ article: http://ogp.me/ns/article#">
 <h1 id="排序"><a href="#排序" class="headerlink" title="排序"></a>排序</h1><ol>
 <li>python中排序可以用<code>list.sort()</code>或者<code>sorted(list)</code>，前者是在原数组上排序，后者是返回一个新的排序后的数组。</li>
 <li>排序默认是升序排序，如果要降序排序可以用<code>list.sort(reverse=True)</code>或者<code>sorted(list, reverse=True)</code>。</li>
+</ol>
+<h2 id="Python-列表自定义排序笔记（按多维度排序）"><a href="#Python-列表自定义排序笔记（按多维度排序）" class="headerlink" title="Python 列表自定义排序笔记（按多维度排序）"></a>Python 列表自定义排序笔记（按多维度排序）</h2><h3 id="一、核心功能"><a href="#一、核心功能" class="headerlink" title="一、核心功能"></a>一、核心功能</h3><p>对包含二元组（或长度≥2的列表）的列表，实现「多维度自定义排序」，典型场景：先按第一个元素降序，再按第二个元素升序（可灵活扩展规则）。</p>
+<h3 id="二、关键技术点"><a href="#二、关键技术点" class="headerlink" title="二、关键技术点"></a>二、关键技术点</h3><h4 id="1-排序函数选择"><a href="#1-排序函数选择" class="headerlink" title="1. 排序函数选择"></a>1. 排序函数选择</h4><table>
+<thead>
+<tr>
+<th>函数</th>
+<th>特点</th>
+<th>用法示例</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>list.sort()</code></td>
+<td>原地排序（修改原列表）</td>
+<td><code>people.sort(key=lambda x: (...))</code></td>
+</tr>
+<tr>
+<td><code>sorted()</code></td>
+<td>非原地排序（返回新列表）</td>
+<td><code>new_people = sorted(people, key=...)</code></td>
+</tr>
+</tbody></table>
+<blockquote>
+<p>注：两者的 <code>key</code> 参数用法完全一致，仅是否修改原列表的区别。</p>
+</blockquote>
+<h4 id="2-排序依据：key-lambda-x-维度1-维度2"><a href="#2-排序依据：key-lambda-x-维度1-维度2" class="headerlink" title="2. 排序依据：key=lambda x: (维度1, 维度2, ...)"></a>2. 排序依据：<code>key=lambda x: (维度1, 维度2, ...)</code></h4><ul>
+<li><code>lambda x</code>：匿名函数，<code>x</code> 代表列表中的单个元素（此处为二元组&#x2F;列表，如 <code>(3, &#39;a&#39;)</code>）。</li>
+<li>返回元组 <code>(维度1, 维度2)</code>：排序时优先按「维度1」比较，维度1相等时再按「维度2」比较，依次类推。</li>
+</ul>
+<h5 id="维度排序规则控制"><a href="#维度排序规则控制" class="headerlink" title="维度排序规则控制"></a>维度排序规则控制</h5><table>
+<thead>
+<tr>
+<th>需求</th>
+<th>实现方式</th>
+<th>示例（针对 <code>x[0]</code>）</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>升序（默认）</td>
+<td>直接使用元素本身</td>
+<td><code>x[0]</code></td>
+</tr>
+<tr>
+<td>降序</td>
+<td>对数值类型加负号 <code>-x[n]</code></td>
+<td><code>-x[0]</code></td>
+</tr>
+<tr>
+<td>字符串降序</td>
+<td>用 <code>x[n][::-1]</code> 反转字符串（或结合 <code>reverse</code> 参数）</td>
+<td><code>x[1][::-1]</code></td>
+</tr>
+</tbody></table>
+<h3 id="三、典型案例（先按第1元素降序，再按第2元素升序）"><a href="#三、典型案例（先按第1元素降序，再按第2元素升序）" class="headerlink" title="三、典型案例（先按第1元素降序，再按第2元素升序）"></a>三、典型案例（先按第1元素降序，再按第2元素升序）</h3><h4 id="1-代码实现"><a href="#1-代码实现" class="headerlink" title="1. 代码实现"></a>1. 代码实现</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 原始列表（元素为二元组/列表均可）</span></span><br><span class="line">people = [(<span class="number">2</span>, <span class="string">&#x27;Alice&#x27;</span>), (<span class="number">3</span>, <span class="string">&#x27;Bob&#x27;</span>), (<span class="number">2</span>, <span class="string">&#x27;Charlie&#x27;</span>), (<span class="number">3</span>, <span class="string">&#x27;Anna&#x27;</span>), (<span class="number">1</span>, <span class="string">&#x27;David&#x27;</span>)]</span><br><span class="line"></span><br><span class="line"><span class="comment"># 原地排序（修改原列表）</span></span><br><span class="line">people.sort(key=<span class="keyword">lambda</span> x: (-x[<span class="number">0</span>], x[<span class="number">1</span>]))</span><br><span class="line"></span><br><span class="line"><span class="comment"># 非原地排序（返回新列表，不修改原列表）</span></span><br><span class="line"><span class="comment"># sorted_people = sorted(people, key=lambda x: (-x[0], x[1]))</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(people)</span><br><span class="line"><span class="comment"># 输出：[(3, &#x27;Anna&#x27;), (3, &#x27;Bob&#x27;), (2, &#x27;Alice&#x27;), (2, &#x27;Charlie&#x27;), (1, &#x27;David&#x27;)]</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="2-排序逻辑拆解"><a href="#2-排序逻辑拆解" class="headerlink" title="2. 排序逻辑拆解"></a>2. 排序逻辑拆解</h4><ol>
+<li>第一维度：<code>-x[0]</code>（按第一个元素降序）<ul>
+<li>原始 <code>x[0]</code> 数值：2、3、2、3、1 → 加负号后：-2、-3、-2、-3、-1</li>
+<li>按负号后数值升序排列 → 对应原始数值降序：3 &gt; 2 &gt; 1</li>
+</ul>
+</li>
+<li>第二维度：<code>x[1]</code>（按第二个元素升序）<ul>
+<li>当 <code>x[0]</code> 相等时（如两个 <code>3</code>、两个 <code>2</code>），按字符串自然顺序升序：<code>&#39;Anna&#39; &lt; &#39;Bob&#39;</code>、<code>&#39;Alice&#39; &lt; &#39;Charlie&#39;</code></li>
+</ul>
+</li>
+</ol>
+<h3 id="四、灵活扩展（修改排序规则）"><a href="#四、灵活扩展（修改排序规则）" class="headerlink" title="四、灵活扩展（修改排序规则）"></a>四、灵活扩展（修改排序规则）</h3><h4 id="1-场景1：先按第1元素升序，再按第2元素降序"><a href="#1-场景1：先按第1元素升序，再按第2元素降序" class="headerlink" title="1. 场景1：先按第1元素升序，再按第2元素降序"></a>1. 场景1：先按第1元素升序，再按第2元素降序</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 数值降序用 -x[1]，字符串降序用 x[1][::-1]</span></span><br><span class="line">people.sort(key=<span class="keyword">lambda</span> x: (x[<span class="number">0</span>], x[<span class="number">1</span>][::-<span class="number">1</span>]))</span><br><span class="line"><span class="comment"># 示例输出：[(1, &#x27;David&#x27;), (2, &#x27;Charlie&#x27;), (2, &#x27;Alice&#x27;), (3, &#x27;Bob&#x27;), (3, &#x27;Anna&#x27;)]</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="2-场景2：三维度排序（先按第1元素降序，第2升序，第3降序）"><a href="#2-场景2：三维度排序（先按第1元素降序，第2升序，第3降序）" class="headerlink" title="2. 场景2：三维度排序（先按第1元素降序，第2升序，第3降序）"></a>2. 场景2：三维度排序（先按第1元素降序，第2升序，第3降序）</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 原始列表（三元组）</span></span><br><span class="line">data = [(<span class="number">5</span>, <span class="string">&#x27;a&#x27;</span>, <span class="number">10</span>), (<span class="number">3</span>, <span class="string">&#x27;b&#x27;</span>, <span class="number">20</span>), (<span class="number">5</span>, <span class="string">&#x27;a&#x27;</span>, <span class="number">15</span>), (<span class="number">3</span>, <span class="string">&#x27;a&#x27;</span>, <span class="number">5</span>)]</span><br><span class="line">data.sort(key=<span class="keyword">lambda</span> x: (-x[<span class="number">0</span>], x[<span class="number">1</span>], -x[<span class="number">2</span>]))</span><br><span class="line"><span class="built_in">print</span>(data)</span><br><span class="line"><span class="comment"># 输出：[(5, &#x27;a&#x27;, 15), (5, &#x27;a&#x27;, 10), (3, &#x27;a&#x27;, 5), (3, &#x27;b&#x27;, 20)]</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="五、注意事项"><a href="#五、注意事项" class="headerlink" title="五、注意事项"></a>五、注意事项</h3><ol>
+<li>元素结构要求：列表中的元素必须是「可通过索引取值的类型」（元组、列表），且索引对应的元素支持比较（如数值、字符串）。</li>
+<li>字符串排序：字符串按 ASCII 码自然排序（大写字母 &lt; 小写字母，如 <code>&#39;A&#39; &lt; &#39;a&#39;</code>），降序需用反转或自定义逻辑。</li>
+<li>非数值类型降序：若第二维度是字符串，想实现降序，除了 <code>x[1][::-1]</code>，也可单独对该维度处理（如结合 <code>sorted</code> 的 <code>reverse=True</code>，但需注意多维度优先级）。</li>
 </ol>
 <h1 id="字符串"><a href="#字符串" class="headerlink" title="字符串"></a>字符串</h1><ol>
 <li>python中字符串是不可变的，所以如果要修改字符串中的某个字符，只能先将字符串转换为列表，修改后再转换为字符串。</li>
@@ -232,6 +305,14 @@ article: http://ogp.me/ns/article#">
 </li>
 <li><p>deque 支持索引访问，比如<code>deque[0]</code>表示获取队列的队头元素，<code>deque[-1]</code>表示获取队列的队尾元素。</p>
 </li>
+</ol>
+<h1 id="无穷大和无穷小"><a href="#无穷大和无穷小" class="headerlink" title="无穷大和无穷小"></a>无穷大和无穷小</h1><ol>
+<li>python中无穷大可以用<code>float(&#39;inf&#39;)</code>表示，无穷小可以用<code>float(&#39;-inf&#39;)</code>表示。</li>
+<li>可以用<code>math.isinf()</code>方法判断一个数是否为无穷大，比如<code>math.isinf(float(&#39;inf&#39;))</code>返回True，<code>math.isinf(10)</code>返回False。</li>
+</ol>
+<h1 id="面向对象的编程"><a href="#面向对象的编程" class="headerlink" title="面向对象的编程"></a>面向对象的编程</h1><ol>
+<li>在类的方法中，第一个参数通常是self，表示类的实例本身，可以通过self访问类的属性和方法。</li>
+<li>在一个函数中用self.变量可以使这个变量成为类的属性，从而可以在类的其他方法中使用。</li>
 </ol>
 
     </div>
@@ -355,7 +436,7 @@ article: http://ogp.me/ns/article#">
 
     </div>
     <div class="sidebar-bg">
-        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%AD%97%E5%85%B8"><span class="toc-number">1.</span> <span class="toc-text">字典</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%95%B0%E7%BB%84"><span class="toc-number">2.</span> <span class="toc-text">数组</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%8E%92%E5%BA%8F"><span class="toc-number">3.</span> <span class="toc-text">排序</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%AD%97%E7%AC%A6%E4%B8%B2"><span class="toc-number">4.</span> <span class="toc-text">字符串</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E8%A1%A8%E8%BE%BE%E5%BC%8F"><span class="toc-number">5.</span> <span class="toc-text">表达式</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E9%98%9F%E5%88%97"><span class="toc-number">6.</span> <span class="toc-text">队列</span></a></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%AD%97%E5%85%B8"><span class="toc-number">1.</span> <span class="toc-text">字典</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%95%B0%E7%BB%84"><span class="toc-number">2.</span> <span class="toc-text">数组</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%8E%92%E5%BA%8F"><span class="toc-number">3.</span> <span class="toc-text">排序</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Python-%E5%88%97%E8%A1%A8%E8%87%AA%E5%AE%9A%E4%B9%89%E6%8E%92%E5%BA%8F%E7%AC%94%E8%AE%B0%EF%BC%88%E6%8C%89%E5%A4%9A%E7%BB%B4%E5%BA%A6%E6%8E%92%E5%BA%8F%EF%BC%89"><span class="toc-number">3.1.</span> <span class="toc-text">Python 列表自定义排序笔记（按多维度排序）</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%80%E3%80%81%E6%A0%B8%E5%BF%83%E5%8A%9F%E8%83%BD"><span class="toc-number">3.1.1.</span> <span class="toc-text">一、核心功能</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BA%8C%E3%80%81%E5%85%B3%E9%94%AE%E6%8A%80%E6%9C%AF%E7%82%B9"><span class="toc-number">3.1.2.</span> <span class="toc-text">二、关键技术点</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-%E6%8E%92%E5%BA%8F%E5%87%BD%E6%95%B0%E9%80%89%E6%8B%A9"><span class="toc-number">3.1.2.1.</span> <span class="toc-text">1. 排序函数选择</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-%E6%8E%92%E5%BA%8F%E4%BE%9D%E6%8D%AE%EF%BC%9Akey-lambda-x-%E7%BB%B4%E5%BA%A61-%E7%BB%B4%E5%BA%A62"><span class="toc-number">3.1.2.2.</span> <span class="toc-text">2. 排序依据：key&#x3D;lambda x: (维度1, 维度2, ...)</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E7%BB%B4%E5%BA%A6%E6%8E%92%E5%BA%8F%E8%A7%84%E5%88%99%E6%8E%A7%E5%88%B6"><span class="toc-number">3.1.2.2.1.</span> <span class="toc-text">维度排序规则控制</span></a></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%89%E3%80%81%E5%85%B8%E5%9E%8B%E6%A1%88%E4%BE%8B%EF%BC%88%E5%85%88%E6%8C%89%E7%AC%AC1%E5%85%83%E7%B4%A0%E9%99%8D%E5%BA%8F%EF%BC%8C%E5%86%8D%E6%8C%89%E7%AC%AC2%E5%85%83%E7%B4%A0%E5%8D%87%E5%BA%8F%EF%BC%89"><span class="toc-number">3.1.3.</span> <span class="toc-text">三、典型案例（先按第1元素降序，再按第2元素升序）</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-%E4%BB%A3%E7%A0%81%E5%AE%9E%E7%8E%B0"><span class="toc-number">3.1.3.1.</span> <span class="toc-text">1. 代码实现</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-%E6%8E%92%E5%BA%8F%E9%80%BB%E8%BE%91%E6%8B%86%E8%A7%A3"><span class="toc-number">3.1.3.2.</span> <span class="toc-text">2. 排序逻辑拆解</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9B%9B%E3%80%81%E7%81%B5%E6%B4%BB%E6%89%A9%E5%B1%95%EF%BC%88%E4%BF%AE%E6%94%B9%E6%8E%92%E5%BA%8F%E8%A7%84%E5%88%99%EF%BC%89"><span class="toc-number">3.1.4.</span> <span class="toc-text">四、灵活扩展（修改排序规则）</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-%E5%9C%BA%E6%99%AF1%EF%BC%9A%E5%85%88%E6%8C%89%E7%AC%AC1%E5%85%83%E7%B4%A0%E5%8D%87%E5%BA%8F%EF%BC%8C%E5%86%8D%E6%8C%89%E7%AC%AC2%E5%85%83%E7%B4%A0%E9%99%8D%E5%BA%8F"><span class="toc-number">3.1.4.1.</span> <span class="toc-text">1. 场景1：先按第1元素升序，再按第2元素降序</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-%E5%9C%BA%E6%99%AF2%EF%BC%9A%E4%B8%89%E7%BB%B4%E5%BA%A6%E6%8E%92%E5%BA%8F%EF%BC%88%E5%85%88%E6%8C%89%E7%AC%AC1%E5%85%83%E7%B4%A0%E9%99%8D%E5%BA%8F%EF%BC%8C%E7%AC%AC2%E5%8D%87%E5%BA%8F%EF%BC%8C%E7%AC%AC3%E9%99%8D%E5%BA%8F%EF%BC%89"><span class="toc-number">3.1.4.2.</span> <span class="toc-text">2. 场景2：三维度排序（先按第1元素降序，第2升序，第3降序）</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BA%94%E3%80%81%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9"><span class="toc-number">3.1.5.</span> <span class="toc-text">五、注意事项</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%AD%97%E7%AC%A6%E4%B8%B2"><span class="toc-number">4.</span> <span class="toc-text">字符串</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E8%A1%A8%E8%BE%BE%E5%BC%8F"><span class="toc-number">5.</span> <span class="toc-text">表达式</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E9%98%9F%E5%88%97"><span class="toc-number">6.</span> <span class="toc-text">队列</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%97%A0%E7%A9%B7%E5%A4%A7%E5%92%8C%E6%97%A0%E7%A9%B7%E5%B0%8F"><span class="toc-number">7.</span> <span class="toc-text">无穷大和无穷小</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E7%9A%84%E7%BC%96%E7%A8%8B"><span class="toc-number">8.</span> <span class="toc-text">面向对象的编程</span></a></li></ol>
     </div>
     <div class="sidebar-bg">
         <div class="card-tags">

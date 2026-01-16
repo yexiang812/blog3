@@ -1,0 +1,505 @@
+<!DOCTYPE html>
+<html class="dark" lang="zh-CN" prefix="og: http://ogp.me/ns# 
+fb: http://ogp.me/ns/fb#
+article: http://ogp.me/ns/article#">
+<head>
+    <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="keywords" content="Leetcode,机器学习,生活">
+
+<title>代码随想录-day30 || yeye 想变强</title>
+<link rel="icon" href="http://example.comimages/wang.icon" type="image/x-icon">
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<meta property="og:title" content="代码随想录-day30">
+<meta property="og:type" content="website">
+<meta property="og:url" content="http://example.com/2026/01/16/%E4%BB%A3%E7%A0%81%E9%9A%8F%E6%83%B3%E5%BD%95-day30/index.html">
+<meta property="og:image" content="">
+<meta property="og:site_name" content="yeye 想变强">
+<meta property="og:author" content="yeyeyefirst">
+
+  
+  
+  
+  <meta name="description" content="加油站加油站在一条环路上有n个加油站，其中第i个加油站有汽油gas[i]升。你有一辆油箱容量无限的的汽车，从第i个加油站开往第i+1个加油站需要消耗汽油cost[i]升。你从其中的一个加油站出发，开始时油箱为空。给定两个整数数组gas和cost，如果你可以按顺序绕环路行驶一周，则返回出发时加油站的编号，否则返">
+
+
+<script src="/js/wang.js"></script>
+
+<link rel="stylesheet" href="/css/wang.css">
+<script> console.log("Hello hexo-theme-wang"); </script>
+<meta name="generator" content="Hexo 8.1.1"><link rel="alternate" href="/atom.xml" title="yeye 想变强" type="application/atom+xml">
+</head>
+<body>
+<main>
+    <div id="agplAlert" style="z-index: 9999;">
+    <strong>请遵守AGPL 3.0协议</strong> 本主题已开源于<a target="_blank" rel="noopener" href="https://github.com/xingwangzhe/hexo-theme-wang">hexo-theme-wang</a>
+</div>
+    <header>
+    <nav>
+        <ul>
+            
+                <li>
+                    <a href="/" rel="noopener">
+                        
+                            <img src="/images/menu_ico/home.svg" class="menu-icon" alt="首页">
+                        
+                        首页
+                    </a>
+                </li>
+            
+                <li>
+                    <a href="/archives" rel="noopener">
+                        
+                            <img src="/images/menu_ico/archives.svg" class="menu-icon" alt="归档">
+                        
+                        归档
+                    </a>
+                </li>
+            
+                <li>
+                    <a href="/categories" rel="noopener">
+                        
+                            <img src="/images/menu_ico/categories.svg" class="menu-icon" alt="分类">
+                        
+                        分类
+                    </a>
+                </li>
+            
+                <li>
+                    <a href="/tags" rel="noopener">
+                        
+                            <img src="/images/menu_ico/tags.svg" class="menu-icon" alt="标签">
+                        
+                        标签
+                    </a>
+                </li>
+            
+                <li>
+                    <a href="/about" rel="noopener">
+                        
+                            <img src="/images/menu_ico/about.svg" class="menu-icon" alt="关于">
+                        
+                        关于
+                    </a>
+                </li>
+            
+                <li>
+                    <a href="/links" rel="noopener">
+                        
+                            <img src="/images/menu_ico/links.svg" class="menu-icon" alt="友链">
+                        
+                        友链
+                    </a>
+                </li>
+            
+                <li>
+                    <a href="/atom.xml" rel="noopener">
+                        
+                            <img src="/images/menu_ico/rss.svg" class="menu-icon" alt="RSS订阅">
+                        
+                        RSS订阅
+                    </a>
+                </li>
+            
+                <li>
+                    <a target="_blank" href="https://www.travellings.cn/go.html" rel="noopener noopener">
+                        
+                            <img src="/images/menu_ico/train.svg" class="menu-icon" alt="开往">
+                        
+                        开往
+                    </a>
+                </li>
+            
+            
+                <li>
+                    <button class="search-toggle-btn" aria-label="打开搜索">
+                        <img src="/images/menu_ico/search.svg" class="menu-icon" alt="search">
+                        搜索
+                    </button>
+                </li>
+            
+        </ul>
+    </nav>
+</header>
+
+<script src="/js/header.js"></script>
+
+    
+<script src="/js/search.js"></script>
+
+
+    
+        <!-- 搜索模态框 -->
+        <div id="search-modal" class="search-modal">
+          <div class="search-modal-content">
+            <div class="search-header">
+              <form class="search-form" action="#" onsubmit="return false;">
+                <input type="text" id="search-input" placeholder="输入关键词搜索" autocomplete="off">
+                <button type="button" class="search-close-btn" aria-label="关闭">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="18" y1="6" x2="6" y2="18"></line>
+                    <line x1="6" y1="6" x2="18" y2="18"></line>
+                  </svg>
+                </button>
+              </form>
+            </div>
+            <div id="search-results"></div>
+          </div>
+        </div>
+
+        <script>
+        // 向全局对象添加i18n数据，以便search.js使用
+        window.WANG_THEME = window.WANG_THEME || {};
+        window.WANG_THEME.i18n = {
+          search: {
+            noResults: '没有找到相关结果',
+            loading: '正在加载...',
+            placeholder: '输入关键词搜索',
+            close: '关闭',
+            shortcut_tip: '按 ESC 关闭',
+            toggle_search: '打开搜索',
+            error_loading: '加载搜索数据失败'
+          }
+        };
+        </script>
+    
+    <aside class="sidebar-container sidebar-left">
+    <div class="sidebar-bg">
+        <h2 class="site-title">yeye 想变强</h2>
+        <img class="avatar avatar-round" src="/images/favicon.ico" style="width:50px;" alt="网站头像">
+        <h2 class="site-author">yeyeyefirst</h2>
+        <h3 class="site-subtitle">技术&生活blog</h3>
+    </div>
+    <div class="sidebar-bg">
+        <ul class="social_links">
+            
+                <li>
+                    <a target="_blank" rel="noopener" href="https://github.com/xingwangzhe" aria-label="Github的链接">
+                        
+                            <div style="display: flex; margin-left: auto; margin-left: auto; justify-content: center;">
+                                <img src="/images/social_links/github.svg" class="icon" alt="Github的图标"><p>Github</p>
+                            </div>
+                        
+                    </a>
+                </li>
+            
+                <li>
+                    <a href="mailto:xingwangzhe@outloock.com" aria-label="Email的链接">
+                        
+                            <div style="display: flex; margin-left: auto; margin-left: auto; justify-content: center;">
+                                <img src="/images/social_links/envelope.svg" class="icon" alt="Email的图标"><p>Email</p>
+                            </div>
+                        
+                    </a>
+                </li>
+            
+        </ul>
+    </div>
+</aside>
+<div class="post-container">
+  <article class="post">
+    <h1 class="post-title">代码随想录-day30</h1>
+
+    <div class="post-meta">
+      <span class="post-date">发布于 <time datetime="2026-01-16T11:49:34.000Z">2026-01-16</time></span>
+      
+        <span class="post-categories">
+          分类：<a class="category-link" href="/categories/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0%E2%80%94%E2%80%94%E8%B4%AA%E5%BF%83/">算法学习——贪心</a>
+        </span>
+      
+      
+        <span class="post-updated">
+          最后更新于 <time datetime="2026-01-16T13:57:26.890Z">2026-01-16</time>
+        </span>
+      
+      <span style="margin-left:10px;">👁<span id="busuanzi_value_page_pv"></span></span>
+    </div>
+    <div class="post-content">
+      <h1 id="加油站"><a href="#加油站" class="headerlink" title="加油站"></a>加油站</h1><p><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/gas-station/">加油站</a><br>在一条环路上有 n 个加油站，其中第 i 个加油站有汽油 gas[i] 升。<br><br>你有一辆油箱容量无限的的汽车，从第 i 个加油站开往第 i+1 个加油站需要消耗汽油 cost[i] 升。你从其中的一个加油站出发，开始时油箱为空。<br><br>给定两个整数数组 gas 和 cost ，如果你可以按顺序绕环路行驶一周，则返回出发时加油站的编号，否则返回 -1 。如果存在解，则 保证 它是 唯一 的。<br></p>
+<p>示例 1:</p>
+<blockquote>
+<p>输入: gas &#x3D; [1,2,3,4,5], cost &#x3D; [3,4,5,1,2]<br><br>输出: 3<br><br>解释:<br><br>从 3 号加油站(索引为 3 处)出发，可获得 4 升汽油。此时油箱有 &#x3D; 0 + 4 &#x3D; 4 升汽油<br><br>开往 4 号加油站，此时油箱有 4 - 1 + 5 &#x3D; 8 升汽油<br><br>开往 0 号加油站，此时油箱有 8 - 2 + 1 &#x3D; 7 升汽油<br><br>开往 1 号加油站，此时油箱有 7 - 3 + 2 &#x3D; 6 升汽油<br><br>开往 2 号加油站，此时油箱有 6 - 4 + 3 &#x3D; 5 升汽油<br><br>开往 3 号加油站，你需要消耗 5 升汽油，正好足够你返回到 3 号加油站。<br><br>因此，3 可为起始索引。<br></p>
+</blockquote>
+<p>示例 2:</p>
+<blockquote>
+<p>输入: gas &#x3D; [2,3,4], cost &#x3D; [3,4,3]<br>输出: -1<br><br>解释:<br><br>你不能从 0 号或 1 号加油站出发，因为没有足够的汽油可以让你行驶到下一个加油站。<br><br>我们从 2 号加油站出发，可以获得 4 升汽油。 此时油箱有 &#x3D; 0 + 4 &#x3D; 4 升汽油<br><br>开往 0 号加油站，此时油箱有 4 - 3 + 2 &#x3D; 3 升汽油<br><br>开往 1 号加油站，此时油箱有 3 - 3 + 3 &#x3D; 3 升汽油<br><br>你无法返回 2 号加油站，因为返程需要消耗 4 升汽油，但是你的油箱只有 3 升汽油。<br><br>因此，无论怎样，你都不可能绕环路行驶一周。<br></p>
+</blockquote>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span>:</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">canCompleteCircuit</span>(<span class="params">self, gas: <span class="type">List</span>[<span class="built_in">int</span>], cost: <span class="type">List</span>[<span class="built_in">int</span>]</span>) -&gt; <span class="built_in">int</span>:</span><br><span class="line">        total = <span class="number">0</span></span><br><span class="line">        cur = <span class="number">0</span></span><br><span class="line">        start = <span class="number">0</span></span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="built_in">len</span>(gas)):</span><br><span class="line">            dle = gas[i] - cost[i]</span><br><span class="line">            total += dle</span><br><span class="line">            cur += dle</span><br><span class="line">            <span class="keyword">if</span> cur &lt; <span class="number">0</span>:</span><br><span class="line">                start = i + <span class="number">1</span></span><br><span class="line">                cur = <span class="number">0</span></span><br><span class="line">        <span class="keyword">if</span> total &lt; <span class="number">0</span>:</span><br><span class="line">            <span class="keyword">return</span> -<span class="number">1</span></span><br><span class="line">        <span class="keyword">return</span> start</span><br></pre></td></tr></table></figure>
+
+<h1 id="分发糖果"><a href="#分发糖果" class="headerlink" title="分发糖果"></a>分发糖果</h1><p><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/candy/">分发糖果</a><br>n 个孩子站成一排。给你一个整数数组 ratings 表示每个孩子的评分。<br><br>你需要按照以下要求，给这些孩子分发糖果：<br><br>每个孩子至少分配到 1 个糖果。<br><br>相邻两个孩子中，评分更高的那个会获得更多的糖果。<br><br>请你给每个孩子分发糖果，计算并返回需要准备的 最少糖果数目 。<br><br>示例 1：</p>
+<blockquote>
+<p>输入：ratings &#x3D; [1,0,2]<br><br>输出：5<br><br>解释：你可以分别给第一个、第二个、第三个孩子分发 2、1、2 颗糖果。<br></p>
+</blockquote>
+<p>示例 2：</p>
+<blockquote>
+<p>输入：ratings &#x3D; [1,2,2]<br><br>输出：4<br><br>解释：你可以分别给第一个、第二个、第三个孩子分发 1、2、1 颗糖果。<br><br>     第三个孩子只得到 1 颗糖果，这满足题面中的两个条件。<br></p>
+</blockquote>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span>:</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">candy</span>(<span class="params">self, ratings: <span class="type">List</span>[<span class="built_in">int</span>]</span>) -&gt; <span class="built_in">int</span>:</span><br><span class="line">        n = <span class="built_in">len</span>(ratings)</span><br><span class="line">        candies = n * [<span class="number">1</span>]</span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">1</span>,n):</span><br><span class="line">            <span class="keyword">if</span> ratings[i] &gt; ratings[i-<span class="number">1</span>]:</span><br><span class="line">                candies[i] = candies[i-<span class="number">1</span>]+<span class="number">1</span></span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(n-<span class="number">2</span>,-<span class="number">1</span>,-<span class="number">1</span>):</span><br><span class="line">            <span class="keyword">if</span> ratings[i] &gt; ratings[i+<span class="number">1</span>]:</span><br><span class="line">                candies[i] = <span class="built_in">max</span>(candies[i+<span class="number">1</span>]+<span class="number">1</span>,candies[i])</span><br><span class="line">        <span class="keyword">return</span> <span class="built_in">sum</span>(candies)</span><br></pre></td></tr></table></figure>
+<ul>
+<li>先从左到右遍历一遍，如果当前孩子评分比前一个孩子高，则当前孩子糖果数为前一个孩子糖果数加一。</li>
+<li>然后从右到左遍历一遍，如果当前孩子评分比后一个孩子高，则当前孩子糖果数为后一个孩子糖果数加一。(注意要取当前孩子糖果数和后一个孩子糖果数加一的较大值)</li>
+<li>最后将所有孩子的糖果数相加即为所需的最少糖果数目。</li>
+</ul>
+<h1 id="柠檬水找零"><a href="#柠檬水找零" class="headerlink" title="柠檬水找零"></a>柠檬水找零</h1><p><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/lemonade-change/">柠檬水找零</a><br>在柠檬水摊上，每一杯柠檬水的售价为 5 美元。顾客排队购买你的产品，（按账单 bills 支付的顺序）一次购买一杯。<br><br>每位顾客只买一杯柠檬水，然后向你付 5 美元、10 美元或 20 美元。你必须给每个顾客正确找零，也就是说净交易是每位顾客向你支付 5 美元。<br><br>注意，一开始你手头没有任何零钱。<br><br>给你一个整数数组 bills ，其中 bills[i] 是第 i 位顾客付的账。如果你能给每位顾客正确找零，返回 true ，否则返回 false 。<br></p>
+<p>示例 1：</p>
+<blockquote>
+<p>输入：bills &#x3D; [5,5,5,10,20]<br><br>输出：true<br><br>解释：<br><br>前 3 位顾客那里，我们按顺序收取 3 张 5 美元的钞票。<br><br>第 4 位顾客那里，我们收取一张 10 美元的钞票，并返还 5 美元。<br><br>第 5 位顾客那里，我们找还一张 10 美元的钞票和一张 5 美元的钞票。<br><br>由于所有客户都得到了正确的找零，所以我们输出 true。<br></p>
+</blockquote>
+<p>示例 2：</p>
+<blockquote>
+<p>输入：bills &#x3D; [5,5,10,10,20]<br><br>输出：false<br><br>解释：<br><br>前 2 位顾客那里，我们按顺序收取 2 张 5 美元的钞票。<br><br>对于接下来的 2 位顾客，我们收取一张 10 美元的钞票，然后返还 5 美元。<br><br>对于最后一位顾客，我们无法退回 15 美元，因为我们现在只有两张 10 美元的钞票。<br><br>由于不是每位顾客都得到了正确的找零，所以答案是 false。<br></p>
+</blockquote>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span>:</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">lemonadeChange</span>(<span class="params">self, bills: <span class="type">List</span>[<span class="built_in">int</span>]</span>) -&gt; <span class="built_in">bool</span>:</span><br><span class="line">        change1 = <span class="number">0</span></span><br><span class="line">        change2 = <span class="number">0</span></span><br><span class="line">        <span class="keyword">if</span> bills[<span class="number">0</span>] != <span class="number">5</span>:</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">False</span></span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="built_in">len</span>(bills)):</span><br><span class="line">            <span class="keyword">if</span> bills[i] == <span class="number">5</span>:</span><br><span class="line">                change1 += <span class="number">1</span></span><br><span class="line">            <span class="keyword">elif</span> bills[i] == <span class="number">10</span> :</span><br><span class="line">                <span class="keyword">if</span> change1 &gt;= <span class="number">1</span>:</span><br><span class="line">                    change1 -= <span class="number">1</span></span><br><span class="line">                    change2 += <span class="number">1</span></span><br><span class="line">                <span class="keyword">else</span>:</span><br><span class="line">                    <span class="keyword">return</span> <span class="literal">False</span> </span><br><span class="line">            <span class="keyword">if</span> bills[i] == <span class="number">20</span> :</span><br><span class="line">                <span class="keyword">if</span> change1 &gt;= <span class="number">1</span> <span class="keyword">and</span> change2 &gt;= <span class="number">1</span>:</span><br><span class="line">                    change1 -= <span class="number">1</span></span><br><span class="line">                    change2 -= <span class="number">1</span></span><br><span class="line">                <span class="keyword">elif</span> change1 &gt;= <span class="number">3</span>:</span><br><span class="line">                    change1 -= <span class="number">3</span></span><br><span class="line">                <span class="keyword">else</span> :</span><br><span class="line">                    <span class="keyword">return</span> <span class="literal">False</span> </span><br><span class="line">        <span class="keyword">return</span> <span class="literal">True</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>用change1记录5美元的数量，change2记录10美元的数量。</li>
+<li>遍历账单数组，对于每个账单：<ul>
+<li>如果是5美元，change1加一。</li>
+<li>如果是10美元，若change1大于等于1，则change1减一，change2加一；否则返回False。</li>
+<li>如果是20美元，若change1大于等于1且change2大于等于1，则change1减一，change2减一；若change1大于等于3，则change1减三；否则返回False。</li>
+</ul>
+</li>
+<li>最后返回True。</li>
+</ul>
+<h1 id="按照身高重建队列"><a href="#按照身高重建队列" class="headerlink" title="按照身高重建队列"></a>按照身高重建队列</h1><p><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/queue-reconstruction-by-height/">按照身高重建队列</a><br>假设有打乱顺序的一群人站成一个队列，数组 people 表示队列中一些人的属性（不一定按顺序）。每个 people[i] &#x3D; [hi, ki] 表示第 i 个人的身高为 hi ，前面 正好 有 ki 个身高大于或等于 hi 的人。<br><br>请你重新构造并返回输入数组 people 所表示的队列。返回的队列应该格式化为数组 queue ，其中 queue[j] &#x3D; [hj, kj] 是队列中第 j 个人的属性（queue[0] 是排在队列前面的人）。<br></p>
+<p>示例 1：</p>
+<blockquote>
+<p>输入：people &#x3D; [[7,0],[4,4],[7,1],[5,0],[6,1],[5,2]]<br><br>输出：[[5,0],[7,0],[5,2],[6,1],[4,4],[7,1]]<br><br>解释：<br><br>队列重新构造如下：<br></p>
+</blockquote>
+<ul>
+<li>第 1 个人，[5,0]，没有身高更高或相等的人在他前面。<br></li>
+<li>第 2 个人，[7,0]，没有身高更高或相等的人在他前面。<br></li>
+<li>第 3 个人，[5,2]，有 2 个身高更高或相等的人在他前面，即 [7,0] 和 [7,1]。<br></li>
+<li>第 4 个人，[6,1]，有 1 个身高更高或相等的人在他前面，即 [7,0]。<br></li>
+<li>第 5 个人，[4,4]，有 4 个身高更高或相等的人在他前面，即 [7,0]、[7,1]、[5,0] 和 [5,2]。<br></li>
+<li>第 6 个人，[7,1]，有 1 个身高更高或相等的人在他前面，即 [7,0]。<br></li>
+</ul>
+<p>示例 2：</p>
+<blockquote>
+<p>输入：people &#x3D; [[6,0],[5,0],[4,0],[3,2],[2,2],[1,4]]<br><br>输出：[[4,0],[5,0],[2,2],[3,2],[1,4],[6,0]]<br><br>解释：<br><br>队列重新构造如下：<br></p>
+</blockquote>
+<ul>
+<li>第 1 个人，[4,0]，没有身高更高或相等的人在他前面。<br></li>
+<li>第 2 个人，[5,0]，没有身高更高或相等的人在他前面。<br></li>
+<li>第 3 个人，[2,2]，有 2 个身高更高或相等的人在他前面，即 [6,0] 和 [5,0]。<br></li>
+<li>第 4 个人，[3,2]，有 2 个身高更高或相等的人在他前面，即 [6,0] 和 [5,0]。<br></li>
+<li>第 5 个人，[1,4]，有 4 个身高更高或相等的人在他前面，即 [6,0]、[5,0]、[4,0] 和 [3,2]。<br></li>
+<li>第 6 个人，[6,0]，没有身高更高或相等的人在他前面。<br></li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span>:</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">reconstructQueue</span>(<span class="params">self, people: <span class="type">List</span>[<span class="type">List</span>[<span class="built_in">int</span>]]</span>) -&gt; <span class="type">List</span>[<span class="type">List</span>[<span class="built_in">int</span>]]:</span><br><span class="line">        people.sort(key = <span class="keyword">lambda</span> x:(-x[<span class="number">0</span>],x[<span class="number">1</span>])) <span class="comment">#第一个元素从大到小，第二个元素从小到大</span></span><br><span class="line">        que = []</span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> people:</span><br><span class="line">            que.insert(i[<span class="number">1</span>],i) <span class="comment">#把排好的元组按照元素2的值插入</span></span><br><span class="line">        <span class="keyword">return</span> que</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span>:</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">reconstructQueue</span>(<span class="params">self, people: <span class="type">List</span>[<span class="type">List</span>[<span class="built_in">int</span>]]</span>) -&gt; <span class="type">List</span>[<span class="type">List</span>[<span class="built_in">int</span>]]:</span><br><span class="line">    	<span class="comment"># 先按照h维度的身高顺序从高到低排序。确定第一个维度</span></span><br><span class="line">        <span class="comment"># lambda返回的是一个元组：当-x[0](维度h）相同时，再根据x[1]（维度k）从小到大排序</span></span><br><span class="line">        people.sort(key=<span class="keyword">lambda</span> x: (-x[<span class="number">0</span>], x[<span class="number">1</span>]))</span><br><span class="line">        que = []</span><br><span class="line">	</span><br><span class="line">	<span class="comment"># 根据每个元素的第二个维度k，贪心算法，进行插入</span></span><br><span class="line">        <span class="comment"># people已经排序过了：同一高度时k值小的排前面。</span></span><br><span class="line">        <span class="keyword">for</span> p <span class="keyword">in</span> people:</span><br><span class="line">            que.insert(p[<span class="number">1</span>], p)</span><br><span class="line">        <span class="keyword">return</span> que</span><br></pre></td></tr></table></figure>
+<p>思路上类似分糖果，一项一项的完成，先按照身高h从高到低排序，若身高相同则按照k值从小到大排序，再根据k值插入到队列中。</p>
+<ul>
+<li>先按照身高h从高到低排序，若身高相同则按照k值从小到大排序。</li>
+<li>遍历排序后的数组，对于每个元素p：<ul>
+<li>插入到队列que的第p[1]个位置。</li>
+</ul>
+</li>
+<li>最后返回que。</li>
+</ul>
+
+    </div>
+  </article>
+  <div class="ccbyncsa">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="copyright">
+                    <div class="author">
+                        <p>作者</p>
+                        <p>yeyeyefirst</p>
+                    </div>
+                    <div class="title">
+                        <p>标题</p>
+                        <p>代码随想录-day30</p>
+                    </div>
+                        <div class="publish">
+                            <p>发布于</p>
+                            <p>2026-01-16</p>
+                        </div>
+                    <div class="ccbyncsa-icon">
+                        <p>授权协议</p>
+                        <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">
+                        <p class="ccbyncsa-icon-imgs" style="display: flex;">
+                        <img src="/images/cc.svg" alt="cc">
+                        <img src="/images/by.svg" alt="by">
+                        <img src="/images/nc.svg" alt="nc">
+                        <img src="/images/sa.svg" alt="sa">
+                        </p>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+  <nav class="post-pagination">
+    
+      <div class="post-prev">
+        <span class="nav-label">上一篇</span>
+        <a href="/2026/01/14/%E4%BB%A3%E7%A0%81%E9%9A%8F%E6%83%B3%E5%BD%95-day29/">代码随想录-day29</a>
+      </div>
+    
+    
+  </nav>
+  
+
+</div>
+
+<script src="/js/copy.js"></script>
+
+<aside class="sidebar-container sidebar-right">
+    <div class="sidebar-bg">
+        <p id="date"></p>
+<script>
+  function updateDate() {
+    var now = new Date();
+    var dateString = now.toISOString().slice(0, 10);
+    document.getElementById('date').textContent = dateString;
+  }
+
+  window.addEventListener('load', function() {
+    updateDate();
+    // 更新频率为每5分钟更新一次，减少不必要的更新
+    setInterval(updateDate, 300000);
+  });
+</script>
+        <span id="clock" role="timer" aria-live="polite"></span>
+
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const clockElement = document.getElementById('clock');
+    let timerInterval;
+
+    // 格式化时间函数
+    function formatTime(unit) {
+      return unit < 10 ? '0' + unit : unit;
+    }
+
+    // 更新时钟 - 包含秒
+    function updateClock() {
+      const now = new Date();
+      const hours = formatTime(now.getHours());
+      const minutes = formatTime(now.getMinutes());
+      const seconds = formatTime(now.getSeconds());
+      clockElement.textContent = `${hours}:${minutes}:${seconds}`;
+    }
+
+    // 初始化时钟
+    function startClock() {
+      // 立即更新一次时间
+      updateClock();
+      // 每秒更新一次
+      timerInterval = setInterval(updateClock, 1000);
+    }
+
+    // 页面可见性变化时的优化
+    document.addEventListener('visibilitychange', function() {
+      if (document.hidden) {
+        // 页面不可见时停止更新
+        clearInterval(timerInterval);
+      } else {
+        // 页面重新可见时，重新开始
+        clearInterval(timerInterval);
+        startClock();
+      }
+    });
+
+    // 启动时钟
+    startClock();
+  });
+</script>
+
+
+    </div>
+    <div class="sidebar-bg">
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%8A%A0%E6%B2%B9%E7%AB%99"><span class="toc-number">1.</span> <span class="toc-text">加油站</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%88%86%E5%8F%91%E7%B3%96%E6%9E%9C"><span class="toc-number">2.</span> <span class="toc-text">分发糖果</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%9F%A0%E6%AA%AC%E6%B0%B4%E6%89%BE%E9%9B%B6"><span class="toc-number">3.</span> <span class="toc-text">柠檬水找零</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%8C%89%E7%85%A7%E8%BA%AB%E9%AB%98%E9%87%8D%E5%BB%BA%E9%98%9F%E5%88%97"><span class="toc-number">4.</span> <span class="toc-text">按照身高重建队列</span></a></li></ol>
+    </div>
+    <div class="sidebar-bg">
+        <div class="card-tags">
+            
+                <a href="/tags/%E4%BB%A3%E7%A0%81%E9%9A%8F%E6%83%B3%E5%BD%95/" class="tag" aria-label="标签: #代码随想录">#代码随想录</a>
+            
+        </div>
+    </div>
+    <div>
+        <div class="categories-list">
+            
+                <div class="category-item">
+                    <a href="/categories/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0%E2%80%94%E2%80%94%E8%B4%AA%E5%BF%83/" aria-label="分类: 算法学习——贪心">
+                        算法学习——贪心
+                        <span>(3)</span>
+                    </a>
+                </div>
+            
+        </div>
+    </div>
+</aside>
+
+    <!-- No categories available -->
+
+
+    <footer>
+    <span id="busuanzi_container_site_pv" style="display: inline;"></span>
+    <span>👁<span id="busuanzi_value_site_pv"></span></span>
+    <div class="padding border border-sub border-dotted fadein-right">
+        <span style="color:aliceblue">👤<span id="busuanzi_value_site_uv"></span></span>
+    </div>
+    <span>
+        由 <a target="_blank" rel="noopener" href="https://hexo.io" alt="Hexo">
+            <p class="hover-underline night" style="display: inline;">Hexo</p>
+        </a> 驱动
+        <p style="display: inline; color: red;">❤</p>
+        <a target="_blank" rel="noopener" href="https://github.com/xingwangzhe/hexo-theme-wang" alt="Wang">
+            <p class="hover-underline night" style="display: inline;">Wang</p>
+        </a> 主题构建
+    </span>
+
+    <!-- 带图片的链接 -->
+    <div class="footer-links">
+        
+            
+                <a href="https://www.travellings.cn/go.html" target="_blank" rel="noopener">
+                    <img src="https://www.travellings.cn/assets/logo.gif" alt="开往-友链接力" title="开往-友链接力">
+                </a>
+            
+                <a href="https://www.aliyun.com/minisite/goods?userCode=lmvvqvl9" target="_blank" rel="noopener">
+                    <img src="https://i.ibb.co/h7XJkfm/LOGO.png" alt="阿里云支持" title="阿里云支持">
+                </a>
+            
+                <a href="https://www.dalao.net/" target="_blank" rel="noopener">
+                    <img src="https://www.dalao.net/img/dalao-svg.svg" alt="大佬论坛" title="大佬论坛">
+                </a>
+            
+                <a href="https://bf.zzxworld.com/" target="_blank" rel="noopener">
+                    <img src="https://bf.zzxworld.com/images/logo-v2.png" alt="BlogFinder" title="BlogFinder">
+                </a>
+            
+                <a href="https://www.blogsclub.org/go" target="_blank" rel="noopener">
+                    <img src="https://www.blogsclub.org/images/shuttle_4.png" alt="空间穿梭-随机访问BlogsClub成员博客" title="空间穿梭-随机访问BlogsClub成员博客">
+                </a>
+            
+        
+    </div>
+
+    <!-- 纯文本链接 -->
+    <div class="footer-text-links">
+        
+            
+                <a href="" target="_blank" rel="noopener">
+                    文字链接
+                </a>
+            
+        
+    </div>
+</footer>
+    
+<script src="/js/background.js"></script>
+    
+        
+<script src="/js/search.js"></script>
+    
+</main>
+</body>
+</html>
