@@ -7,12 +7,12 @@ article: http://ogp.me/ns/article#">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="keywords" content="Leetcode,机器学习,生活">
 
-<title>代码随想录-day31 || yeye 想变强</title>
+<title>代码随想录-day-32 || yeye 想变强</title>
 <link rel="icon" href="http://example.comimages/wang.icon" type="image/x-icon">
 <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
-<meta property="og:title" content="代码随想录-day31">
+<meta property="og:title" content="代码随想录-day-32">
 <meta property="og:type" content="website">
-<meta property="og:url" content="http://example.com/2026/01/17/%E4%BB%A3%E7%A0%81%E9%9A%8F%E6%83%B3%E5%BD%95-day31/index.html">
+<meta property="og:url" content="http://example.com/2026/01/18/%E4%BB%A3%E7%A0%81%E9%9A%8F%E6%83%B3%E5%BD%95-day32/index.html">
 <meta property="og:image" content="">
 <meta property="og:site_name" content="yeye 想变强">
 <meta property="og:author" content="yeyeyefirst">
@@ -20,7 +20,7 @@ article: http://ogp.me/ns/article#">
   
   
   
-  <meta name="description" content="用最少数量的箭引爆气球用最少数量的箭引爆气球有一些球形气球贴在一堵用XY平面表示的墙面上。墙面上的气球记录在整数数组points，其中points[i]&amp;#x3D;[xstart,xend]表示水平直径在xstart和xend之间的气球。你不知道气球的确切y坐标。一支弓箭可以沿着x轴从不同点完全垂直地射出。在">
+  <meta name="description" content="合并区间合并区间以数组intervals表示若干个区间的集合，其中单个区间为intervals[i]&amp;#x3D;[starti,endi]。请你合并所有重叠的区间，并返回一个不重叠的区间数组，该数组需恰好覆盖输入中的所有区间。示例1：输入：intervals&amp;#x3D;[[1,3],[2,6],[8,10],">
 
 
 <script src="/js/wang.js"></script>
@@ -198,10 +198,10 @@ article: http://ogp.me/ns/article#">
 </aside>
 <div class="post-container">
   <article class="post">
-    <h1 class="post-title">代码随想录-day31</h1>
+    <h1 class="post-title">代码随想录-day-32</h1>
 
     <div class="post-meta">
-      <span class="post-date">发布于 <time datetime="2026-01-17T14:23:15.000Z">2026-01-17</time></span>
+      <span class="post-date">发布于 <time datetime="2026-01-18T13:39:32.000Z">2026-01-18</time></span>
       
         <span class="post-categories">
           分类：<a class="category-link" href="/categories/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0%E2%80%94%E2%80%94%E8%B4%AA%E5%BF%83/">算法学习——贪心</a>
@@ -209,60 +209,42 @@ article: http://ogp.me/ns/article#">
       
       
         <span class="post-updated">
-          最后更新于 <time datetime="2026-01-17T15:02:02.822Z">2026-01-17</time>
+          最后更新于 <time datetime="2026-01-18T15:00:21.579Z">2026-01-18</time>
         </span>
       
       <span style="margin-left:10px;">👁<span id="busuanzi_value_page_pv"></span></span>
     </div>
     <div class="post-content">
-      <h1 id="用最少数量的箭引爆气球"><a href="#用最少数量的箭引爆气球" class="headerlink" title="用最少数量的箭引爆气球"></a>用最少数量的箭引爆气球</h1><p><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/minimum-number-of-arrows-to-burst-balloons/">用最少数量的箭引爆气球</a><br>有一些球形气球贴在一堵用 XY 平面表示的墙面上。墙面上的气球记录在整数数组 points ，其中points[i] &#x3D; [xstart, xend] 表示水平直径在 xstart 和 xend之间的气球。你不知道气球的确切 y 坐标。<br><br>一支弓箭可以沿着 x 轴从不同点 完全垂直 地射出。在坐标 x 处射出一支箭，若有一个气球的直径的开始和结束坐标为 xstart，xend， 且满足  xstart ≤ x ≤ xend，则该气球会被 引爆 。可以射出的弓箭的数量 没有限制 。 弓箭一旦被射出之后，可以无限地前进。<br><br>给你一个数组 points ，返回引爆所有气球所必须射出的 最小 弓箭数 。<br></p>
+      <h1 id="合并区间"><a href="#合并区间" class="headerlink" title="合并区间"></a>合并区间</h1><p><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/merge-intervals/">合并区间</a><br>以数组 intervals 表示若干个区间的集合，其中单个区间为 intervals[i] &#x3D; [starti, endi] 。请你合并所有重叠的区间，并返回 一个不重叠的区间数组，该数组需恰好覆盖输入中的所有区间 。<br></p>
 <p>示例 1：</p>
 <blockquote>
-<p>输入：points &#x3D; [[10,16],[2,8],[1,6],[7,12]]<br><br>输出：2<br><br>解释：气球可以用2支箭来爆破:<br></p>
+<p>输入：intervals &#x3D; [[1,3],[2,6],[8,10],[15,18]]<br><br>输出：[[1,6],[8,10],[15,18]]<br><br>解释：区间 [1,3] 和 [2,6] 重叠, 将它们合并为 [1,6].<br></p>
 </blockquote>
-<ul>
-<li>在x &#x3D; 6处射出箭，击破气球[2,8]和[1,6]。</li>
-<li>在x &#x3D; 11处发射箭，击破气球[10,16]和[7,12]。</li>
-</ul>
 <p>示例 2：</p>
 <blockquote>
-<p>输入：points &#x3D; [[1,2],[3,4],[5,6],[7,8]]<br><br>输出：4<br><br>解释：每个气球需要射出一支箭，总共需要4支箭。<br></p>
+<p>输入：intervals &#x3D; [[1,4],[4,5]]<br><br>输出：[[1,5]]<br><br>解释：区间 [1,4] 和 [4,5] 可被视为重叠区间。<br></p>
 </blockquote>
 <p>示例 3：</p>
 <blockquote>
-<p>输入：points &#x3D; [[1,2],[2,3],[3,4],[4,5]]<br><br>输出：2<br><br>解释：气球可以用2支箭来爆破:<br></p>
+<p>输入：intervals &#x3D; [[4,7],[1,4]]<br><br>输出：[[1,7]]<br><br>解释：区间 [1,4] 和 [4,7] 可被视为重叠区间。<br></p>
 </blockquote>
-<ul>
-<li>在x &#x3D; 2处发射箭，击破气球[1,2]和[2,3]。<br></li>
-<li>在x &#x3D; 4处射出箭，击破气球[3,4]和[4,5]。<br></li>
-</ul>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span>:</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">findMinArrowShots</span>(<span class="params">self, points: <span class="type">List</span>[<span class="type">List</span>[<span class="built_in">int</span>]]</span>) -&gt; <span class="built_in">int</span>:</span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> points:</span><br><span class="line">            <span class="keyword">return</span> <span class="number">0</span></span><br><span class="line">        result = <span class="number">1</span></span><br><span class="line">        points.sort(key =<span class="keyword">lambda</span> x:x[<span class="number">0</span>])</span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">1</span>,<span class="built_in">len</span>(points)):</span><br><span class="line">            <span class="keyword">if</span> points[i][<span class="number">0</span>] &gt; points[i-<span class="number">1</span>][<span class="number">1</span>]:</span><br><span class="line">                result += <span class="number">1</span></span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                points[i][<span class="number">1</span>] = <span class="built_in">min</span>(points[i-<span class="number">1</span>][<span class="number">1</span>],points[i][<span class="number">1</span>])</span><br><span class="line">        <span class="keyword">return</span> result</span><br></pre></td></tr></table></figure>
-<h1 id="无重叠区间"><a href="#无重叠区间" class="headerlink" title="无重叠区间"></a>无重叠区间</h1><p><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/non-overlapping-intervals/">无重叠区间</a><br>给定一个区间的集合 intervals ，其中 intervals[i] &#x3D; [starti, endi] 。返回 需要移除区间的最小数量，使剩余区间互不重叠 。<br><br>注意 只在一点上接触的区间是 不重叠的。例如 [1, 2] 和 [2, 3] 是不重叠的。<br></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span>:</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">merge</span>(<span class="params">self, intervals: <span class="type">List</span>[<span class="type">List</span>[<span class="built_in">int</span>]]</span>) -&gt; <span class="type">List</span>[<span class="type">List</span>[<span class="built_in">int</span>]]:</span><br><span class="line">        <span class="keyword">if</span> <span class="built_in">len</span>(intervals) &lt;= <span class="number">1</span> :</span><br><span class="line">            <span class="keyword">return</span> intervals</span><br><span class="line">        result = []</span><br><span class="line">        intervals.sort(key = <span class="keyword">lambda</span> x:x[<span class="number">0</span>])</span><br><span class="line">        result.append(intervals[<span class="number">0</span>])</span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">1</span>,<span class="built_in">len</span>(intervals)):</span><br><span class="line">            <span class="keyword">if</span> intervals[i][<span class="number">0</span>] &lt;= result[-<span class="number">1</span>][<span class="number">1</span>]:</span><br><span class="line">                result[-<span class="number">1</span>][<span class="number">1</span>] = <span class="built_in">max</span>(result[-<span class="number">1</span>][<span class="number">1</span>],intervals[i][<span class="number">1</span>])</span><br><span class="line">            <span class="keyword">else</span> :</span><br><span class="line">                result.append(intervals[i])</span><br><span class="line">        <span class="keyword">return</span> result</span><br></pre></td></tr></table></figure>
+<p>首先设置初始数组为第一个区间(作为结果数组)<br><br>再判断重叠区间，重叠区间的判断条件是当前区间的起始位置小于等于结果数组中最后一个区间的结束位置。<br><br>如果重叠，则更新结果数组中最后一个区间的结束位置为两者的最大值。<br><br>如果不重叠，则将当前区间添加到结果数组中。<br></p>
+<h1 id="单调递增的数字"><a href="#单调递增的数字" class="headerlink" title="单调递增的数字"></a>单调递增的数字</h1><p><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/monotone-increasing-digits/">单调递增的数字</a><br>当且仅当每个相邻位数上的数字 x 和 y 满足 x &lt;&#x3D; y 时，我们称这个整数是单调递增的。<br><br>给定一个整数 n ，返回 小于或等于 n 的最大数字，且数字呈 单调递增 。<br></p>
 <p>示例 1:</p>
 <blockquote>
-<p>输入: intervals &#x3D; [[1,2],[2,3],[3,4],[1,3]]<br><br>输出: 1<br><br>解释: 移除 [1,3] 后，剩下的区间没有重叠。<br></p>
+<p>输入: n &#x3D; 10<br><br>输出: 9<br></p>
 </blockquote>
 <p>示例 2:</p>
 <blockquote>
-<p>输入: intervals &#x3D; [ [1,2], [1,2], [1,2] ]<br><br>输出: 2<br><br>解释: 你需要移除两个 [1,2] 来使剩下的区间没有重叠。<br></p>
+<p>输入: n &#x3D; 1234<br><br>输出: 1234<br></p>
 </blockquote>
 <p>示例 3:</p>
 <blockquote>
-<p>输入: intervals &#x3D; [ [1,2], [2,3] ]<br><br>输出: 0<br><br>解释: 你不需要移除任何区间，因为它们已经是无重叠的了。<br></p>
+<p>输入: n &#x3D; 332<br><br>输出: 299<br></p>
 </blockquote>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span>:</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">eraseOverlapIntervals</span>(<span class="params">self, intervals: <span class="type">List</span>[<span class="type">List</span>[<span class="built_in">int</span>]]</span>) -&gt; <span class="built_in">int</span>:</span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> intervals:</span><br><span class="line">            <span class="keyword">return</span> <span class="number">0</span></span><br><span class="line">        result = <span class="number">1</span></span><br><span class="line">        intervals.sort(key = <span class="keyword">lambda</span> x:x[<span class="number">0</span>])</span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">1</span>,<span class="built_in">len</span>(intervals)):</span><br><span class="line">            <span class="keyword">if</span> intervals[i][<span class="number">0</span>] &gt;= intervals[i-<span class="number">1</span>][<span class="number">1</span>]:</span><br><span class="line">                result += <span class="number">1</span></span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                intervals[i][<span class="number">1</span>] = <span class="built_in">min</span>(intervals[i][<span class="number">1</span>],intervals[i-<span class="number">1</span>][<span class="number">1</span>])</span><br><span class="line">        <span class="keyword">return</span> <span class="built_in">len</span>(intervals) - result</span><br></pre></td></tr></table></figure>
-<p>这一题就是在上一题的基础上，合并重叠的区域并计算数量，总的减去数量就是重叠的数量（注意：只在一点上接触的区间是不重叠的，多个取等）。</p>
-<h1 id="划分字母区间"><a href="#划分字母区间" class="headerlink" title="划分字母区间"></a>划分字母区间</h1><p><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/partition-labels/">划分字母区间</a><br>给你一个字符串 s 。我们要把这个字符串划分为尽可能多的片段，同一字母最多出现在一个片段中。例如，字符串 “ababcc” 能够被分为 [“abab”, “cc”]，但类似 [“aba”, “bcc”] 或 [“ab”, “ab”, “cc”] 的划分是非法的。<br><br>注意，划分结果需要满足：将所有划分结果按顺序连接，得到的字符串仍然是 s 。<br><br>返回一个表示每个字符串片段的长度的列表。<br></p>
-<p>示例 1：</p>
-<blockquote>
-<p>输入：s &#x3D; “ababcbacadefegdehijhklij”<br><br>输出：[9,7,8]<br><br>解释：<br><br>划分结果为 “ababcbaca”、”defegde”、”hijhklij” 。<br><br>每个字母最多出现在一个片段中。<br><br>像 “ababcbacadefegde”, “hijhklij” 这样的划分是错误的，因为划分的片段数较少。 <br></p>
-</blockquote>
-<p>示例 2：</p>
-<blockquote>
-<p>输入：s &#x3D; “eccbbbbdec”<br><br>输出：[10]<br></p>
-</blockquote>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span>:</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">partitionLabels</span>(<span class="params">self, s: <span class="built_in">str</span></span>) -&gt; <span class="type">List</span>[<span class="built_in">int</span>]:</span><br><span class="line">        has = &#123;&#125;</span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="built_in">len</span>(s)):</span><br><span class="line">            has[s[i]] = i</span><br><span class="line">        result = []</span><br><span class="line">        end = <span class="number">0</span></span><br><span class="line">        start = <span class="number">0</span></span><br><span class="line">        <span class="keyword">for</span> i,c <span class="keyword">in</span> <span class="built_in">enumerate</span>(s):</span><br><span class="line">            end = <span class="built_in">max</span>(end,has[c])</span><br><span class="line">            <span class="keyword">if</span> i == end:</span><br><span class="line">                result.append(end-start+<span class="number">1</span>)</span><br><span class="line">                start = i+<span class="number">1</span></span><br><span class="line">        <span class="keyword">return</span> result</span><br></pre></td></tr></table></figure>
-<p>用哈希表记录每个字符最后出现的位置，然后遍历字符串，记录当前字符最后出现的位置，当遍历到的位置等于当前字符最后出现的位置时（实际上片段中的结束是在更新的），说明当前片段结束，将当前片段的长度加入结果列表中。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span>:</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">monotoneIncreasingDigits</span>(<span class="params">self, n: <span class="built_in">int</span></span>) -&gt; <span class="built_in">int</span>:</span><br><span class="line">        strn = <span class="built_in">str</span>(n)</span><br><span class="line">        flag = <span class="built_in">len</span>(strn)</span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="built_in">len</span>(strn)-<span class="number">1</span>,<span class="number">0</span>,-<span class="number">1</span>): <span class="comment">#因为后续用i-1和i比较，不包含第一个来防止越界访问</span></span><br><span class="line">            <span class="keyword">if</span> strn[i-<span class="number">1</span>] &gt; strn[i]:</span><br><span class="line">                flag = i</span><br><span class="line">                strn = strn[<span class="number">0</span>:i-<span class="number">1</span>]+<span class="built_in">str</span>(<span class="built_in">int</span>(strn[i-<span class="number">1</span>])-<span class="number">1</span>)+strn[i:]</span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(flag,<span class="built_in">len</span>(strn)):</span><br><span class="line">            strn = strn[:i] + <span class="string">&quot;9&quot;</span> + strn[i+<span class="number">1</span>:]</span><br><span class="line">        <span class="keyword">return</span> <span class="built_in">int</span>(strn)</span><br></pre></td></tr></table></figure>
+<p>首先将整数转换为字符串以便逐位处理。<br><br>从右向左遍历字符串，找到第一个不满足单调递增条件的位置i。<br><br>将该位置的数字减1，并将该位置后面的所有数字都设为9。<br><br>将处理后的字符串转换为整数并返回。<br></p>
 
     </div>
   </article>
@@ -277,11 +259,11 @@ article: http://ogp.me/ns/article#">
                     </div>
                     <div class="title">
                         <p>标题</p>
-                        <p>代码随想录-day31</p>
+                        <p>代码随想录-day-32</p>
                     </div>
                         <div class="publish">
                             <p>发布于</p>
-                            <p>2026-01-17</p>
+                            <p>2026-01-18</p>
                         </div>
                     <div class="ccbyncsa-icon">
                         <p>授权协议</p>
@@ -303,14 +285,9 @@ article: http://ogp.me/ns/article#">
     
       <div class="post-prev">
         <span class="nav-label">上一篇</span>
-        <a href="/2026/01/16/%E4%BB%A3%E7%A0%81%E9%9A%8F%E6%83%B3%E5%BD%95-day30/">代码随想录-day30</a>
+        <a href="/2026/01/17/%E4%BB%A3%E7%A0%81%E9%9A%8F%E6%83%B3%E5%BD%95-day31/">代码随想录-day31</a>
       </div>
     
-    
-      <div class="post-next">
-        <span class="nav-label">下一篇</span>
-        <a href="/2026/01/18/%E4%BB%A3%E7%A0%81%E9%9A%8F%E6%83%B3%E5%BD%95-day32/">代码随想录-day-32</a>
-      </div>
     
   </nav>
   
@@ -385,7 +362,7 @@ article: http://ogp.me/ns/article#">
 
     </div>
     <div class="sidebar-bg">
-        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%94%A8%E6%9C%80%E5%B0%91%E6%95%B0%E9%87%8F%E7%9A%84%E7%AE%AD%E5%BC%95%E7%88%86%E6%B0%94%E7%90%83"><span class="toc-number">1.</span> <span class="toc-text">用最少数量的箭引爆气球</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%97%A0%E9%87%8D%E5%8F%A0%E5%8C%BA%E9%97%B4"><span class="toc-number">2.</span> <span class="toc-text">无重叠区间</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%88%92%E5%88%86%E5%AD%97%E6%AF%8D%E5%8C%BA%E9%97%B4"><span class="toc-number">3.</span> <span class="toc-text">划分字母区间</span></a></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%90%88%E5%B9%B6%E5%8C%BA%E9%97%B4"><span class="toc-number">1.</span> <span class="toc-text">合并区间</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%8D%95%E8%B0%83%E9%80%92%E5%A2%9E%E7%9A%84%E6%95%B0%E5%AD%97"><span class="toc-number">2.</span> <span class="toc-text">单调递增的数字</span></a></li></ol>
     </div>
     <div class="sidebar-bg">
         <div class="card-tags">
