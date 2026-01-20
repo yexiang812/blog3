@@ -209,7 +209,7 @@ article: http://ogp.me/ns/article#">
       
       
         <span class="post-updated">
-          最后更新于 <time datetime="2026-01-20T12:35:35.042Z">2026-01-20</time>
+          最后更新于 <time datetime="2026-01-20T12:38:58.036Z">2026-01-20</time>
         </span>
       
       <span style="margin-left:10px;">👁<span id="busuanzi_value_page_pv"></span></span>
@@ -228,6 +228,7 @@ article: http://ogp.me/ns/article#">
 <blockquote>
 <p>输入：n &#x3D; 4<br><br>输出：3<br><br>解释：F(4) &#x3D; F(3) + F(2) &#x3D; 2 + 1 &#x3D; 3<br></p>
 </blockquote>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span>:</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">fib</span>(<span class="params">self, n: <span class="built_in">int</span></span>) -&gt; <span class="built_in">int</span>:</span><br><span class="line">        dp = [<span class="number">0</span>,<span class="number">1</span>]</span><br><span class="line">        <span class="keyword">if</span> n == <span class="number">0</span>:</span><br><span class="line">            <span class="keyword">return</span> dp[<span class="number">0</span>]</span><br><span class="line">        <span class="keyword">if</span> n == <span class="number">1</span>:</span><br><span class="line">            <span class="keyword">return</span> dp[<span class="number">1</span>]</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            <span class="keyword">return</span> <span class="variable language_">self</span>.fib(n-<span class="number">2</span>) + <span class="variable language_">self</span>.fib(n-<span class="number">1</span>) </span><br></pre></td></tr></table></figure>
 
     </div>
   </article>
