@@ -7,12 +7,12 @@ article: http://ogp.me/ns/article#">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="keywords" content="Leetcode,机器学习,生活">
 
-<title>代码随想录-day36 || yeye 想变强</title>
+<title>代码随想录-day37 || yeye 想变强</title>
 <link rel="icon" href="http://example.comimages/wang.icon" type="image/x-icon">
 <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
-<meta property="og:title" content="代码随想录-day36">
+<meta property="og:title" content="代码随想录-day37">
 <meta property="og:type" content="website">
-<meta property="og:url" content="http://example.com/2026/01/22/%E4%BB%A3%E7%A0%81%E9%9A%8F%E6%83%B3%E5%BD%95-day36/index.html">
+<meta property="og:url" content="http://example.com/2026/01/23/%E4%BB%A3%E7%A0%81%E9%9A%8F%E6%83%B3%E5%BD%95-day37/index.html">
 <meta property="og:image" content="">
 <meta property="og:site_name" content="yeye 想变强">
 <meta property="og:author" content="yeyeyefirst">
@@ -20,7 +20,7 @@ article: http://ogp.me/ns/article#">
   
   
   
-  <meta name="description" content="携带研究材料携带研究材料小明在进行一项研究活动，他需要携带一些研究材料。这些材料有不同的重量和价值。小明的背包有一个最大承重限制，他希望在不超过这个重量限制的情况下，携带尽可能有价值的材料。给定材料的重量和价值列表，以及背包的最大承重限制，计算小明能够携带的最大价值。示例1：输入：weights&amp;#x3D;[">
+  <meta name="description" content="最后一块石头的重量最后一块石头的重量有一堆石头，每块石头的重量都是正整数。每一回合，从中选出两块最重的石头，然后将它们一起粉碎。假设石头的重量分别为x和y，且x&amp;#x3D;y。那么粉碎的可能结果如下：如果x&amp;#x3D;&amp;#x3D;y，那么两块石头都会被完全粉碎；如果x!&amp;#x3D;y，那么重量为x的石头将会完">
 
 
 <script src="/js/wang.js"></script>
@@ -198,10 +198,10 @@ article: http://ogp.me/ns/article#">
 </aside>
 <div class="post-container">
   <article class="post">
-    <h1 class="post-title">代码随想录-day36</h1>
+    <h1 class="post-title">代码随想录-day37</h1>
 
     <div class="post-meta">
-      <span class="post-date">发布于 <time datetime="2026-01-22T14:50:13.000Z">2026-01-22</time></span>
+      <span class="post-date">发布于 <time datetime="2026-01-23T15:38:13.000Z">2026-01-23</time></span>
       
         <span class="post-categories">
           分类：<a class="category-link" href="/categories/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0%E2%80%94%E2%80%94%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/">算法学习——动态规划</a>
@@ -209,29 +209,29 @@ article: http://ogp.me/ns/article#">
       
       
         <span class="post-updated">
-          最后更新于 <time datetime="2026-01-22T15:07:33.592Z">2026-01-22</time>
+          最后更新于 <time datetime="2026-01-23T15:41:25.120Z">2026-01-23</time>
         </span>
       
       <span style="margin-left:10px;">👁<span id="busuanzi_value_page_pv"></span></span>
     </div>
     <div class="post-content">
-      <h1 id="携带研究材料"><a href="#携带研究材料" class="headerlink" title="携带研究材料"></a>携带研究材料</h1><p><a target="_blank" rel="noopener" href="https://kamacoder.com/problempage.php?pid=1046">携带研究材料</a><br>小明在进行一项研究活动，他需要携带一些研究材料。这些材料有不同的重量和价值。小明的背包有一个最大承重限制，他希望在不超过这个重量限制的情况下，携带尽可能有价值的材料。<br><br>给定材料的重量和价值列表，以及背包的最大承重限制，计算小明能够携带的最大价值。<br><br>示例 1：<br></p>
+      <h1 id="最后一块石头的重量"><a href="#最后一块石头的重量" class="headerlink" title="最后一块石头的重量"></a>最后一块石头的重量</h1><p><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/last-stone-weight/description/">最后一块石头的重量</a><br>有一堆石头，每块石头的重量都是正整数。<br><br>每一回合，从中选出两块 最重的 石头，然后将它们一起粉碎。假设石头的重量分别为 x 和 y，且 x &lt;&#x3D; y。那么粉碎的可能结果如下：<br><br>如果 x &#x3D;&#x3D; y，那么两块石头都会被完全粉碎；<br><br>如果 x !&#x3D; y，那么重量为 x 的石头将会完全粉碎，而重量为 y 的石头新重量为 y-x。<br><br>最后，最多只会剩下一块石头。返回此石头的重量。如果没有石头剩下，就返回 0。<br><br>示例 1：<br></p>
 <blockquote>
-<p>输入：weights &#x3D; [2, 3, 4, 5], values &#x3D; [3, 4, 5, 6], capacity &#x3D; 8<br>输出：10<br><br>解释：小明可以选择重量为3和5的材料，总价值为4 + 6 &#x3D; 10。<br>示例 2：<br><br>输入：weights &#x3D; [1, 2, 3], values &#x3D; [10, 20, 30], capacity &#x3D; 4<br>输出：50<br><br>解释：小明可以选择重量为1和2的材料，总价值为10 + 20 &#x3D; 50。</p>
+<p>输入：[2,7,4,1,8,1]<br><br>输出：1<br><br>解释：<br><br>先选出 7 和 8，得到 1，所以数组转换为 [2,4,1,1,1]，<br><br>再选出 2 和 4，得到 2，所以数组转换为 [2,1,1,1]，<br><br>接着是 2 和 1，得到 1，所以数组转换为 [1,1,1]，<br><br>最后选出 1 和 1，得到 0，所以数组转换为 [1]，<br><br>所以最后剩下的石头重量为 1。<br><br>示例 2：<br><br>输入：[1]<br><br>输出：1<br></p>
 </blockquote>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">n,bagweight = <span class="built_in">map</span>(<span class="built_in">int</span>,<span class="built_in">input</span>().split())</span><br><span class="line">weights = <span class="built_in">list</span>(<span class="built_in">map</span>(<span class="built_in">int</span>,<span class="built_in">input</span>().split()))</span><br><span class="line">values = <span class="built_in">list</span>(<span class="built_in">map</span>(<span class="built_in">int</span>,<span class="built_in">input</span>().split()))</span><br><span class="line">dp = [<span class="number">0</span>]*(bagweight+<span class="number">1</span>)</span><br><span class="line">dp[<span class="number">0</span>] = <span class="number">0</span></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(n):</span><br><span class="line">    <span class="keyword">for</span> j <span class="keyword">in</span> <span class="built_in">range</span>(bagweight,weights[i]-<span class="number">1</span>,-<span class="number">1</span>):</span><br><span class="line">        dp[j] = <span class="built_in">max</span>(dp[j],dp[j-weights[i]]+values[i])</span><br><span class="line"><span class="built_in">print</span>(dp[bagweight])</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span>:</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">lastStoneWeight</span>(<span class="params">self, stones: <span class="type">List</span>[<span class="built_in">int</span>]</span>) -&gt; <span class="built_in">int</span>:</span><br><span class="line">        <span class="keyword">while</span> <span class="built_in">len</span>(stones) &gt; <span class="number">1</span>:</span><br><span class="line">            stones.sort()</span><br><span class="line">            y = stones.pop()</span><br><span class="line">            x = stones.pop()</span><br><span class="line">            <span class="keyword">if</span> x != y:</span><br><span class="line">                stones.append(y-x)</span><br><span class="line">        <span class="keyword">return</span> stones[<span class="number">0</span>] <span class="keyword">if</span> stones <span class="keyword">else</span> <span class="number">0</span></span><br></pre></td></tr></table></figure>
 
-<h1 id="分割等和子集"><a href="#分割等和子集" class="headerlink" title="分割等和子集"></a>分割等和子集</h1><p><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/partition-equal-subset-sum/description/">分割等和子集</a><br>给你一个 只包含正整数 的 非空 数组 nums 。<br><br>请你判断是否可以将这个数组分割成两个子集，使得两个子集的元素和相等。</p>
-<p>示例 1：<br></p>
+<h1 id="目标和"><a href="#目标和" class="headerlink" title="目标和"></a>目标和</h1><p><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/target-sum/description/">目标和</a><br>给你一个整数数组 nums 和一个整数 target 。<br><br>向数组中的每个整数前添加 ‘+’ 或 ‘-‘ ，然后串联起所有整数，可以构造一个 表达式 ：<br><br>例如，nums &#x3D; [2, 1] ，可以在 2 之前添加 ‘+’ ，在 1 之前添加 ‘-‘ ，然后串联起来得到表达式 “+2-1” 。<br><br>返回可以通过上述方法构造的、运算结果等于 target 的不同 表达式 的数目。<br><br>示例 1：<br></p>
 <blockquote>
-<p>输入：nums &#x3D; [1,5,11,5]<br><br>输出：true<br><br>解释：数组可以分割成 [1, 5, 5] 和 [11] 。</p>
+<p>输入：nums &#x3D; [1,1,1,1,1], target &#x3D; 3<br><br>输出：5<br><br>解释：一共有 5 种方法让最终目标和为 3 。<br><br>-1 + 1 + 1 + 1 + 1 &#x3D; 3<br><br>+1 - 1 + 1 + 1 + 1 &#x3D; 3<br><br>+1 + 1 - 1 + 1 + 1 &#x3D; 3<br><br>+1 + 1 + 1 - 1 + 1 &#x3D; 3<br><br>向数组中的每个整数前添加 ‘+’ 或 ‘-‘ ，然后串联起所有整数，可以构造一个 表达式 ：<br><br>示例 2：<br><br>输入：nums &#x3D; [1], target &#x3D; 1<br><br>输出：1<br></p>
 </blockquote>
-<p>示例 2：<br></p>
-<blockquote>
-<p>输入：nums &#x3D; [1,2,3,5]<br><br>输出：false<br><br>解释：数组不能分割成两个元素和相等的子集。</p>
-</blockquote>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span>:</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">canPartition</span>(<span class="params">self, nums: <span class="type">List</span>[<span class="built_in">int</span>]</span>) -&gt; <span class="built_in">bool</span>:</span><br><span class="line">        <span class="keyword">if</span> <span class="built_in">sum</span>(nums)%<span class="number">2</span> != <span class="number">0</span>:</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">False</span></span><br><span class="line">        target = <span class="built_in">sum</span>(nums)//<span class="number">2</span></span><br><span class="line">        dp = [<span class="number">0</span>]*(target+<span class="number">1</span>)</span><br><span class="line">        dp[<span class="number">0</span>] = <span class="number">0</span></span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="built_in">len</span>(nums)):</span><br><span class="line">            <span class="keyword">for</span> j <span class="keyword">in</span> <span class="built_in">range</span>(target,nums[i]-<span class="number">1</span>,-<span class="number">1</span>):</span><br><span class="line">                dp[j] = <span class="built_in">max</span>(dp[j],dp[j-nums[i]]+nums[i])</span><br><span class="line">        <span class="keyword">return</span> dp[target] == target</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span>:</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">findTargetSumWays</span>(<span class="params">self, nums: <span class="type">List</span>[<span class="built_in">int</span>], target: <span class="built_in">int</span></span>) -&gt; <span class="built_in">int</span>:</span><br><span class="line">        <span class="keyword">if</span> (target + <span class="built_in">sum</span>(nums)) % <span class="number">2</span> != <span class="number">0</span>:</span><br><span class="line">            <span class="keyword">return</span> <span class="number">0</span></span><br><span class="line">        <span class="keyword">if</span> <span class="built_in">abs</span>(target) &gt; <span class="built_in">sum</span>(nums):</span><br><span class="line">            <span class="keyword">return</span> <span class="number">0</span></span><br><span class="line">        bagweight = (target + <span class="built_in">sum</span>(nums)) // <span class="number">2</span></span><br><span class="line">        dp = [<span class="number">0</span>] * (bagweight + <span class="number">1</span>)</span><br><span class="line">        dp[<span class="number">0</span>] = <span class="number">1</span></span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="built_in">len</span>(nums)):</span><br><span class="line">            <span class="keyword">for</span> j <span class="keyword">in</span> <span class="built_in">range</span>(bagweight, nums[i] - <span class="number">1</span>, -<span class="number">1</span>):</span><br><span class="line">                dp[j] += dp[j - nums[i]]</span><br><span class="line">        <span class="keyword">return</span> dp[bagweight]</span><br></pre></td></tr></table></figure>
 
+<h1 id="一和零"><a href="#一和零" class="headerlink" title="一和零"></a>一和零</h1><p><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/ones-and-zeroes/description/">一和零</a><br>给你一个二进制字符串数组 strs 和两个整数 m 和 n 。<br><br>请你找出并返回 strs 的最大子集的长度，该子集中 最多 有 m 个 0 和 n 个 1 。<br><br>如果 x 的所有元素也是 y 的元素，集合 x 是集合 y 的 子集 。<br><br>示例 1：<br></p>
+<blockquote>
+<p>输入：strs &#x3D; [“10”, “0001”, “111001”, “1”, “0”], m &#x3D; 5, n &#x3D; 3<br><br>输出：4<br><br>解释：最多有 5 个 0 和 3 个 1 的最大子集是 {“10”,”0001”,”1”,”0”} ，因此答案是 4 。<br><br>示例 2：<br><br>输入：strs &#x3D; [“10”, “0”, “1”], m &#x3D; 1, n &#x3D; 1<br><br>输出：2<br><br>解释：最大的子集是 {“0”, “1”} ，所以答案是 2 。<br></p>
+</blockquote>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span>:</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">findMaxForm</span>(<span class="params">self, strs: <span class="type">List</span>[<span class="built_in">str</span>], m: <span class="built_in">int</span>, n: <span class="built_in">int</span></span>) -&gt; <span class="built_in">int</span>:</span><br><span class="line">        dp = [[<span class="number">0</span>] * (n + <span class="number">1</span>) <span class="keyword">for</span> _ <span class="keyword">in</span> <span class="built_in">range</span>(m + <span class="number">1</span>)]</span><br><span class="line">        <span class="keyword">for</span> <span class="built_in">str</span> <span class="keyword">in</span> strs:</span><br><span class="line">            zero_num = <span class="built_in">str</span>.count(<span class="string">&#x27;0&#x27;</span>)</span><br><span class="line">            one_num = <span class="built_in">str</span>.count(<span class="string">&#x27;1&#x27;</span>)</span><br><span class="line">            <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(m, zero_num - <span class="number">1</span>, -<span class="number">1</span>):</span><br><span class="line">                <span class="keyword">for</span> j <span class="keyword">in</span> <span class="built_in">range</span>(n, one_num - <span class="number">1</span>, -<span class="number">1</span>):</span><br><span class="line">                    dp[i][j] = <span class="built_in">max</span>(dp[i][j], dp[i - zero_num][j - one_num] + <span class="number">1</span>)</span><br><span class="line">        <span class="keyword">return</span> dp[m][n]</span><br></pre></td></tr></table></figure>
     </div>
   </article>
   <div class="ccbyncsa">
@@ -245,11 +245,11 @@ article: http://ogp.me/ns/article#">
                     </div>
                     <div class="title">
                         <p>标题</p>
-                        <p>代码随想录-day36</p>
+                        <p>代码随想录-day37</p>
                     </div>
                         <div class="publish">
                             <p>发布于</p>
-                            <p>2026-01-22</p>
+                            <p>2026-01-23</p>
                         </div>
                     <div class="ccbyncsa-icon">
                         <p>授权协议</p>
@@ -271,14 +271,9 @@ article: http://ogp.me/ns/article#">
     
       <div class="post-prev">
         <span class="nav-label">上一篇</span>
-        <a href="/2026/01/21/%E4%BB%A3%E7%A0%81%E9%9A%8F%E6%83%B3%E5%BD%95-day35/">代码随想录-day35</a>
+        <a href="/2026/01/22/%E4%BB%A3%E7%A0%81%E9%9A%8F%E6%83%B3%E5%BD%95-day36/">代码随想录-day36</a>
       </div>
     
-    
-      <div class="post-next">
-        <span class="nav-label">下一篇</span>
-        <a href="/2026/01/23/%E4%BB%A3%E7%A0%81%E9%9A%8F%E6%83%B3%E5%BD%95-day37/">代码随想录-day37</a>
-      </div>
     
   </nav>
   
@@ -353,7 +348,7 @@ article: http://ogp.me/ns/article#">
 
     </div>
     <div class="sidebar-bg">
-        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%90%BA%E5%B8%A6%E7%A0%94%E7%A9%B6%E6%9D%90%E6%96%99"><span class="toc-number">1.</span> <span class="toc-text">携带研究材料</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%88%86%E5%89%B2%E7%AD%89%E5%92%8C%E5%AD%90%E9%9B%86"><span class="toc-number">2.</span> <span class="toc-text">分割等和子集</span></a></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%9C%80%E5%90%8E%E4%B8%80%E5%9D%97%E7%9F%B3%E5%A4%B4%E7%9A%84%E9%87%8D%E9%87%8F"><span class="toc-number">1.</span> <span class="toc-text">最后一块石头的重量</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%9B%AE%E6%A0%87%E5%92%8C"><span class="toc-number">2.</span> <span class="toc-text">目标和</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%B8%80%E5%92%8C%E9%9B%B6"><span class="toc-number">3.</span> <span class="toc-text">一和零</span></a></li></ol>
     </div>
     <div class="sidebar-bg">
         <div class="card-tags">
